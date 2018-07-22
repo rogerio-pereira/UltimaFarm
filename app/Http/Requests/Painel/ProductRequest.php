@@ -26,9 +26,9 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|max:100',
             'price' => 'required',
-            'quantity' => 'required|integer|min:0',
-            'product_category_id' => 'nullable|integer|exists:product_categories,id',
-            'product_subcategory_id' => 'nullable|integer|exists:product_subcategories,id',
+
+            'deadline' => 'required|integer|min:1',
+            'profitability' => 'required|numeric|min:1',
         ];
     }
 
@@ -45,15 +45,13 @@ class ProductRequest extends FormRequest
 
             'price.required' => 'O campo "Valor" é obrigatório',
 
-            'quantity.required' => 'O campo "Estoque" é obrigatório',
-            'quantity.integer' => 'O campo "Estoque" deve ser um número inteiro',
-            'quantity.min' => 'O valor mínimo do campo "Estoque" é :min',
+            'deadline.required' => 'O campo "Prazo de Retirada" é obrigatório',
+            'deadline.integer' => 'O campo "Prazo de Retirada" deve ser um número inteiro',
+            'deadline.min' => 'O campo "Prazo de Retirada" deve ser de no mínimo :min mes(es)',
 
-            'product_category_id.integer' => 'O campo "Categoria" deve ser um número inteiro',
-            'product_category_id.exists' => 'Categoria inexistente',
-
-            'product_subcategory_id.integer' => 'O campo "Subcategoria" deve ser um número inteiro',
-            'product_subcategory_id.exists' => 'Subcategoria inexistente',
+            'profitability.required' => 'O campo "Rentabilidade" é obrigatório',
+            'profitability.numeric' => 'O campo "Rentabilidade" deve ser um número',
+            'profitability.required' => 'O campo "Rentabilidade" deve ser de no mínimo :min%',
         ];
     }
 }

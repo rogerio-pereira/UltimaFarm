@@ -14,16 +14,16 @@ class SocialMediaTableSeeder extends Seeder
     {
         factory(SocialMedia::class)->create([
             'name' => 'Facebook',
-            'url' => null,
+            'url' => 'https://www.facebook.com/ultimatefarminvestimentos',
             'icon' => '<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>',
-            'active' => 0,
+            'active' => 1,
         ]);
 
         factory(SocialMedia::class)->create([
             'name' => 'Instagram',
-            'url' => null,
+            'url' => 'instagram.com/ultimatefarm',
             'icon' => '<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-instagram fa-stack-1x fa-inverse"></i></span>',
-            'active' => 0,
+            'active' => 1,
         ]);
 
         factory(SocialMedia::class)->create([

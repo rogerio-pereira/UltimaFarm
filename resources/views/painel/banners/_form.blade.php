@@ -38,7 +38,7 @@
     </div>
 </div>
 
-<div class='col-md-8 margin-top'>
+<div class='col-md-6 margin-top'>
     <label for='description'>Descrição</label>
     <textarea name="description" id='description' id='description' class='tinymce'>{{$banner->description or ''}}</textarea>
 </div>

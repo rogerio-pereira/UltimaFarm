@@ -14,23 +14,22 @@
 
 <div class='col-md-6 margin-top'>
     <div class="input-group">
-        <span class="input-group-addon" id="quantity">Estoque</span>
-        {!! Form::input('number', 'quantity', null, ['class' => 'form-control', 'aria-describedby' => 'quantity', 'step' => 1, 'min' => 0]) !!}
+        <span class="input-group-addon" id="deadline">Prazo de Retirada (em meses)</span>
+        {!! Form::input('number', 'deadline', null, ['class' => 'form-control', 'aria-describedby' => 'deadline', 'min' => 1, 'step' => 1]) !!}
     </div>
 </div>
 
 <div class='col-md-6 margin-top'>
     <div class="input-group">
-        <span class="input-group-addon" id="product_category_id">Categoria</span>
-        {!! Form::select('product_category_id', $productCategories, null, ['class' => 'form-control product_category_id',]) !!}
+        <span class="input-group-addon" id="profitability">Rentabilidade (em %)</span>
+        {!! Form::input('number', 'profitability', null, ['class' => 'form-control', 'aria-describedby' => 'profitability', 'min' => 1, 'step' => 0.01]) !!}
     </div>
 </div>
 
-<div class='col-md-6 margin-top'>
+<div class='col-md-8 margin-top'>
     <div class="input-group">
-        <span class="input-group-addon" id="product_subcategory_id">Subcategoria</span>
-        <select name='product_subcategory_id' class='form-control product_subcategory_id'>
-        </select>
+        <span class="input-group-addon" id="active">Ativo</span>
+        {!! Form::select('active', ['1' => 'Ativo', '0' => 'Inativo'], null, ['class' => 'form-control', 'aria-describedby' => 'active']) !!}
     </div>
 </div>
 
@@ -42,19 +41,4 @@
 @section('scripts')
     {!! Html::script('/js/common/maskedinput.min.js') !!}
     {!! Html::script('/js/common/mascaras.min.js') !!}
-    {!! Html::script('/js/painel/products.min.js') !!}
-
-    <script>
-        categorieID = $('.product_category_id').val();
-        console.log(categorieID);
-        getSubcategories(categorieID);
-
-        @if(isset($product))
-            //Espera 1 segundo e atualiza o valor de subcategoria
-            setTimeout(function() 
-            {
-                $('.product_subcategory_id').val('{{$product->product_subcategory_id}}');
-            }, 1000);
-        @endif
-    </script>
 @endsection

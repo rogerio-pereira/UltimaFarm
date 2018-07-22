@@ -19,9 +19,8 @@ class Product extends Model implements Transformable
     protected $fillable = [
         'name',
         'price',
-        'quantity',
-        'product_category_id',
-        'product_subcategory_id',
+        'deadline',
+        'profitability',
     ];
     
     /*
@@ -33,9 +32,8 @@ class Product extends Model implements Transformable
         'id', 
         'name',
         'price',
-        'quantity',
-        'product_category_id',
-        'product_subcategory_id',
+        'deadline',
+        'profitability',
 
     ];
 
@@ -45,14 +43,4 @@ class Product extends Model implements Transformable
      * @var array
      */
     protected $dates = ['created_at', 'deleted_at'];
-
-    public function category()
-    {
-        return $this->hasOne(ProductCategory::class, 'id', 'product_category_id');
-    }
-
-    public function subcategory()
-    {
-        return $this->hasOne(ProductSubcategory::class, 'id', 'product_subcategory_id');
-    }
 }

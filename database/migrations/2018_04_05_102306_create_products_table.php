@@ -16,20 +16,12 @@ class CreateProductsTable extends Migration
 		Schema::create('products', function(Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->decimal('price');
-            $table->integer('quantity');
-            $table->integer('product_category_id')->unsigned()->nullable();
-            $table->integer('product_subcategory_id')->unsigned()->nullable();
+            $table->double('price');
+            $table->integer('deadline');
+            $table->decimal('profitability');
+            $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('product_category_id')
-                ->references('id')
-                ->on('product_categories');
-
-            $table->foreign('product_subcategory_id')
-                ->references('id')
-                ->on('product_subcategories');
 		});
 	}
 
