@@ -1,4 +1,10 @@
 // main: style.scss
+@font-face {
+  font-family: 'Myriad-Pro', sans-serif;
+  src: url('../../fonts/MyriadPro-Regular.otf') format("opentype");
+  src: url('../../fonts/MyriadPro-Regular.woff') format('woff'),
+       url('../../fonts/MyriadPro-Regular.ttf')  format('truetype');
+}
 
 body
 {
@@ -10,6 +16,7 @@ body
     padding:0px;
     margin:0px;
     overflow-x:hidden;
+    font-family: 'Myriad-Pro';
 }
 
 hr

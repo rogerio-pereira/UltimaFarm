@@ -16,7 +16,6 @@ class PermissionsTableSeeder extends Seeder
                         'banners'               => 'banners',
                         'portfolios'            => 'portifólio',
                         'services'              => 'serviços',
-                        'clients'               => 'clientes',
                         'videos'                => 'videos',
                         'pages'                 => 'páginas',
                         'product_categories'    => 'categorias de produto',
@@ -28,6 +27,8 @@ class PermissionsTableSeeder extends Seeder
                         //Blog
                         'post_categories'       => 'categorias de posts',
                         'posts'                 => 'posts',
+                        //Administrativo
+                        'clients'               => 'clientes',
                     ];
 
         $permissions =  [

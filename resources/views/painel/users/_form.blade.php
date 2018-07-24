@@ -74,6 +74,14 @@
                             </tr>
                         @endif
 
+                        @if($permission->description == 'Visualizar clientes')
+                            <tr>
+                                <td colspan='4' class='tableLabel'>
+                                    Administrativo
+                                </td>
+                            </tr>
+                        @endif
+
                         <td class='text-center'>
                             <label>
                                 @if(!in_array($permission->name, $notShowPermissions))

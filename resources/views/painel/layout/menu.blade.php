@@ -1,3 +1,21 @@
+{{--Administrativo--}}
+<li class='dropdown'>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        Administrativo <span class="caret"></span>
+    </a>
+
+    <ul class="dropdown-menu inverse-dropdown" role="menu">
+        {{--CLIENTS--}}
+        @can('view-clients')
+            <li>
+                <a href='{{route('clients.index')}}' alt='Clientes' title='Clientes'>
+                    <i class="fa fa-users" aria-hidden="true"></i> Clientes
+                </a>
+            </li>
+        @endcan
+    </ul>
+</li>
+
 {{--Cadastrar--}}
 <li class='dropdown'>
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -37,14 +55,6 @@
                 </a>
             </li>
         @endcan--}}
-        {{--CLIENTS--}}
-        @can('view-services')
-            <li>
-                <a href='{{route('clients.index')}}' alt='Clientes' title='Clientes'>
-                    <i class="fa fa-users" aria-hidden="true"></i> Clientes
-                </a>
-            </li>
-        @endcan
         {{--VIDEOS--}}
         @can('view-videos')
             <li>

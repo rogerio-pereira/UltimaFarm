@@ -14,14 +14,39 @@ class Client extends Model implements Transformable
     use SoftDeletes;
     use LogsActivity;
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'email',
+        'telephone',
+        'document',
+        'zipcode',
+        'street',
+        'number',
+        'complement',
+        'neighborhood',
+        'city',
+        'state',
+    ];
     
     /*
      * The attributes that are logged
      *
      * @var array
      */
-    protected static $logAttributes = ['id', 'name'];
+    protected static $logAttributes = [
+        'id', 
+        'name',
+        'email',
+        'telephone',
+        'document',
+        'zipcode',
+        'street',
+        'number',
+        'complement',
+        'neighborhood',
+        'city',
+        'state',
+    ];
 
     /**
      * The attributes that should be mutated to dates.

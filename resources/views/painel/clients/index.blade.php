@@ -21,6 +21,10 @@
                 <th width="100px">Ações</th>
                 <th width="100px">ID</th>
                 <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Documento</th>
+                <th>Endereço</th>
             </tr>
         </thead>
         <tbody>
@@ -41,6 +45,24 @@
                 </td>
                 <td>{{$client->id}}</td>
                 <td>{{$client->name}}</td>
+                <td><a href='mailto:{{$client->email}}'>{{$client->email}}</td>
+                <td>{{$client->telephone}}</td>
+                <td>{{$client->document}}</td>
+                <td>
+                    @php
+                        $address = $client->street.', '.$client->number;
+
+                        if(isset($client->complement))
+                            $address .= ' - '.$client->complement;
+
+                        $address .= '. '.$client->neighborhood.
+                        '. '.$client->city.
+                        ' - '.$client->state.
+                        '. '.$client->zipcode;
+                    @endphp
+
+                    {{$address}}
+                </td>
             </tr>
             @empty
             <tr>

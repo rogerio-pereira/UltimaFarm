@@ -26,5 +26,29 @@ jQuery(function($)
         }
     }).trigger('focusout');
 
+    //Busca CEP(focuslost)
+    $(".cep").blur(function() {
+        console.log('aqui');
+        if($(this).val() != '') {
+            //Valor sem . e sem - (##.###-###)
+            var cep = $(this).val().split(".").join("").split("-").join("");
+
+            $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+                if (!("erro" in dados)) {
+                    //Atualiza os campos com os valores da consulta.
+                    $("#street").val(dados.logradouro);
+                    $("#neighborhood").val(dados.bairro);
+                    $("#city").val(dados.localidade);
+                    $("#state").val(dados.uf);
+                    $("#number").focus();
+                }
+                else {
+                    //CEP pesquisado não foi encontrado.
+                    alert("CEP não encontrado.");
+                }
+            });
+        }
+    });
+
     $('.botao').prop("disabled", false);
 });

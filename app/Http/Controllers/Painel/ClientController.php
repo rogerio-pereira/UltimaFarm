@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Painel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\ClientRequest;
+use App\Models\Address\States;
 use App\Repositories\ClientRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -44,7 +45,9 @@ class ClientController extends Controller
         if(Gate::denies('create-clients'))
             return redirect('/');
 
-        return view('painel.clients.create');
+        $states = States::getStates();
+
+        return view('painel.clients.create', compact('states'));
     }
 
     /**
@@ -94,8 +97,9 @@ class ClientController extends Controller
             return redirect('/');
 
         $client = $this->repository->find($id);
+        $states = States::getStates();
 
-        return view('painel.clients.edit', compact('client'));
+        return view('painel.clients.edit', compact('client', 'states'));
     }
 
     /**
