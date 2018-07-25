@@ -55,6 +55,8 @@ Route::group([
 
     //Ativo/Inativo
     Route::post('/activate-inactivate', 'ActivateController@activateInactivate')->name('activate-inactivate');
+
+    Route::get('/charts/{name}', 'ChartsController@show');
 });
 
 

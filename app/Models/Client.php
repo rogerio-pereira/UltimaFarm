@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Client extends Model implements Transformable
@@ -26,6 +26,7 @@ class Client extends Model implements Transformable
         'neighborhood',
         'city',
         'state',
+        'created_at'
     ];
     
     /*

@@ -15,5 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(SocialMediaTableSeeder::class);
         $this->call(ProductTableSeeder::class);
+
+        //Testes
+        if(env('APP_ENV') == 'local') {
+            $this->call(ClientsTestTableSeeder::class);
+        }
     }
 }
