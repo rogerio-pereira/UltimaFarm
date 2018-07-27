@@ -15,8 +15,10 @@ class CreateClientsTable extends Migration
 	{
 		Schema::create('clients', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            /*$table->string('name');
+            $table->string('email')->unique();*/
+            $table->integer('user_id')->unsigned()->nullable();
+
             $table->string('telephone');
             $table->string('document')->unique();
             
@@ -30,6 +32,11 @@ class CreateClientsTable extends Migration
 
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
 		});
 	}
 

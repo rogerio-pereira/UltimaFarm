@@ -14,6 +14,10 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
+    
+    $faker = Faker\Factory::create('pt_br');
+    $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+    $faker->addProvider(new Faker\Provider\pt_BR\PhoneNumber($faker));
 
     return [
         'name' => $faker->name,

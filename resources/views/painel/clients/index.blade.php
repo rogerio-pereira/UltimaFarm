@@ -44,8 +44,8 @@
                     @endcan
                 </td>
                 <td>{{$client->id}}</td>
-                <td>{{$client->name}}</td>
-                <td><a href='mailto:{{$client->email}}'>{{$client->email}}</td>
+                <td>{{$client->user->name}}</td>
+                <td><a href='mailto:{{$client->user->email}}'>{{$client->user->email}}</td>
                 <td>{{$client->telephone}}</td>
                 <td>{{$client->document}}</td>
                 <td>

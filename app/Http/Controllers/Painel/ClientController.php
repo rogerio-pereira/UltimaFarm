@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\ClientRequest;
 use App\Models\Address\States;
 use App\Repositories\ClientRepository;
+use App\Services\Painel\ClientService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
@@ -14,10 +15,15 @@ use Spatie\Activitylog\Models\Activity;
 class ClientController extends Controller
 {
     private $repository;
+    private $service;
 
-    public function __construct(ClientRepository $repository)
+    public function __construct(
+                                    ClientRepository $repository,
+                                    ClientService $service
+                                )
     {
         $this->repository = $repository;
+        $this->service = $service;
     }
 
     /**
@@ -63,10 +69,7 @@ class ClientController extends Controller
 
         $data = $request->all();
 
-        $this->repository->create($data);
-
-        //Grava Log
-        Activity::all()->last();
+        $this->service->store($data);
 
         Session::flash('message', ['Cliente salvo com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 

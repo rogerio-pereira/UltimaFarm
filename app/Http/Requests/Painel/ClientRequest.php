@@ -24,8 +24,8 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email|unique:clients,email',
+            'user.name' => 'required',
+            'user.email' => 'required|email|unique:users,email',
             'telephone' => 'required',
             'document' => 'required|unique:clients,document',
 
@@ -48,11 +48,11 @@ class ClientRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'O campo "Nome" é obrigatório',
+            'user.name.required' => 'O campo "Nome" é obrigatório',
 
-            'email.required' => 'O campo "E-mail" é obrigatório',
-            'email.email' => 'E-mail inválido',
-            'email.unique' => 'E-mail já cadastrado',
+            'user.email.required' => 'O campo "E-mail" é obrigatório',
+            'user.email.email' => 'E-mail inválido',
+            'user.email.unique' => 'E-mail já cadastrado',
 
             'telephone.required' => 'O campo "Telefone" é obrigatório',
 

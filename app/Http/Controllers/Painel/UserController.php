@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel;
 
+use App\Criteria\Painel\UserNotClientCriteria;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\User\UserCreateRequest;
 use App\Http\Requests\Painel\User\UserUpdateRequest;
@@ -41,7 +42,9 @@ class UserController extends Controller
         if(Gate::denies('view-users'))
             return redirect('/');
 
-        $users = $this->repository->paginate();
+        $users = $this->repository
+                    ->pushCriteria(UserNotClientCriteria::class)
+                    ->paginate();
 
         return view('painel.users.index', compact('users'));
     }

@@ -43,4 +43,9 @@ class Product extends Model implements Transformable
      * @var array
      */
     protected $dates = ['created_at', 'deleted_at'];
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class, 'client_id', 'id');
+    }
 }

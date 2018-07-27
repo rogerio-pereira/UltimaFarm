@@ -15,8 +15,7 @@ class Client extends Model implements Transformable
     use LogsActivity;
 
     protected $fillable = [
-        'name',
-        'email',
+        'user_id',
         'telephone',
         'document',
         'zipcode',
@@ -36,8 +35,7 @@ class Client extends Model implements Transformable
      */
     protected static $logAttributes = [
         'id', 
-        'name',
-        'email',
+        'user_id',
         'telephone',
         'document',
         'zipcode',
@@ -55,5 +53,15 @@ class Client extends Model implements Transformable
      * @var array
      */
     protected $dates = ['created_at', 'deleted_at'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class, 'client_id', 'id');
+    }
 
 }

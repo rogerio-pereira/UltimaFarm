@@ -1,14 +1,16 @@
+{!! Form::input('hidden', 'user[role]', "Cliente") !!}
+
 <div class='col-md-6'>
     <div class="input-group">
         <span class="input-group-addon" id="name">Nome</span>
-        {!! Form::input('text', 'name', null, ['class' => 'form-control', 'aria-describedby' => 'name']) !!}
+        {!! Form::input('text', 'user[name]', null, ['class' => 'form-control', 'aria-describedby' => 'name']) !!}
     </div>
 </div>
 
 <div class='col-md-6'>
     <div class="input-group">
         <span class="input-group-addon" id="email">E-mail</span>
-        {!! Form::input('email', 'email', null, ['class' => 'form-control', 'aria-describedby' => 'email']) !!}
+        {!! Form::input('email', 'user[email]', null, ['class' => 'form-control', 'aria-describedby' => 'email']) !!}
     </div>
 </div>
 
