@@ -4,15 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\ProductRepository;
-use App\Models\Product;
-use App\Validators\ProductValidator;
+use App\Repositories\SaleRepository;
+use App\Models\Sale;
+use App\Validators\SaleValidator;
 
 /**
- * Class ProductRepositoryEloquent
+ * Class SaleRepositoryEloquent.
+ *
  * @package namespace App\Repositories;
  */
-class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
+class SaleRepositoryEloquent extends BaseRepository implements SaleRepository
 {
     /**
      * Specify Model class name
@@ -21,7 +22,7 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
      */
     public function model()
     {
-        return Product::class;
+        return Sale::class;
     }
 
     
@@ -33,13 +34,5 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-
-    /**
-     * Generate Array to be used in comboboxes
-     * @return array Title,ID
-     */
-    public function comboboxList()
-    {
-        return $this->model->pluck('name', 'id');
-    }
+    
 }

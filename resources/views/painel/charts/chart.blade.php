@@ -1,5 +1,5 @@
 <div class='row'>
-    <div id="chart-div"></div>
+    <div id="{{$divId}}"></div>
     
-    @linechart('Chart', 'chart-div')
+    @linechart($divId, $divId)
 </div>

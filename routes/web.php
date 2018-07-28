@@ -27,7 +27,6 @@ Route::group([
     Route::resource('banners', 'BannerController');
     Route::resource('services', 'ServiceController');
     Route::resource('portfolios', 'PortfolioController');
-    Route::resource('clients', 'ClientController');
     Route::resource('videos', 'VideoController');
     Route::resource('pages', 'PageController');
     Route::resource('product_categories', 'ProductCategoryController');
@@ -40,6 +39,10 @@ Route::group([
     //Blog
     Route::resource('post_categories', 'PostCategoryController');
     Route::resource('posts', 'PostController');
+
+    //Adminstrativo
+    Route::resource('clients', 'ClientController');
+    Route::resource('sales', 'SaleController');
 
 
     //Validações Video

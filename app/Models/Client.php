@@ -64,4 +64,25 @@ class Client extends Model implements Transformable
         return $this->hasMany(Sale::class, 'client_id', 'id');
     }
 
+    public function toString()
+    {
+        $string =  '<strong>Nome:</strong> '.$this->user->name.'<br/>'
+                    .'<strong>E-mail:</strong> '.$this->user->email.'<br/>'
+                    .'<strong>Telefone:</strong> '.$this->telephone.'<br/>'
+                    .'<strong>Documento:</strong> '.$this->document.'<br/>'
+                    .'<strong>Endereço:</strong> ';
+
+        $string .= $this->street.', '.$this->number;
+
+        if(isset($this->complement))
+            $string .= ' - '.$this->complement;
+
+        $string .= '. '.$this->neighborhood.
+                    '. '.$this->city.
+                    ' - '.$this->state.
+                    '. '.$this->zipcode;
+
+        return $string;
+    }
+
 }

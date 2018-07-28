@@ -48,4 +48,13 @@ class Product extends Model implements Transformable
     {
         return $this->hasMany(Sale::class, 'client_id', 'id');
     }
+
+    public function toString()
+    {
+        return  '<strong>Nome:</strong> '.$this->name.'<br/>'.
+                '<strong>Valor:</strong> R$ '.number_format($this->price, 2, ',', '.').'<br/>'.
+                '<strong>Prazo de recuperação:</strong> '.$this->deadline.' meses <br/>'.
+                '<strong>Rentabilidade:</strong> '.$this->profitability.' %';
+
+    }
 }

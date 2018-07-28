@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         //Testes
         if(env('APP_ENV') == 'local') {
             $this->call(ClientsTestTableSeeder::class);
+            $this->call(SalesTestTableSeeder::class);
         }
     }
 }

@@ -85,7 +85,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->find($id)->toString();
     }
 
     /**

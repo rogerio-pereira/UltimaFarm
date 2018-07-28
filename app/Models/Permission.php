@@ -41,9 +41,13 @@ class Permission extends Model implements Transformable
      * @var array
      */
     public $notShowPermissions = [
+        //Permissões
         'view-permissions',
         'create-permissions',
-        'delete-permissions'
+        'delete-permissions',
+        //Vendas
+        'update-sales',
+        'delete-sales'
     ];
 
     /**

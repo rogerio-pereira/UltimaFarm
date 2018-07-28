@@ -29,6 +29,7 @@ class PermissionsTableSeeder extends Seeder
                         'posts'                 => 'posts',
                         //Administrativo
                         'clients'               => 'clientes',
+                        'sales'                 => 'vendas',
                     ];
 
         $permissions =  [

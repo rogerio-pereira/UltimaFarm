@@ -20,8 +20,6 @@ $factory->define(App\Models\Client::class, function (Faker\Generator $faker) {
     $faker->addProvider(new Faker\Provider\pt_BR\PhoneNumber($faker));
 
     return [
-        /*'name' => $faker->firstName.' '.$faker->lastName,
-        'email' => $faker->safeEmail,*/
         'telephone' => $faker->phoneNumber,
         'document' => $faker->cpf,
         'street' => $faker->streetName,

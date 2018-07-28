@@ -7,28 +7,34 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Repositories\ClientRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PainelController extends Controller
 {
-    private $clientRepository;
-
-    public function __construct(ClientRepository $clientRepository)
-    {
-        $this->clientRepository = $clientRepository;
-    }
-
     public function index()
     {
-        /*$clients = $this
-                        ->clientRepository
-                        ->pushCriteria(ReportCriteria::class)
-                        ->get([
-                                DB::raw("MONTH(created_at) as m"), 
-                                DB::raw("YEAR(created_at) as y"), 
-                                DB::raw("count(*) as total")
-                            ]);*/
+        if(Auth::user()->role != 'Cliente')
+            $return = $this->painelHome();
+        else
+            $return = $this->painelUser();
 
-        return view('painel.index'/*, compact('clients')*/);
+        return $return;
+    }
+
+    private function painelHome()
+    {
+        $controlador  = new ChartsController();
+
+        $controlador->getClients();
+        $controlador->getSales();
+        $controlador->getRefunds();
+
+        return view('painel.index');
+    }
+
+    private function painelUser()
+    {
+        return view('painel.indexUser');
     }
 }

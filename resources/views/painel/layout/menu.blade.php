@@ -14,6 +14,14 @@
                     </a>
                 </li>
             @endcan
+            {{--SALES--}}
+            @can('view-sales')
+                <li>
+                    <a href='{{route('sales.index')}}' alt='Vendas' title='Vendas'>
+                        <i class="fa fa-money" aria-hidden="true"></i> Vendas
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
 
