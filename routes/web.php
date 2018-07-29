@@ -34,6 +34,7 @@ Route::group([
     Route::resource('product_subcategories', 'ProductSubcategoryController');
     Route::resource('products', 'ProductController');
     Route::resource('socialmedias', 'SocialMediaController');
+    Route::resource('faqs', 'FaqController');
     Route::resource('users', 'UserController');
     
     //Blog

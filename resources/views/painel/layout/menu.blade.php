@@ -98,11 +98,19 @@
             @endcan
             {{--SOCIAL MEDIA--}}
             @can('view-socialmedias')
-            <li>
-                <a href='{{route('socialmedias.index')}}' alt='Mídias Socials' title='Mídias Socials'>
-                    <i class="fa fa-facebook-square" aria-hidden="true"></i> Mídias Socials
-                </a>
-            </li>
+                <li>
+                    <a href='{{route('socialmedias.index')}}' alt='Mídias Socials' title='Mídias Socials'>
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i> Mídias Socials
+                    </a>
+                </li>
+            @endcan
+            {{--FAQ--}}
+            @can('view-faqs')
+                <li>
+                    <a href='{{route('faqs.index')}}' alt='FAQ' title='FAQ'>
+                        <i class="fa fa-asterisk" aria-hidden="true"></i> FAQ
+                    </a>
+                </li>
             @endcan
             {{--Users--}}
             @can('view-users')
