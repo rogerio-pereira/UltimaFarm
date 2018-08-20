@@ -13,3 +13,8 @@ div.videoHome video
     width: 100%;
     height: auto;
 }
+
+div.homeBlog a
+{
+    color:black;
+}

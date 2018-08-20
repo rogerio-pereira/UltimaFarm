@@ -22,7 +22,7 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<link rel='shortcut icon' href='{{ asset('img/template/favicon.ico') }}' type='image/x-icon' />
+<link rel='shortcut icon' href='{{ asset('img/template/favicon-ufcc.ico') }}' type='image/x-icon' />
 
 <meta name='author' content='{{ config('app.name')}}' />
 <meta name='copyright' content='{{ config('app.name')}}' />

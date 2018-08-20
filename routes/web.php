@@ -76,3 +76,13 @@ Route::group([
     Route::get('/', 'HomeController@index')->name('site.index');
     Route::get('/home', 'HomeController@index')->name('site.home');
 });
+
+
+Route::group([
+                'prefix' => 'blog',
+                'namespace' => 'Blog',
+            ], function() 
+{
+    Route::get('/', 'BlogController@index')->name('blog.index');
+    Route::get('/{title}/{id}', 'BlogController@show')->name('blog.post');
+});
