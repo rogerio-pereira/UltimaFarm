@@ -18,30 +18,21 @@
             <div class='homeInfo'>
                 <div class='col-md-4'>
                     <div class='padding-left-g padding-right-g text-center'>
-                        <span class="fa-stack fa-2x">
-                            <i class="fa fa-circle-o fa-stack-2x"></i>
-                            <i class="fa fa-usd fa-stack-1x"></i>
-                        </span>
+                        <img src='{{asset('img/cifrao.png')}}' alt='Investimento garantido'>
                         <br/>
                         Investimento garantido<br/> pelo UFCC &<br/> Allstate Farm
                     </div>
                 </div>
                 <div class='col-md-4'>
                     <div class='padding-left-g padding-right-g text-center border-left border-right'>
-                        <span class="fa-stack fa-2x">
-                            <i class="fa fa-circle-o fa-stack-2x"></i>
-                            <i class="fa fa-lightbulb-o fa-stack-1x"></i>
-                        </span>
+                        <img src='{{asset('img/lampada.png')}}' alt='Segurança'>
                         <br/>
                         A segurança de investimento do mercado americano a apenas um clique de alcance
                     </div>
                 </div>
                 <div class='col-md-4'>
                     <div class='padding-left-g padding-right-g text-center'>
-                        <span class="fa-stack fa-2x">
-                            <i class="fa fa-circle-o fa-stack-2x"></i>
-                            <i class="fa fa-percent fa-stack-1x"></i>
-                        </span>
+                        <img src='{{asset('img/percento.png')}}' alt='Taxas'>
                         <br/>
                         Taxas de rentabilidade pré-fixadas podendo chegar em até a 40% sobre o investido
                     </div>

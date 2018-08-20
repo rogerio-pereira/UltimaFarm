@@ -2,7 +2,7 @@
     <div class="container-fluid menu">
         <div class="navbar-header">
             <a href='{{route('site.index')}}' title='{{env('APP_NAME')}}' class='logo navbar-brand'>
-                <img src='/img/template/ufcc-logo.jpeg' alt='{{env('APP_NAME')}}' class='img-responsive'>
+                <img src='/img/template/ufcc-logo.png' alt='{{env('APP_NAME')}}' class='img-responsive'>
             </a>
         </div>
 
