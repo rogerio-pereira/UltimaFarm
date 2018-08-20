@@ -65,8 +65,14 @@ Route::group([
 
 
 
-Route::get('/', function () {
-    return view('welcome');
+/*
+ * Site
+ */
+Route::group([
+                'namespace' => 'Site',
+                'middleware' => ['getSocialMedia', 'getDolar']
+            ], function() 
+{
+    Route::get('/', 'HomeController@index')->name('site.index');
+    Route::get('/home', 'HomeController@index')->name('site.home');
 });
-
-Route::get('/home', 'HomeController@index')->name('home');

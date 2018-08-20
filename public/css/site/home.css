@@ -1,0 +1,15 @@
+div.videoHome
+{
+    position:relative;
+    padding: 0px;
+    margin:0px;
+}
+
+div.videoHome video
+{
+    position: relative;
+    left: 0px;
+    top:0px;
+    width: 100%;
+    height: auto;
+}

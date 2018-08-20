@@ -1,0 +1,47 @@
+// main: style.scss
+header nav.navbar
+{
+    border-bottom: 10px solid #B7952D;
+}
+
+header div.navbar-header a.logo img
+{
+    height: 80px;
+}
+
+ul.navbar-right
+{
+    margin-right: 20px;
+}
+
+ul.navbar-right li a
+{
+    text-transform: lowercase;
+    color: black !important;
+}
+
+ul.navbar-right
+{
+    position:relative;
+    top: -10px;
+}
+
+
+//Icones
+ul.navbar-right li a span.fa-stack
+{
+    margin-top:15px;
+}
+
+ul.navbar-right li a i.fa-stack-2x
+{
+    font-size: 1em;
+    color: black !important;
+}
+
+ul.navbar-right li a i.fa-stack-1x
+{
+    font-size: .5em;
+    top: -23%;
+    color: white !important;
+}
