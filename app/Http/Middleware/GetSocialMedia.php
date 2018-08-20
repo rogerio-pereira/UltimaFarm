@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Repositories\SocialMediaRepository;
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Support\Facades\Cache;
 
@@ -30,7 +31,9 @@ class GetSocialMedia
                 ['url', '<>', null],
             ]);
 
-            Cache::forever('socialmedias', $socialMedias);
+            $expiresAt = Carbon::now()->addDays(7);
+
+            Cache::put('socialmedias', $socialMedias, $expiresAt);
         }
 
         return $next($request);
