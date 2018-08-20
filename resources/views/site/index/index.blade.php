@@ -67,24 +67,30 @@
             </div>
         </div>
 
-
-
         <div class='row margin-top padding-top-p border-top-golden homeBlog'>
             <h1 class='text-center'>Blog</h1>
                 
-            @foreach ($posts as $post)
-                <div class='col-md-4'>
-                    @php
-                        $titleUrl = App\Http\Controllers\Util\UrlController::friendlyUrl($post->title);
-                    @endphp
-                    <a href='{{route('blog.post', ['id' => $post->id, 'title' => $titleUrl])}}'>
-                        <img src='{{$post->image}}' class='img-responsive' alt='{{$post->title}}' title='{{$post->title}}'>
-                        <div class='text-center'>
-                            <strong>{{$post->title}}</strong>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
+            <div class='row'>
+                @foreach ($posts as $post)
+                    <div class='col-md-4'>
+                        @php
+                            $titleUrl = App\Http\Controllers\Util\UrlController::friendlyUrl($post->title);
+                        @endphp
+                        <a href='{{route('blog.post', ['id' => $post->id, 'title' => $titleUrl])}}'>
+                            <img src='{{$post->image}}' class='img-responsive' alt='{{$post->title}}' title='{{$post->title}}'>
+                            <div class='text-center'>
+                                <strong>{{$post->title}}</strong>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class='col-md-12 text-center margin-top-g'>
+                <a href='{{route('blog.index')}}' title='Blog' class='btn btn-primary'>
+                    Acesse outros artigos
+                </a>
+            </div>
         </div>
     </div>
 @endsection

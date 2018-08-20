@@ -9,3 +9,18 @@ span.fa-stack i
 {
     color: #B7952D;
 }
+
+.btn-primary
+{
+    background-color: #B7952D;
+    border-color: #B7952D;
+    color: white !important;
+    text-transform: uppercase;
+    font-weight:bold;
+}
+
+.btn-primary:hover
+{
+    background-color: #a08021;
+    border-color: #a08021;
+}
