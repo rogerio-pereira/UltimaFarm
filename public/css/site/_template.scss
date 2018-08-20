@@ -16,6 +16,11 @@ body
     margin:0px;
     overflow-x:hidden;
     font-family: 'Myriad-Pro';
+
+    background-image: url('../../img/template/cannabis-background.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
 }
 
 hr
@@ -170,4 +175,9 @@ div.img-center img
 {
     position: relative;
     margin: 0 auto;
+}
+
+section
+{
+    background-color: white;
 }

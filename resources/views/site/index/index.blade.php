@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class='row margin-top padding-top-p border-top-golden homeBlog'>
+        <div class='row margin-top margin-bottom-g padding-top-p border-top-golden homeBlog'>
             <h1 class='text-center'>Blog</h1>
                 
             <div class='row'>
@@ -93,4 +93,50 @@
             </div>
         </div>
     </div>
+    </section>
+
+    <div class='homeImageBackground'>
+        &nbsp;
+    </div>
+
+    <section>
+        <div class='container margin-top margin-bottom-negative padding-top'>
+            <div class='margin-bottom-g'>
+                <div class='text-center'>
+                    <h1>Planos de Investimento</h1>
+                </div>
+
+                <div class='row'>
+                    @foreach ($products as $product)
+                        <div class='col-md-2 text-center'>
+                            <div class='homeProduct'>
+                                <div class='no-padding'>
+                                    <h2>{{$product->name}}</h2>
+
+                                    <p>
+                                        Investimento<br/>
+                                        <strong>R$ {{number_format($product->price, 2, ',', '.')}}</strong>
+                                    </p>
+
+                                    <p>
+                                        Rentabilidade<br/>
+                                        <strong>{{number_format($product->profitability, 2, ',', '.')}} %</strong>
+                                    </p>
+
+                                    <div class='rentNow'>
+                                        Contratar<br/>Agora
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <div class='col-md-12 text-center margin-top-g '>
+                        <a href='#' title='Outros Planos' class='btn btn-primary'>
+                            Outros planos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection
