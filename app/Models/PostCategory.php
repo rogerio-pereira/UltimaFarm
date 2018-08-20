@@ -33,4 +33,9 @@ class PostCategory extends Model implements Transformable
      * @var array
      */
     protected $dates = ['created_at', 'deleted_at'];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'id', 'author_id');
+    }
 }
