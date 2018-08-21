@@ -73,6 +73,11 @@ hr.white
     margin-top: 40px;
 }
 
+div.margin-bottom-negative
+{
+    margin-bottom: -40px;
+}
+
 .padding-bottom 
 {
     padding-bottom: 20px;
@@ -180,4 +185,11 @@ div.img-center img
 section
 {
     background-color: white;
+    min-height: 500px;
+}
+
+section div.siteContainer
+{
+    position:relative;
+    margin-top: 120px;
 }

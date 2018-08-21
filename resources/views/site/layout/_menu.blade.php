@@ -30,7 +30,7 @@
                 <a href='#'>Contato</a>
             </li>
             <li>
-                <a href='#'>FAQ</a>
+                <a href='{{route('site.faq')}}'>FAQ</a>
             </li>
 
             @foreach (Cache::get('socialmedias') as $socialMedia)
