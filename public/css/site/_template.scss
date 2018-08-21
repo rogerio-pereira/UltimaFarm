@@ -8,15 +8,19 @@
 
 body
 {
-    background-color: #000000;
-    color: white;
-    position: relative;
+    background-color: white;
+    color: black;
     font-size: 1.8em;
     min-width: 100%;
     padding:0px;
     margin:0px;
     overflow-x:hidden;
     font-family: 'Myriad-Pro';
+
+    background-image: url('../../img/template/cannabis-background.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
 }
 
 hr
@@ -97,4 +101,83 @@ hr.white
 .padding-top-g
 {
     padding-top: 40px;
+}
+
+.padding-left 
+{
+    padding-left: 20px;
+}
+
+.padding-left-p
+{
+    padding-left: 10px;
+}
+
+.padding-left-g
+{
+    padding-left: 40px;
+}
+
+.padding-right 
+{
+    padding-right: 20px;
+}
+
+.padding-right-p
+{
+    padding-right: 10px;
+}
+
+.padding-right-g
+{
+    padding-right: 40px;
+}
+
+.no-padding
+{
+    padding: 0px !important;
+}
+
+.no-margin{
+    margin: 0px !important;
+}
+
+.border-right
+{
+    border-right: 2px solid #cbcbcb;
+}
+
+.border-left
+{
+    border-left: 2px solid #cbcbcb;
+}
+
+.border-bottom-golden
+{
+    border-bottom: 5px solid #B7952D;
+}
+
+
+h1,h2,h3,h4,h5,h6
+{
+    color: #B7952D;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+div.img-center
+{
+    position:relative;
+    text-align: center;
+}
+div.img-center img
+{
+    position: relative;
+    margin: 0 auto;
+}
+
+section
+{
+    background-color: white;
 }

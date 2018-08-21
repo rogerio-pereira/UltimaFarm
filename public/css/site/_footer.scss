@@ -1,0 +1,24 @@
+// main: style.scss
+
+footer
+{
+    background-color: #ded0a0;
+    color:black;
+    border-top: 50px solid #ccb66c !important;
+    margin-top: 40px;
+}
+
+footer div.copyright
+{
+    background-color: #ccb66c;
+    font-size: .8em;
+    color:white;
+}
+
+footer div.copyright a,
+footer div.copyright a:hover,
+footer div.copyright a:active
+{
+    color: black;
+    text-decoration: underline
+}

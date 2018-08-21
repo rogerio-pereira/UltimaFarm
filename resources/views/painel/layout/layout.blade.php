@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
     <head>
-        @include('site.layout.meta')
+        @include('painel.layout.meta')
 
         {{--Styles--}}
         {!! Html::style('css/app.css') !!}

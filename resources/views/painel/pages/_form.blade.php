@@ -38,6 +38,20 @@
     </div>
 </div>
 
+<div class='col-md-8 margin-top'>
+    <div class="input-group">
+        <span class="input-group-addon" id="page_category_id">Categoria</span>
+        {!! Form::select('page_category_id', $pageCategories, null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+<div class='col-md-8 margin-top'>
+    <div class="input-group">
+        <span class="input-group-addon" id="show_title">Exibir Titulo</span>
+        {!! Form::select('show_title', ['1' => 'Sim', '0' => 'Não'], null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
 <div class='col-md-12 margin-top'>
     <label for='text'>Texto</label>
     <textarea name="text" id='text' class='tinymce'>{{$page->text or old('text')}}</textarea>

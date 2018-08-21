@@ -1,0 +1,56 @@
+div.videoHome
+{
+    position:relative;
+    padding: 0px;
+    margin:0px;
+}
+
+div.videoHome video
+{
+    position: relative;
+    left: 0px;
+    top:0px;
+    width: 100%;
+    height: auto;
+}
+
+div.homeBlog a
+{
+    color:black;
+}
+
+div.homeImageBackground
+{
+    height: 300px;
+    background-color: transparent !important;
+    background-image: none;
+}
+
+div.margin-bottom-negative
+{
+    margin-bottom: -40px;
+}
+
+div.homeProduct
+{
+    background-color: #d9cb9c;
+    padding: 0px !important;
+}
+
+div.homeProduct h2
+{
+    border-bottom: 1px solid #615b46;
+    font-size: 1em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+div.homeProduct div.rentNow
+{
+    padding: 10px;
+    width: 100%;
+    background-color: #b99d38;
+    color: white;
+    font-weight: bold;
+}

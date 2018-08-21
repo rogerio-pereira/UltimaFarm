@@ -28,6 +28,7 @@ Route::group([
     Route::resource('services', 'ServiceController');
     Route::resource('portfolios', 'PortfolioController');
     Route::resource('videos', 'VideoController');
+    Route::resource('page_categories', 'PageCategoryController');
     Route::resource('pages', 'PageController');
     Route::resource('product_categories', 'ProductCategoryController');
     Route::get('product_categories/getSubcategoriesCombo/{id}', 'ProductCategoryController@getSubcategoriesCombo')->name('products.getSubcategoriesCombo');
@@ -65,8 +66,24 @@ Route::group([
 
 
 
-Route::get('/', function () {
-    return view('welcome');
+/*
+ * Site
+ */
+Route::group([
+                'namespace' => 'Site',
+                'middleware' => ['getSocialMedia', 'getDolar']
+            ], function() 
+{
+    Route::get('/', 'HomeController@index')->name('site.index');
+    Route::get('/home', 'HomeController@index')->name('site.home');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group([
+                'prefix' => 'blog',
+                'namespace' => 'Blog',
+            ], function() 
+{
+    Route::get('/', 'BlogController@index')->name('blog.index');
+    Route::get('/{title}/{id}', 'BlogController@show')->name('blog.post');
+});

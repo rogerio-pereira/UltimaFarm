@@ -19,6 +19,8 @@ class Page extends Model implements Transformable
         'title',
         'description',
         'text',
+        'page_category_id',
+        'show_title'
     ];
     
     /*
@@ -32,6 +34,8 @@ class Page extends Model implements Transformable
         'title',
         'description',
         'text',
+        'page_category_id',
+        'show_title'
     ];
 
     /**
@@ -40,5 +44,11 @@ class Page extends Model implements Transformable
      * @var array
      */
     protected $dates = ['created_at', 'deleted_at'];
+
+
+    public function category()
+    {
+        return $this->hasOne(PageCategory::class, 'id', 'page_category_id');
+    }
 
 }
