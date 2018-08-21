@@ -76,6 +76,7 @@ Route::group([
 {
     Route::get('/', 'HomeController@index')->name('site.index');
     Route::get('/home', 'HomeController@index')->name('site.home');
+    Route::get('/faq', 'FaqController@index')->name('site.faq');
 });
 
 
