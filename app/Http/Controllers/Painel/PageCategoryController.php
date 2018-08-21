@@ -3,26 +3,20 @@
 namespace App\Http\Controllers\Painel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Painel\PageRequest;
+use App\Http\Requests\Painel\PageCategoryRequest;
 use App\Repositories\PageCategoryRepository;
-use App\Repositories\PageRepository;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
 
-class PageController extends Controller
+class PageCategoryController extends Controller
 {
     private $repository;
-    private $categoryRepository;
 
-    public function __construct(
-                                    PageRepository $repository,
-                                    PageCategoryRepository $categoryRepository
-                                )
+    public function __construct(PageCategoryRepository $repository)
     {
         $this->repository = $repository;
-        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -32,12 +26,12 @@ class PageController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('view-pages'))
+        if(Gate::denies('view-page_categories'))
             return redirect('/');
 
-        $pages = $this->repository->orderBy('page_category_id')->paginate();
+        $pageCategories = $this->repository->paginate();
 
-        return view('painel.pages.index', compact('pages'));
+        return view('painel.page_categories.index', compact('pageCategories'));
     }
 
     /**
@@ -47,12 +41,10 @@ class PageController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('create-pages'))
+        if(Gate::denies('create-page_categories'))
             return redirect('/');
 
-        $pageCategories = $this->categoryRepository->comboboxList();
-
-        return view('painel.pages.create', compact('pageCategories'));
+        return view('painel.page_categories.create');
     }
 
     /**
@@ -61,23 +53,22 @@ class PageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PageRequest $request)
+    public function store(PageCategoryRequest $request)
     {
-        if(Gate::denies('create-pages'))
+        if(Gate::denies('create-page_categories'))
             return redirect('/');
 
         $data = $request->all();
-        $data['image'] = str_replace("://painel.", '://', $data['image']);
 
         $this->repository->create($data);
 
         //Grava Log
         Activity::all()->last();
 
-        Session::flash('message', ['Página salva com sucesso!']); 
+        Session::flash('message', ['Categoria de Página salva com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
-        return redirect('/pages');
+        return redirect()->route('page_categories.index');
     }
 
     /**
@@ -99,13 +90,12 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        if(Gate::denies('update-pages'))
+        if(Gate::denies('update-page_categories'))
             return redirect('/');
 
-        $page = $this->repository->find($id);
-        $pageCategories = $this->categoryRepository->comboboxList();
+        $pageCategory = $this->repository->find($id);
 
-        return view('painel.pages.edit', compact('page', 'pageCategories'));
+        return view('painel.page_categories.edit', compact('pageCategory'));
     }
 
     /**
@@ -115,23 +105,22 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PageRequest $request, $id)
+    public function update(PageCategoryRequest $request, $id)
     {
-        if(Gate::denies('update-pages'))
+        if(Gate::denies('update-page_categories'))
             return redirect('/');
 
         $data = $request->all();
-        $data['image'] = str_replace("://painel.", '://', $data['image']);
 
         $this->repository->update($data, $id);
 
         //Grava Log
         Activity::all()->last();
 
-        Session::flash('message', ['Página alterada com sucesso!']); 
+        Session::flash('message', ['Categoria de Página alterada com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
-        return redirect()->route('pages.index');
+        return redirect()->route('page_categories.index');
     }
 
     /**
@@ -142,7 +131,7 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        if(Gate::denies('delete-pages'))
+        if(Gate::denies('delete-page_categories'))
             return redirect('/');
 
         $this->repository->delete($id);
@@ -150,6 +139,6 @@ class PageController extends Controller
         //Grava Log
         Activity::all()->last();
 
-        return redirect()->route('pages.index');
+        return redirect()->route('page_categories.index');
     }
 }

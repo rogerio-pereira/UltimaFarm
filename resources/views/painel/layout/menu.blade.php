@@ -32,6 +32,14 @@
         </a>
 
         <ul class="dropdown-menu inverse-dropdown" role="menu">
+            {{--PAGE_CATEGORIES--}}
+            @can('view-page_categories')
+                <li>
+                    <a href='{{route('page_categories.index')}}' alt='Categorias Páginas' title='Categorias Páginas'>
+                        <i class="fa fa-list" aria-hidden="true"></i> Categorias Páginas
+                    </a>
+                </li>
+            @endcan
             {{--PÁGINAS--}}
             @can('view-pages')
                 <li>

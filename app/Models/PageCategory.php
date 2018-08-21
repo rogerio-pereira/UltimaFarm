@@ -8,19 +8,19 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class Page extends Model implements Transformable
+/**
+ * Class PageCategory.
+ *
+ * @package namespace App\Models;
+ */
+class PageCategory extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
     use LogsActivity;
 
     protected $fillable = [
-        'image',
-        'title',
-        'description',
-        'text',
-        'page_category_id',
-        'show_title'
+        'title'
     ];
     
     /*
@@ -29,13 +29,7 @@ class Page extends Model implements Transformable
      * @var array
      */
     protected static $logAttributes = [
-        'id',
-        'image',
-        'title',
-        'description',
-        'text',
-        'page_category_id',
-        'show_title'
+        'id', 'title',
     ];
 
     /**
@@ -45,10 +39,9 @@ class Page extends Model implements Transformable
      */
     protected $dates = ['created_at', 'deleted_at'];
 
-
-    public function category()
+    public function pages()
     {
-        return $this->hasOne(PageCategory::class, 'id', 'page_category_id');
+        return $this->hasMany(Page::class);
     }
 
 }
