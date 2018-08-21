@@ -74,13 +74,13 @@ class HomeController extends Controller
 
     private function getCachedPages()
     {
-        //if(Cache::get('pages') == null) {
+        if(Cache::get('pages') == null) {
             $pages = $this->getPages();
 
             $expiresAt = Carbon::now()->addDays(1);
 
             Cache::put('pages', $pages, $expiresAt);
-        //}
+        }
         
         return Cache::get('pages');
     }

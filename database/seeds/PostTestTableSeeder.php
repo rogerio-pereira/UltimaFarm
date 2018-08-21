@@ -18,5 +18,25 @@ class PostTestTableSeeder extends Seeder
                 factory(Post::class, 10)->make()
             );
         });
+
+        factory(PostCategory::class)->create();
+
+        factory(Post::class)->create([
+            'title' => 'Um mercado seguro: invista em Cannabis Medicinal (TESTE)',
+            'image' => env('APP_URL').'/img/blog-1.png', 
+            'post_category_id' => 6,
+        ]);
+
+        factory(Post::class)->create([
+            'title' => 'Você conhece o mercado da Cannabis Medicinal (TESTE)',
+            'image' => env('APP_URL').'/img/blog-2.png', 
+            'post_category_id' => 6,
+        ]);
+
+        factory(Post::class)->create([
+            'title' => 'Como investir em commodities no mercado americano (TESTE)',
+            'image' => env('APP_URL').'/img/blog-3.png', 
+            'post_category_id' => 6,
+        ]);
     }
 }
