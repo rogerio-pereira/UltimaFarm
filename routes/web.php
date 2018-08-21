@@ -79,11 +79,18 @@ Route::group([
 });
 
 
+/*
+ * BLOG
+ */
 Route::group([
                 'prefix' => 'blog',
                 'namespace' => 'Blog',
+                'middleware' => 'blogSidebar'
             ], function() 
 {
     Route::get('/', 'BlogController@index')->name('blog.index');
-    Route::get('/{title}/{id}', 'BlogController@show')->name('blog.post');
+    Route::get('/materia/{title}/{id}', 'BlogController@show')->name('blog.show');
+    Route::get('/categoria/{category}/{id}', 'BlogController@category')->name('blog.category');
+    Route::get('/arquivo/{year}/{month}', 'BlogController@archive')->name('blog.archive');
+    Route::post('/search', 'BlogController@search')->name('blog.search');
 });
