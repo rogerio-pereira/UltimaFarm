@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\PageRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\ProductRepository;
 use Carbon\Carbon;
@@ -11,24 +12,28 @@ use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
+    private $pageRepository;
     private $postRepository;
     private $productRepository;
 
     public function __construct(
+                                    PageRepository $pageRepository,
                                     PostRepository $postRepository,
                                     ProductRepository $productRepository
                                 )
     {
+        $this->pageRepository = $pageRepository;
         $this->postRepository = $postRepository;
         $this->productRepository = $productRepository;
     }
 
     public function index()
     {
+        $pages      = $this->getCachedPages();
         $posts      = $this->getCachedPosts();
         $products   = $this->getCachedProducts();
 
-        return view('site.index.index', compact('posts', 'products'));
+        return view('site.index.index', compact('pages', 'posts', 'products'));
     }
 
     private function getCachedPosts()
@@ -51,13 +56,13 @@ class HomeController extends Controller
 
     private function getCachedProducts()
     {
-        //if(Cache::get('products') == null) {
+        if(Cache::get('products') == null) {
             $products = $this->getProducts();
 
             $expiresAt = Carbon::now()->addDays(1);
 
             Cache::put('products', $products, $expiresAt);
-        //}
+        }
         
         return Cache::get('products');
     }
@@ -65,5 +70,23 @@ class HomeController extends Controller
     private function getProducts()
     {
         return $this->productRepository->paginate(6);
+    }
+
+    private function getCachedPages()
+    {
+        //if(Cache::get('pages') == null) {
+            $pages = $this->getPages();
+
+            $expiresAt = Carbon::now()->addDays(1);
+
+            Cache::put('pages', $pages, $expiresAt);
+        //}
+        
+        return Cache::get('pages');
+    }
+
+    private function getPages()
+    {
+        return $this->pageRepository->findWhere(['page_category_id' => 1])->all();
     }
 }
