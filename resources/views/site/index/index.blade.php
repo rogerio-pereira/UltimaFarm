@@ -85,7 +85,7 @@
     </div>
 
     <section>
-        <div class='container margin-top margin-bottom-negative padding-top'>
+        <div class='container margin-top padding-top'>
             <div class='margin-bottom-g'>
                 <div class='text-center'>
                     <h1>Planos de Investimento</h1>

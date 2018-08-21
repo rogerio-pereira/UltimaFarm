@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class='container siteContainer padding-bottom-g margin-bottom-negative '>
+    <div class='container siteContainer padding-bottom-g'>
         <div class='col-md-12'>
             <h1>FAQ</h1>
         </div>
