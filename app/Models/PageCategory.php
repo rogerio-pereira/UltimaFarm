@@ -39,4 +39,9 @@ class PageCategory extends Model implements Transformable
      */
     protected $dates = ['created_at', 'deleted_at'];
 
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
+    }
+
 }

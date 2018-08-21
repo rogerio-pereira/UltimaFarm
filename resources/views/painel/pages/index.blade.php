@@ -20,6 +20,7 @@
             <tr>
                 <th width="100px">Ações</th>
                 <th width="100px">ID</th>
+                <th>Categoria</th>
                 <th>Titulo</th>
                 <th>Descrição</th>
                 <th width="150px">Imagem</th>
@@ -42,10 +43,15 @@
                     @endcan
                 </td>
                 <td>{{$page->id}}</td>
+                <td>{{$page->category->title}}</td>
                 <td>{{$page->title}}</td>
                 <td>{{$page->description}}</td>
                 <td>
-                    <img src='{{$page->image}}' class='img-responsive'>
+                    @if(isset($page->image) && $page->image != '')
+                        <img src='{{$page->image}}' class='img-responsive'>
+                    @else
+                        <img src='{{env('APP_URL')}}/img/template/painel/sem-imagem.jpg' class='img-responsive'>
+                    @endif
                 </td>
             </tr>
             @empty

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Painel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\PageRequest;
+use App\Repositories\PageCategoryRepository;
 use App\Repositories\PageRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -13,10 +14,15 @@ use Spatie\Activitylog\Models\Activity;
 class PageController extends Controller
 {
     private $repository;
+    private $categoryRepository;
 
-    public function __construct(PageRepository $repository)
+    public function __construct(
+                                    PageRepository $repository,
+                                    PageCategoryRepository $categoryRepository
+                                )
     {
         $this->repository = $repository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -29,7 +35,7 @@ class PageController extends Controller
         if(Gate::denies('view-pages'))
             return redirect('/');
 
-        $pages = $this->repository->paginate();
+        $pages = $this->repository->orderBy('page_category_id')->paginate();
 
         return view('painel.pages.index', compact('pages'));
     }
@@ -44,7 +50,9 @@ class PageController extends Controller
         if(Gate::denies('create-pages'))
             return redirect('/');
 
-        return view('painel.pages.create');
+        $pageCategories = $this->categoryRepository->comboboxList();
+
+        return view('painel.pages.create', compact('pageCategories'));
     }
 
     /**
@@ -95,8 +103,9 @@ class PageController extends Controller
             return redirect('/');
 
         $page = $this->repository->find($id);
+        $pageCategories = $this->categoryRepository->comboboxList();
 
-        return view('painel.pages.edit', compact('page'));
+        return view('painel.pages.edit', compact('page', 'pageCategories'));
     }
 
     /**
