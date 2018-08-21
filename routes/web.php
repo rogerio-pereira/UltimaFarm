@@ -28,6 +28,7 @@ Route::group([
     Route::resource('services', 'ServiceController');
     Route::resource('portfolios', 'PortfolioController');
     Route::resource('videos', 'VideoController');
+    Route::resource('page_categories', 'PageCategoryController');
     Route::resource('pages', 'PageController');
     Route::resource('product_categories', 'ProductCategoryController');
     Route::get('product_categories/getSubcategoriesCombo/{id}', 'ProductCategoryController@getSubcategoriesCombo')->name('products.getSubcategoriesCombo');

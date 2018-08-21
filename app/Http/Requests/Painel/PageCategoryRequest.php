@@ -4,7 +4,7 @@ namespace App\Http\Requests\Painel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PageRequest extends FormRequest
+class PageCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,6 @@ class PageRequest extends FormRequest
     {
         return [
             'title' => 'required|max:100',
-            'description' => 'required|max:160',
-            'text' => 'required',
-            'image' => 'nullable',
-            'page_category_id' => 'required|exists:page_categories,id'
         ];
     }
 
@@ -42,16 +38,6 @@ class PageRequest extends FormRequest
         return [
             'title.required' => 'O campo "Título" é obrigatório',
             'title.max' => 'O campo "Título" não deve ser maior do que :max caracteres',
-
-            'description.required' => 'O campo "Descrição" é obrigatório',
-            'description.max' => 'O campo "Descrição" não deve ser maior do que :max caracteres',
-
-            'text.required' => 'O campo "Texto" é obrigatório',
-
-            //'image.required' => 'O campo "Imagem" é obrigatório',
-
-            'page_category_id.required' => 'O campo "Categoria" é obrigatório',
-            'page_category_id.exists' => 'Categoria inválida',
         ];
     }
 }
