@@ -47,17 +47,17 @@
         {{--Video--}}
         <div class='row margin-top margin-bottom padding-top-p padding-bottom-g border-bottom-golden text-center'>
             <div class='col-md-8'>
-                <h2 class='margin-bottom'>{{$video->title}}</h2>
-                {!!$video->description!!}
+                <h2 class='margin-bottom'>{{$videoInvestments->title}}</h2>
+                {!!$videoInvestments->description!!}
             </div>
 
             <div class='col-md-4 img-center'>
                 @php
-                    $video->url = str_replace('watch?v=', 'embed/', $video->url);
+                    $videoInvestments->url = str_replace('watch?v=', 'embed/', $videoInvestments->url);
                 @endphp
 
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe width="560" height="315" src="{{$video->url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="{{$videoInvestments->url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -84,6 +84,30 @@
                 <a href='{{route('site.cadastro')}}' class='btn btn-primary investmentRegisterButton'>
                     Cadastrar-se
                 </a>
+            </div>
+        </div>
+
+        {{--DEPOIMENTOS--}}
+        <div class='row margin-top margin-bottom padding-top-p padding-bottom-g border-bottom-golden text-center'>
+            <div class='col-md-12 text-center'>
+                <h2>O que diz quem já investe</h2>
+            </div>
+
+            <div class='row margin-top-g margin-bottom-g'>
+                @foreach ($depoiments as $depoiment)
+                        <div class='col-md-6 margin-top-g'>
+                            <div class='row'>
+                                <div class='col-xs-4'>
+                                    <img src='{{$depoiment->image}}' alt='{{$depoiment->name}}' class='img-responsive img-circle'>
+                                </div>
+
+                                <div class='col-xs-8 text-center margin-top-g'>
+                                    "{{$depoiment->depoiment}}"<br/>
+                                    <strong>{{$depoiment->name}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                @endforeach
             </div>
         </div>
     </div>
