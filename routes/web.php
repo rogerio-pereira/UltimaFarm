@@ -36,6 +36,7 @@ Route::group([
     Route::resource('products', 'ProductController');
     Route::resource('socialmedias', 'SocialMediaController');
     Route::resource('faqs', 'FaqController');
+    Route::resource('depoiments', 'DepoimentController');
     Route::resource('users', 'UserController');
     
     //Blog
