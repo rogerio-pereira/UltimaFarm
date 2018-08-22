@@ -96,6 +96,125 @@ class PageTableSeeder extends Seeder
             'title' => 'Investimentos',
         ]);
 
+        factory(Page::class)->create([
+            'title' => 'Informações',
+            'description' => 'Informações', 
+            'text' => "
+                    <div class='row'>
+                        <div class='col-md-4'>
+                            <div class='investmentIcon'>
+                                <div class='row margin-top margin-bottom padding-left padding-right'>
+                                    <div class='col-xs-4'>
+                                        <img src='".env('APP_URL')."/img/investimento-cifrao.png' alt='Investimentos' class='img-responsive'>
+                                    </div>
+                                    
+                                    <div class='col-xs-8 text-right'>
+                                        <h2>Investimentos a partir de</h2>
+                                    </div>
+                                </div>
+
+                                <div class='col-xs-12 text-center investmentIconFooter'>
+                                    <h1>R$ 500,00</h1>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-4'>
+                            <div class='investmentIcon'>
+                                <div class='row margin-top margin-bottom padding-left padding-right'>
+                                    <div class='col-xs-4'>
+                                        <img src='".env('APP_URL')."/img/investimento-rendimento-mensal.png' alt='Rendimento Mensal' class='img-responsive'>
+                                    </div>
+                                    
+                                    <div class='col-xs-8 text-right'>
+                                        <h2>Titulos de resgate semestral com</h2>
+                                    </div>
+                                </div>
+
+                                <div class='col-xs-12 text-center investmentIconFooter'>
+                                    <h1>Rendimento Mensal</h1>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-4'>
+                            <div class='investmentIcon'>
+                                <div class='row margin-top margin-bottom padding-left padding-right'>
+                                    <div class='col-xs-4'>
+                                        <img src='".env('APP_URL')."/img/investimento-taxas.png' alt='Taxas' class='img-responsive'>
+                                    </div>
+                                    
+                                    <div class='col-xs-8 text-right'>
+                                        <h2>Taxas de rendimento de até</h2>
+                                    </div>
+                                </div>
+
+                                <div class='col-xs-12 text-center investmentIconFooter'>
+                                    <h1>40% a.m.</h1>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-4'>
+                            <div class='investmentIcon'>
+                                <div class='row margin-top margin-bottom padding-left padding-right'>
+                                    <div class='col-xs-4'>
+                                        <img src='".env('APP_URL')."/img/investimento-bandeira.png' alt='Mercado Americano' class='img-responsive'>
+                                    </div>
+                                    
+                                    <div class='col-xs-8 text-right'>
+                                        <h2>Segurança e maturidade do</h2>
+                                    </div>
+                                </div>
+
+                                <div class='col-xs-12 text-center investmentIconFooter'>
+                                    <h1>Mercado Americano</h1>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-4'>
+                            <div class='investmentIcon'>
+                                <div class='row margin-top margin-bottom padding-left padding-right'>
+                                    <div class='col-xs-4'>
+                                        <img src='".env('APP_URL')."/img/investimento-bayer.png' alt='Bayer - Indústria Farmaceutica' class='img-responsive'>
+                                    </div>
+                                    
+                                    <div class='col-xs-8 text-right'>
+                                        <h2>Desenvolva a indústria</h2>
+                                    </div>
+                                </div>
+
+                                <div class='col-xs-12 text-center investmentIconFooter'>
+                                    <h1>Farmaceutica</h1>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-4'>
+                            <div class='investmentIcon'>
+                                <div class='row margin-top margin-bottom padding-left padding-right'>
+                                    <div class='col-xs-4'>
+                                        <img src='".env('APP_URL')."/img/investimento-mercado-financeiro.png' alt='Mercado Financeiro' class='img-responsive'>
+                                    </div>
+                                    
+                                    <div class='col-xs-8 text-right'>
+                                        <h2>Antecipe tendências do</h2>
+                                    </div>
+                                </div>
+
+                                <div class='col-xs-12 text-center investmentIconFooter'>
+                                    <h1>Mercado Financeiro</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ", 
+            'image' => env('APP_URL').'/img/template/sem-imagem.jpg', 
+            'page_category_id' => 3,
+            'show_title' => false
+        ]);
+
         /*
             factory(Page::class)->create([
                 'title' => '',
