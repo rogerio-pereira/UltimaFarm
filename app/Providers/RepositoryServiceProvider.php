@@ -95,6 +95,10 @@ class RepositoryServiceProvider extends ServiceProvider
                 \App\Repositories\FaqRepository::class, 
                 \App\Repositories\FaqRepositoryEloquent::class
         );
+        $this->app->bind(
+                \App\Repositories\DepoimentRepository::class, 
+                \App\Repositories\DepoimentRepositoryEloquent::class
+        );
         //:end-bindings:
     }
 }

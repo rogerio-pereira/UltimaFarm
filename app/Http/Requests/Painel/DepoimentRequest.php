@@ -4,7 +4,7 @@ namespace App\Http\Requests\Painel;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BannerRequest extends FormRequest
+class DepoimentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class BannerRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:100',
+            'name' => 'required',
+            'depoiment' => 'required',
             'image' => 'required',
         ];
     }
@@ -37,8 +38,9 @@ class BannerRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'O campo "Título" é obrigatório',
-            'title.max' => 'O campo "Título" não deve ser maior do que :max caracteres',
+            'name.required' => 'O campo "Nome" é obrigatório',
+
+            'depoiment.required' => 'O campo "Depoimento" é obrigatório',
 
             'image.required' => 'O campo "Imagem" é obrigatório',
         ];

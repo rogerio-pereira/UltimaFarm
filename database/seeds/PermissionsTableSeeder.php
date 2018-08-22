@@ -24,6 +24,7 @@ class PermissionsTableSeeder extends Seeder
                         'products'              => 'produtos',
                         'socialmedias'          => 'mídias sociais',
                         'faqs'                  => 'FAQs',
+                        'depoiments'            => 'depoimentos',
                         'users'                 => 'usuários',
                         'permissions'           => 'permissões',
                         //Blog
