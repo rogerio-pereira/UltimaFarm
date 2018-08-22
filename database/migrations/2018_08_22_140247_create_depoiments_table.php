@@ -3,9 +3,11 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideosTable extends Migration
+/**
+ * Class CreateDepoimentsTable.
+ */
+class CreateDepoimentsTable extends Migration
 {
-
 	/**
 	 * Run the migrations.
 	 *
@@ -13,11 +15,10 @@ class CreateVideosTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('videos', function(Blueprint $table) {
+		Schema::create('depoiments', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('description');
-            $table->string('url');
+            $table->string('name');
+            $table->text('depoiment');
             $table->string('image');
             $table->boolean('active')->default('1');
             $table->timestamps();
@@ -32,7 +33,6 @@ class CreateVideosTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('videos');
+		Schema::drop('depoiments');
 	}
-
 }

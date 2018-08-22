@@ -120,6 +120,14 @@
                     </a>
                 </li>
             @endcan
+            {{--DEPOIMENT--}}
+            @can('view-depoiment')
+                <li>
+                    <a href='{{route('depoiments.index')}}' alt='Depoimentos' title='Depoimentos'>
+                        <i class="fa fa-comments" aria-hidden="true"></i> Depoimentos
+                    </a>
+                </li>
+            @endcan
             {{--Users--}}
             @can('view-users')
                 <li>

@@ -8,23 +8,40 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class Video extends Model implements Transformable
+/**
+ * Class Depoiment.
+ *
+ * @package namespace App\Models;
+ */
+class Depoiment extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
     use LogsActivity;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'title', 'description', 'url', 'image', 'active'
+        'name',
+        'depoiment',
+        'image',
+        'active'
     ];
-    
+
     /*
      * The attributes that are logged
      *
      * @var array
      */
     protected static $logAttributes = [
-        'id', 'title', 'description', 'url', 'image', 'active'
+        'id', 
+        'name',
+        'depoiment',
+        'image',
+        'active'
     ];
 
     /**
@@ -33,5 +50,4 @@ class Video extends Model implements Transformable
      * @var array
      */
     protected $dates = ['created_at', 'deleted_at'];
-
 }

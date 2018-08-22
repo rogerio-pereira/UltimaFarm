@@ -24,7 +24,7 @@
                 <a href='#'>Empresa</a>
             </li>
             <li>
-                <a href='#'>Investimentos</a>
+                <a href='{{route('site.investimentos')}}'>Investimentos</a>
             </li>
             <li>
                 <a href='#'>Contato</a>
