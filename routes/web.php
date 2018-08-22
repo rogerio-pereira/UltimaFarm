@@ -78,7 +78,9 @@ Route::group([
     Route::get('/', 'HomeController@index')->name('site.index');
     Route::get('/home', 'HomeController@index')->name('site.home');
     Route::get('/faq', 'FaqController@index')->name('site.faq');
+    Route::get('/empresa', 'BusinessController@index')->name('site.empresa');
     Route::get('/investimentos', 'InvestmentsController@index')->name('site.investimentos');
+    Route::get('/contato', 'ContactController@index')->name('site.contato');
     Route::get('/cadastro', 'RegisterController@index')->name('site.cadastro');
 });
 

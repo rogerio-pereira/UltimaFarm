@@ -1,9 +1,5 @@
 @extends('site.layout.layout')
 
-@section('css')
-    {!! Html::style('/css/site/faq.min.css') !!}
-@endsection
-
 @section('content')
     <div class='container siteContainer padding-bottom-g'>
         <div class='col-md-12'>

@@ -92,6 +92,56 @@ class PageTableSeeder extends Seeder
             'title' => 'Empresa',
         ]);
 
+        factory(Page::class)->create([
+            'title' => 'História',
+            'description' => '', 
+            'text' => "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>", 
+            'image' => env('APP_URL').'/img/template/painel/sem-imagem.jpg', 
+            'page_category_id' => 2,
+            'show_title' => true
+        ]);
+
+
+
+        factory(Page::class)->create([
+            'title' => 'Investimento, Segurança e Taxas',
+            'description' => 'Investimento, Segurança e Taxas', 
+            'text' => "<div class='businessMVV'>
+                            <div class='col-md-4'>
+                                <div class='padding-left-g padding-right-g text-center'>
+                                    <img src='".env('APP_URL')."/img/template/painel/sem-imagem.jpg' alt='Missão' class='img-responsive'>
+                                    <h1 class='no-margin'>Missão</h1>
+                                    <p>
+                                        Proporcionar prosperidade financeira através de investimentos privados
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class='col-md-4'>
+                                <div class='padding-left-g padding-right-g text-center'>
+                                    <img src='".env('APP_URL')."/img/template/painel/sem-imagem.jpg' alt='Visão' class='img-responsive'>
+                                    <h1 class='no-margin'>Visão</h1>
+                                    <p>
+                                        A segurança de investimento do mercado americano a apenas um clique de alcance.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class='col-md-4'>
+                                <div class='padding-left-g padding-right-g text-center'>
+                                    <img src='".env('APP_URL')."/img/template/painel/sem-imagem.jpg' alt='Valores' class='img-responsive'>
+                                    <h1 class='no-margin'>Valores</h1>
+                                    <p>
+                                        Taxa de rentabilidade pré-fixadas podendo chegar até a 40% sobre o investimento
+                                    </p>
+                                </div>
+                            </div>
+                        </div>", 
+            'image' => null, 
+            'page_category_id' => 2,
+            'show_title' => false
+        ]);
+
         factory(PageCategory::class)->create([
             'title' => 'Investimentos',
         ]);
