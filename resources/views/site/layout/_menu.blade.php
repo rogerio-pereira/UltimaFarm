@@ -18,16 +18,16 @@
     <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href='#'>Home</a>
+                <a href='{{route('site.index')}}'>Home</a>
             </li>
             <li>
-                <a href='#'>Empresa</a>
+                <a href='{{route('site.empresa')}}'>Empresa</a>
             </li>
             <li>
-                <a href='#'>Investimentos</a>
+                <a href='{{route('site.investimentos')}}'>Investimentos</a>
             </li>
             <li>
-                <a href='#'>Contato</a>
+                <a href='{{route('site.contato')}}'>Contato</a>
             </li>
             <li>
                 <a href='{{route('site.faq')}}'>FAQ</a>
