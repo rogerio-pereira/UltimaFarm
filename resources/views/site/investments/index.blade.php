@@ -88,12 +88,12 @@
         </div>
 
         {{--DEPOIMENTOS--}}
-        <div class='row margin-top margin-bottom padding-top-p padding-bottom-g border-bottom-golden text-center'>
+        <div class='row margin-top padding-top-p padding-bottom-g  text-center'>
             <div class='col-md-12 text-center'>
                 <h2>O que diz quem já investe</h2>
             </div>
 
-            <div class='row margin-top-g margin-bottom-g'>
+            <div class='row margin-top-g'>
                 @foreach ($depoiments as $depoiment)
                         <div class='col-md-6 margin-top-g'>
                             <div class='row'>
