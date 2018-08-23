@@ -99,6 +99,22 @@ class RepositoryServiceProvider extends ServiceProvider
                 \App\Repositories\DepoimentRepository::class, 
                 \App\Repositories\DepoimentRepositoryEloquent::class
         );
+        $this->app->bind(
+                \App\Repositories\AddressCategoryRepository::class, 
+                \App\Repositories\AddressCategoryRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\AddressRepository::class, 
+                \App\Repositories\AddressRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\EmailRepository::class, 
+                \App\Repositories\EmailRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\TelephoneRepository::class, 
+                \App\Repositories\TelephoneRepositoryEloquent::class
+        );
         //:end-bindings:
     }
 }

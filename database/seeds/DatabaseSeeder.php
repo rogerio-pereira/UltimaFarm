@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
         $this->call(FaqTableSeeder::class);
         $this->call(PageTableSeeder::class);
         $this->call(VideoTableSeeder::class);
+        $this->call(AddressCategoryTableSeeder::class);
+        $this->call(AddressTableSeeder::class);
+        $this->call(EmailTableSeeder::class);
+        $this->call(TelephoneTableSeeder::class);
 
         //Testes
         if(env('APP_ENV') == 'local') {
@@ -25,6 +29,8 @@ class DatabaseSeeder extends Seeder
             $this->call(SalesTestTableSeeder::class);
             $this->call(PostTestTableSeeder::class);
             $this->call(DepoimentTestTableSeeder::class);
+            $this->call(AddressTestTableSeeder::class);
+            $this->call(TelephoneTestTableSeeder::class);
         }
     }
 }
