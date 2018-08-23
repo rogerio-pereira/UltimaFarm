@@ -1,4 +1,46 @@
 @if(Auth::user()->role != 'Cliente') 
+    {{--Empresa--}}
+    <li class='dropdown'>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Empresa <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu inverse-dropdown" role="menu">
+            {{--LOCAIS--}}
+            @can('view-address-categories')
+                <li>
+                    <a href='{{route('address-categories.index')}}' alt='Locais' title='Locais'>
+                        <i class="fa fa-map-o" aria-hidden="true"></i> Locais
+                    </a>
+                </li>
+            @endcan
+            {{--ADDRESS--}}
+            @can('view-adresses')
+                <li>
+                    <a href='{{route('addresses.index')}}' alt='Endereços' title='Endereços'>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> Endereços
+                    </a>
+                </li>
+            @endcan
+            {{--TELEPHONE--}}
+            @can('view-telephones')
+                <li>
+                    <a href='{{route('telephones.index')}}' alt='Telefones' title='Telefones'>
+                        <i class="fa fa-phone" aria-hidden="true"></i> Telefones
+                    </a>
+                </li>
+            @endcan
+            {{--EMAIL--}}
+            @can('view-emails')
+                <li>
+                    <a href='{{route('emails.index')}}' alt='Emails' title='Emails'>
+                        <i class="fa fa-at" aria-hidden="true"></i> Emails
+                    </a>
+                </li>
+            @endcan
+        </ul>
+    </li>
+
     {{--Administrativo--}}
     <li class='dropdown'>
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

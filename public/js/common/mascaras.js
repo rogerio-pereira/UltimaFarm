@@ -1,7 +1,7 @@
 jQuery(function($)
 {
     $(".cnpj").mask("99.999.999/9999-99");
-    $(".cep").mask("99.999-999");
+    //$(".zipcode").mask("99.999-999");
     $(".cpf").mask("999.999.999-99");
     $(".tempo").mask("99:99:99");
     $('.dinheiro').priceFormat({
@@ -11,7 +11,7 @@ jQuery(function($)
     });    
    
     //$(".telefone").mask("(99) 9999-9999?9");
-    $(".telefone").focusout(function(){
+    /*$(".telefone").focusout(function(){
         var phone, element;
         element = $(this);
         element.unmask();
@@ -24,10 +24,10 @@ jQuery(function($)
         } else {
             element.mask("(99) 9999-9999?9");
         }
-    }).trigger('focusout');
+    }).trigger('focusout');*/
 
     //Busca CEP(focuslost)
-    $(".cep").blur(function() {
+    $(".zipcode").blur(function() {
         console.log('aqui');
         if($(this).val() != '') {
             //Valor sem . e sem - (##.###-###)

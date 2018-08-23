@@ -47,6 +47,12 @@ Route::group([
     Route::resource('clients', 'ClientController');
     Route::resource('sales', 'SaleController');
 
+    //Empresa
+    Route::resource('address-categories', 'AddressCategoryController');
+    Route::resource('addresses', 'AddressController');
+    Route::resource('telephones', 'TelephoneController');
+    Route::resource('emails', 'EmailController');
+
 
     //Validações Video
     Route::post('videos/verificaUrlCurta', 'VideoController@verifyShortenUrl')->name('videos.verificaUrlCurta');
