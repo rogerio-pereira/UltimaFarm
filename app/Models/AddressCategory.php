@@ -45,4 +45,8 @@ class AddressCategory extends Model implements Transformable
      */
     protected $dates = ['created_at', 'deleted_at'];
 
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'address_category_id');
+    }
 }

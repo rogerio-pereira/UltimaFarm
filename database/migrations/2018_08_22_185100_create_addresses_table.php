@@ -17,6 +17,7 @@ class CreateAddressesTable extends Migration
 	{
 		Schema::create('addresses', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('address_category_id')->unsigned();
             $table->string('zipcode');
             $table->string('street');
             $table->integer('number');
@@ -26,6 +27,10 @@ class CreateAddressesTable extends Migration
             $table->string('state', 2);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('address_category_id')
+                ->references('id')
+                ->on('address_categories');
 		});
 	}
 

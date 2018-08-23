@@ -34,5 +34,14 @@ class AddressCategoryRepositoryEloquent extends BaseRepository implements Addres
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    /**
+     * Generate Array to be used in comboboxes
+     * @return array Title,ID
+     */
+    public function comboboxList()
+    {
+        return $this->model->pluck('name', 'id');
+    }
     
 }

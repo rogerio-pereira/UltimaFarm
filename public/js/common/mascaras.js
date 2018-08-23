@@ -1,7 +1,7 @@
 jQuery(function($)
 {
     $(".cnpj").mask("99.999.999/9999-99");
-    $(".cep").mask("99.999-999");
+    //$(".zipcode").mask("99.999-999");
     $(".cpf").mask("999.999.999-99");
     $(".tempo").mask("99:99:99");
     $('.dinheiro').priceFormat({
@@ -27,7 +27,7 @@ jQuery(function($)
     }).trigger('focusout');
 
     //Busca CEP(focuslost)
-    $(".cep").blur(function() {
+    $(".zipcode").blur(function() {
         console.log('aqui');
         if($(this).val() != '') {
             //Valor sem . e sem - (##.###-###)

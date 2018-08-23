@@ -10,7 +10,15 @@
             @can('view-address-categories')
                 <li>
                     <a href='{{route('address-categories.index')}}' alt='Locais' title='Locais'>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i> Locais
+                        <i class="fa fa-map-o" aria-hidden="true"></i> Locais
+                    </a>
+                </li>
+            @endcan
+            {{--ADDRESS--}}
+            @can('view-adresses')
+                <li>
+                    <a href='{{route('addresses.index')}}' alt='Endereços' title='Endereços'>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> Endereços
                     </a>
                 </li>
             @endcan

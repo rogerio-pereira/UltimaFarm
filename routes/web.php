@@ -49,6 +49,7 @@ Route::group([
 
     //Empresa
     Route::resource('address-categories', 'AddressCategoryController');
+    Route::resource('addresses', 'AddressController');
 
 
     //Validações Video
