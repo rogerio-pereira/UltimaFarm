@@ -1,0 +1,14 @@
+div.contactInformation h2
+{
+    font-size: 1.2em;
+}
+
+div.contactInformation h3
+{
+    font-size: 1em;
+}
+
+div.contactInformation a
+{
+    color:black;
+}
