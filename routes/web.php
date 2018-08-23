@@ -50,6 +50,7 @@ Route::group([
     //Empresa
     Route::resource('address-categories', 'AddressCategoryController');
     Route::resource('addresses', 'AddressController');
+    Route::resource('emails', 'EmailController');
 
 
     //Validações Video
