@@ -36,7 +36,8 @@ class PermissionsTableSeeder extends Seeder
                         //Empresa
                         'address-categories'    => 'locais',
                         'addresses'             => 'endereços',
-                        'emails'             => 'e-mails',
+                        'telephones'            => 'telefones',
+                        'emails'                => 'e-mails',
                     ];
 
         $permissions =  [

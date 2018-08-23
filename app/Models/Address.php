@@ -73,7 +73,6 @@ class Address extends Model implements Transformable
         return $address;
     }
 
-
     public function category()
     {
          return $this->belongsTo(AddressCategory::class, 'address_category_id');

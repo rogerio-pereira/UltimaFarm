@@ -9,11 +9,11 @@ use Prettus\Repository\Traits\TransformableTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
- * Class AddressCategory.
+ * Class Telephone.
  *
  * @package namespace App\Models;
  */
-class AddressCategory extends Model implements Transformable
+class Telephone extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
@@ -25,9 +25,13 @@ class AddressCategory extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        'name'
+        'address_category_id',
+        'description',
+        'telephone',
+        'whatsapp',
+        'active',
     ];
-    
+
     /*
      * The attributes that are logged
      *
@@ -35,7 +39,11 @@ class AddressCategory extends Model implements Transformable
      */
     protected static $logAttributes = [
         'id', 
-        'name'
+        'address_category_id',
+        'description',
+        'telephone',
+        'whatsapp',
+        'active',
     ];
 
     /**
@@ -45,13 +53,9 @@ class AddressCategory extends Model implements Transformable
      */
     protected $dates = ['created_at', 'deleted_at'];
 
-    public function addresses()
+    public function category()
     {
-        return $this->hasMany(Address::class, 'address_category_id');
+         return $this->belongsTo(AddressCategory::class, 'address_category_id');
     }
 
-    public function telephones()
-    {
-        return $this->hasMany(Telephone::class, 'address_category_id');
-    }
 }

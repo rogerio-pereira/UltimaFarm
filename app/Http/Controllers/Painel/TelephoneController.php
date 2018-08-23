@@ -3,23 +3,22 @@
 namespace App\Http\Controllers\Painel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Painel\AddressRequest;
-use App\Models\Address\States;
+use App\Http\Requests\Painel\TelephoneRequest;
 use App\Repositories\AddressCategoryRepository;
-use App\Repositories\AddressRepository;
+use App\Repositories\TelephoneRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
 
-class AddressController extends Controller
+class TelephoneController extends Controller
 {
     private $repository;
     private $addressCategoryRepository;
 
     public function __construct(
-                                    AddressRepository $repository,
+                                    TelephoneRepository $repository,
                                     AddressCategoryRepository $addressCategoryRepository
                                 )
     {
@@ -34,12 +33,12 @@ class AddressController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('view-addresses'))
+        if(Gate::denies('view-telephones'))
             return redirect('/');
 
-        $addresses = $this->repository->paginate();
+        $telephones = $this->repository->paginate();
 
-        return view('painel.addresses.index', compact('addresses'));
+        return view('painel.telephones.index', compact('telephones'));
     }
 
     /**
@@ -49,13 +48,12 @@ class AddressController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('create-addresses'))
+        if(Gate::denies('create-telephones'))
             return redirect('/');
 
         $categories = $this->addressCategoryRepository->comboboxList();
-        $states = States::getStates();
 
-        return view('painel.addresses.create', compact('categories', 'states'));
+        return view('painel.telephones.create', compact('categories'));
     }
 
     /**
@@ -64,9 +62,9 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AddressRequest $request)
+    public function store(TelephoneRequest $request)
     {
-        if(Gate::denies('create-addresses'))
+        if(Gate::denies('create-telephones'))
             return redirect('/');
 
         $data = $request->all();
@@ -76,10 +74,10 @@ class AddressController extends Controller
         //Grava Log
         Activity::all()->last();
 
-        Session::flash('message', ['Endereço salvo com sucesso!']); 
+        Session::flash('message', ['Telefone salvo com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
-        return redirect('/addresses');
+        return redirect('/telephones');
     }
 
     /**
@@ -101,15 +99,13 @@ class AddressController extends Controller
      */
     public function edit($id)
     {
-        if(Gate::denies('update-addresses'))
+        if(Gate::denies('update-telephones'))
             return redirect('/');
 
-        $address = $this->repository->find($id);
-
+        $telephone = $this->repository->find($id);
         $categories = $this->addressCategoryRepository->comboboxList();
-        $states = States::getStates();
 
-        return view('painel.addresses.edit', compact('address', 'categories', 'states'));
+        return view('painel.telephones.edit', compact('telephone', 'categories'));
     }
 
     /**
@@ -119,9 +115,9 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AddressRequest $request, $id)
+    public function update(TelephoneRequest $request, $id)
     {
-        if(Gate::denies('update-addresses'))
+        if(Gate::denies('update-telephones'))
             return redirect('/');
 
         $data = $request->all();
@@ -131,10 +127,10 @@ class AddressController extends Controller
         //Grava Log
         Activity::all()->last();
 
-        Session::flash('message', ['Endereço alterado com sucesso!']); 
+        Session::flash('message', ['Telefone alterado com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
-        return redirect()->route('addresses.index');
+        return redirect()->route('telephones.index');
     }
 
     /**
@@ -145,7 +141,7 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        if(Gate::denies('delete-addresses'))
+        if(Gate::denies('delete-telephones'))
             return redirect('/');
 
         $this->repository->delete($id);
@@ -153,6 +149,6 @@ class AddressController extends Controller
         //Grava Log
         Activity::all()->last();
 
-        return redirect()->route('addresses.index');
+        return redirect()->route('telephones.index');
     }
 }

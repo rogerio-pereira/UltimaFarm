@@ -22,6 +22,14 @@
                     </a>
                 </li>
             @endcan
+            {{--TELEPHONE--}}
+            @can('view-telephones')
+                <li>
+                    <a href='{{route('telephones.index')}}' alt='Telefones' title='Telefones'>
+                        <i class="fa fa-phone" aria-hidden="true"></i> Telefones
+                    </a>
+                </li>
+            @endcan
             {{--EMAIL--}}
             @can('view-emails')
                 <li>

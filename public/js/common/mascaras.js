@@ -11,7 +11,7 @@ jQuery(function($)
     });    
    
     //$(".telefone").mask("(99) 9999-9999?9");
-    $(".telefone").focusout(function(){
+    /*$(".telefone").focusout(function(){
         var phone, element;
         element = $(this);
         element.unmask();
@@ -24,7 +24,7 @@ jQuery(function($)
         } else {
             element.mask("(99) 9999-9999?9");
         }
-    }).trigger('focusout');
+    }).trigger('focusout');*/
 
     //Busca CEP(focuslost)
     $(".zipcode").blur(function() {
