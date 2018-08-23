@@ -104,8 +104,8 @@ class PageTableSeeder extends Seeder
 
 
         factory(Page::class)->create([
-            'title' => 'Investimento, Segurança e Taxas',
-            'description' => 'Investimento, Segurança e Taxas', 
+            'title' => 'Missão, Visão e Valores',
+            'description' => 'Missão, Visão e Valores',
             'text' => "<div class='businessMVV'>
                             <div class='col-md-4'>
                                 <div class='padding-left-g padding-right-g text-center'>

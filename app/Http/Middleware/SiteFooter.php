@@ -6,6 +6,7 @@ use App\Criteria\Address\OrderByCategoryCriteria;
 use App\Criteria\Util\ActiveCriteria;
 use App\Repositories\BusinessInfoRepository;
 use App\Repositories\EmailRepository;
+use App\Repositories\PageRepository;
 use App\Repositories\TelephoneRepository;
 use Carbon\Carbon;
 use Closure;
@@ -16,16 +17,19 @@ class SiteFooter
     private $businessInfoRepository;
     private $telephoneRepository;
     private $emailRepository;
+    private $pageRepository;
 
     public function __construct(
                                     BusinessInfoRepository $businessInfoRepository,
                                     TelephoneRepository $telephoneRepository,
-                                    EmailRepository $emailRepository
+                                    EmailRepository $emailRepository,
+                                    PageRepository $pageRepository
                                 )
     {
         $this->businessInfoRepository = $businessInfoRepository;
         $this->telephoneRepository = $telephoneRepository;
         $this->emailRepository = $emailRepository;
+        $this->pageRepository = $pageRepository;
     }
 
     /**
@@ -40,6 +44,8 @@ class SiteFooter
         $this->getCachedBusinessInformation();
         $this->getCachedTelephones();
         $this->getCachedEmails();
+        $this->getCacheBusinessPages();
+        $this->getCacheInvestmentPages();
 
         return $next($request);
     }
@@ -105,5 +111,43 @@ class SiteFooter
                     ->emailRepository
                     ->pushCriteria(ActiveCriteria::class)
                     ->all();
+    }
+
+
+    private function getCacheBusinessPages()
+    {
+        if(Cache::get('footerBusinessPages') == null) {
+            $footerBusinessPages = $this->getBusinessPages();
+
+            $expiresAt = Carbon::now()->addDays(1);
+
+            Cache::put('footerBusinessPages', $footerBusinessPages, $expiresAt);
+        }
+        
+        return Cache::get('footerBusinessPages');
+    }
+
+    private function getBusinessPages()
+    {
+        return $this->pageRepository->findWhere(['page_category_id' => 2])->all(['title', 'id']);
+    }
+
+
+    private function getCacheInvestmentPages()
+    {
+        if(Cache::get('footerInvestmentPages') == null) {
+            $footerInvestmentPages = $this->getInvestmentPages();
+
+            $expiresAt = Carbon::now()->addDays(1);
+
+            Cache::put('footerInvestmentPages', $footerInvestmentPages, $expiresAt);
+        }
+        
+        return Cache::get('footerInvestmentPages');
+    }
+
+    private function getInvestmentPages()
+    {
+        return $this->pageRepository->findWhere(['page_category_id' => 3])->all(['title', 'id']);
     }
 }

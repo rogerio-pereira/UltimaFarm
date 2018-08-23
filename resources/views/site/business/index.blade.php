@@ -16,9 +16,12 @@
                     $push = '';
                     $pull = '';
                 }
-            @endphp
 
-            <div class='row margin-top padding-top-p padding-bottom-g border-bottom-golden text-center'>
+                $linkAnchor = App\Http\Controllers\Util\UrlController::friendlyUrl($page->title);
+            @endphp
+            
+            <a id='{{$linkAnchor}}'></a>
+            <div class='row margin-top padding-top-p padding-bottom-g border-bottom-golden text-center'>                
                 {{--Apenas Texto--}}
                 @if($page->show_title == false || ($page->image == null && $page->image == ''))
                     {!!$page->text!!}
@@ -41,6 +44,7 @@
         @endforeach
 
     {{--<div class='container siteContainer padding-bottom-g'>--}}
+    <a id='trabalhe'></a>
     <div class='siteContainer padding-bottom-g'>
         <div class='col-md-12 text-center'>
             <h1>Trabalhe conosco</h1>

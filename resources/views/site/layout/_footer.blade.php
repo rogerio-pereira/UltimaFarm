@@ -1,32 +1,47 @@
 <div class='row'>
-    <div class='container'>
+    <div class='container padding-top padding-bottom'>
         <div class='col-md-3 col-sm-6'>
             <a href='{{route('site.faq')}}'>FAQ</a>
 
             <div class='margin-top-g'>
-                <p>
-                    <strong>Razão Social</strong><br/>
-                    {{Cache::get('businessInfo')->companyName}}
-                </p>
+                <h2>Razão Social</h2>
+                {{Cache::get('businessInfo')->companyName}}
 
-                <p class='margin-top-g'>
-                    <strong>CNPJ</strong><br/>
-                    {{Cache::get('businessInfo')->cnpj}}
-                </p>
+                <h2>CNPJ</h2>
+                {{Cache::get('businessInfo')->cnpj}}
             </div>
         </div>
 
         <div class='col-md-3 col-sm-6'>
-            Col 2
+            <h2 class='no-margin margin-bottom'>Investimentos</h2>
+
+            @foreach (Cache::get('footerInvestmentPages') as $page)
+                @php
+                    $linkAnchor = App\Http\Controllers\Util\UrlController::friendlyUrl($page->title);
+                @endphp
+                    <a href='{{route('site.investimentos')}}#{{$linkAnchor}}'>{{$page->title}}</a><br/>
+            @endforeach
+                <a href='{{route('site.investimentos')}}#video-institucional'>Video Institucional</a><br/>
+                <a href='{{route('site.investimentos')}}#cadastro'>Cadastro</a><br/>
+                <a href='{{route('site.investimentos')}}#depoimentos'>Depoimentos</a><br/>
         </div>
 
         <div class='col-md-3 col-sm-6'>
-            Col 3
+            <h2 class='no-margin margin-bottom'>A empresa</h2>
+
+            @foreach (Cache::get('footerBusinessPages') as $page)
+                @php
+                    $linkAnchor = App\Http\Controllers\Util\UrlController::friendlyUrl($page->title);
+                @endphp
+                    <a href='{{route('site.empresa')}}#{{$linkAnchor}}'>{{$page->title}}</a><br/>
+            @endforeach
+
+            <a href='{{route('site.empresa')}}#trabalhe'>Trabalhe Conosco</a>
         </div>
 
         <div class='col-md-3 col-sm-6'>
             {{--Telefones--}}
-            <h2>Telefones</h2>
+            <h2 class='no-margin margin-bottom'>Telefones</h2>
 
             <p>
                 @php

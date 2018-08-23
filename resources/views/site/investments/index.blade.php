@@ -20,8 +20,11 @@
                     $push = '';
                     $pull = '';
                 }
+
+                $linkAnchor = App\Http\Controllers\Util\UrlController::friendlyUrl($page->title);
             @endphp
 
+            <a id='{{$linkAnchor}}'></a>
             <div class='row margin-top padding-top-p padding-bottom-g border-bottom-golden text-center'>
                 {{--Apenas Texto--}}
                 @if($page->show_title == false || ($page->image == null && $page->image == ''))
@@ -45,6 +48,7 @@
         @endforeach
 
         {{--Video--}}
+        <a id='video-institucional'></a>
         <div class='row margin-top margin-bottom padding-top-p padding-bottom-g border-bottom-golden text-center'>
             <div class='col-md-8'>
                 <h2 class='margin-bottom'>{{$videoInvestments->title}}</h2>
@@ -63,6 +67,7 @@
         </div>
 
         {{--Cadastro--}}
+        <a id='cadastro'></a>
         <div class='row margin-top margin-bottom padding-top-p padding-bottom-g border-bottom-golden text-center'>
             <div class='col-md-12 text-center'>
                 <h2>Vamos dar o próximo passo?</h2>
@@ -88,6 +93,7 @@
         </div>
 
         {{--DEPOIMENTOS--}}
+        <a id='depoimentos'></a>
         <div class='row margin-top padding-top-p padding-bottom-g  text-center'>
             <div class='col-md-12 text-center'>
                 <h2>O que diz quem já investe</h2>
