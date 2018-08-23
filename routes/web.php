@@ -79,7 +79,11 @@ Route::group([
  */
 Route::group([
                 'namespace' => 'Site',
-                'middleware' => ['getSocialMedia', 'getDolar']
+                'middleware' => [
+                                    'getSocialMedia', 
+                                    'getDolar', 
+                                    'siteFooter'
+                                ]
             ], function() 
 {
     Route::get('/', 'HomeController@index')->name('site.index');
@@ -98,7 +102,12 @@ Route::group([
 Route::group([
                 'prefix' => 'blog',
                 'namespace' => 'Blog',
-                'middleware' => 'blogSidebar'
+                'middleware' => [
+                                    'getSocialMedia', 
+                                    'getDolar',
+                                    'siteFooter', 
+                                    'blogSidebar'
+                                ]
             ], function() 
 {
     Route::get('/', 'BlogController@index')->name('blog.index');

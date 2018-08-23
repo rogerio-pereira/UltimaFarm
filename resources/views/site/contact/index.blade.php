@@ -21,7 +21,7 @@
                         $localNow = '';
                     @endphp
 
-                    @foreach ($contactTelephones as $telephone)
+                    @foreach (Cache::get('telephones') as $telephone)
                         @php
                             $localBefore = $localNow;
                             $localNow = $telephone->address_category_id;
@@ -58,7 +58,7 @@
                 <h2>E-mails</h2>
 
                 <p>
-                    @foreach ($contactEmails as $email)
+                    @foreach (Cache::get('emails') as $email)
                         <a href='mailto:{{$email}}' target='_blank'>
                             {{$email->email}}
                         </a><br/>
