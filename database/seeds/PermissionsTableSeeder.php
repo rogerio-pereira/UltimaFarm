@@ -34,6 +34,7 @@ class PermissionsTableSeeder extends Seeder
                         'clients'               => 'clientes',
                         'sales'                 => 'vendas',
                         //Empresa
+                        'business_info'         => 'informações da empresa',
                         'address-categories'    => 'locais',
                         'addresses'             => 'endereços',
                         'telephones'            => 'telefones',

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AddressTableSeeder::class);
         $this->call(EmailTableSeeder::class);
         $this->call(TelephoneTableSeeder::class);
+        $this->call(BusinessInfoTableSeeder::class);
 
         //Testes
         if(env('APP_ENV') == 'local') {
