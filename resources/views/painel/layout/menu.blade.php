@@ -6,6 +6,14 @@
         </a>
 
         <ul class="dropdown-menu inverse-dropdown" role="menu">
+            {{--INFORMAÇÕES DA EMPRESA--}}
+            @can('view-business_info')
+                <li>
+                    <a href='{{route('business_info.index')}}' alt='Informações da Empresa' title='Informações da Empresa'>
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Informações da Empresa
+                    </a>
+                </li>
+            @endcan
             {{--LOCAIS--}}
             @can('view-address-categories')
                 <li>

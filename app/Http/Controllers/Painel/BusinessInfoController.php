@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Painel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Painel\EmailRequest;
-use App\Repositories\EmailRepository;
+use App\Http\Requests\Painel\BusinessInfoRequest;
+use App\Repositories\BusinessInfoRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
 
-class EmailController extends Controller
+class BusinessInfoController extends Controller
 {
     private $repository;
 
-    public function __construct(EmailRepository $repository)
+    public function __construct(BusinessInfoRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -26,12 +26,12 @@ class EmailController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('view-emails'))
+        if(Gate::denies('view-business-info'))
             return redirect('/');
 
-        $emails = $this->repository->paginate();
+        $businessInfo = $this->repository->paginate();
 
-        return view('painel.emails.index', compact('emails'));
+        return view('painel.business_info.index', compact('businessInfo'));
     }
 
     /**
@@ -41,10 +41,7 @@ class EmailController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('create-emails'))
-            return redirect('/');
-
-        return view('painel.emails.create');
+        return redirect('/business_info');
     }
 
     /**
@@ -53,22 +50,9 @@ class EmailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmailRequest $request)
+    public function store(BusinessInfoRequest $request)
     {
-        if(Gate::denies('create-emails'))
-            return redirect('/');
-
-        $data = $request->all();
-
-        $this->repository->create($data);
-
-        //Grava Log
-        Activity::all()->last();
-
-        Session::flash('message', ['Email salvo com sucesso!']); 
-        Session::flash('alert-type', 'alert-success'); 
-
-        return redirect('/emails');
+        return redirect('/business_info');
     }
 
     /**
@@ -90,12 +74,12 @@ class EmailController extends Controller
      */
     public function edit($id)
     {
-        if(Gate::denies('update-emails'))
+        if(Gate::denies('update-business-info'))
             return redirect('/');
 
-        $email = $this->repository->find($id);
+        $businessInfo = $this->repository->find($id);
 
-        return view('painel.emails.edit', compact('email'));
+        return view('painel.business_info.edit', compact('businessInfo'));
     }
 
     /**
@@ -105,22 +89,22 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmailRequest $request, $id)
+    public function update(BusinessInfoRequest $request, $id = 1)
     {
-        if(Gate::denies('update-emails'))
+        if(Gate::denies('update-business-info'))
             return redirect('/');
 
         $data = $request->all();
 
-        $this->repository->update($data, $id);
+        $this->repository->update($data, 1);
 
         //Grava Log
         Activity::all()->last();
 
-        Session::flash('message', ['Email alterado com sucesso!']); 
+        Session::flash('message', ['Informações da Empresa alterada com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
-        return redirect()->route('emails.index');
+        return redirect()->route('business_info.index');
     }
 
     /**
@@ -131,14 +115,6 @@ class EmailController extends Controller
      */
     public function destroy($id)
     {
-        if(Gate::denies('delete-emails'))
-            return redirect('/');
-
-        $this->repository->delete($id);
-
-        //Grava Log
-        Activity::all()->last();
-
-        return redirect()->route('emails.index');
+        return redirect('/business_info');
     }
 }

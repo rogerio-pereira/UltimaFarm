@@ -48,6 +48,7 @@ Route::group([
     Route::resource('sales', 'SaleController');
 
     //Empresa
+    Route::resource('business_info', 'BusinessInfoController');
     Route::resource('address-categories', 'AddressCategoryController');
     Route::resource('addresses', 'AddressController');
     Route::resource('telephones', 'TelephoneController');
