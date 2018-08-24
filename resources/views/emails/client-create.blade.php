@@ -21,7 +21,7 @@
 
 <p>
     Para acompanhar os seus contratos acesse nosso 
-    <a href='{{env('APP_PAINEL_URL')}}'>
+    <a href='{{env('APP_CLIENTE_URL')}}'>
         painel administrativo
     </a> com os dados:<br/>
     <strong>E-mail:</strong> {{$client->user->email}}<br/>
@@ -36,5 +36,5 @@
 
 <p>
     Obrigado,<br/>
-    <img src='{{env('APP_URL')}}/public/img/painel/assinatura.png' alt='{{env('APP_NAME')}}'>
+    <img src='{{env('APP_URL')}}/img/template/painel/assinatura.png' alt='{{env('APP_NAME')}}'>
 </p>

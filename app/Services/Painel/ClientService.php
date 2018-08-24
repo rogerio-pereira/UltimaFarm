@@ -35,6 +35,8 @@ class ClientService
                 $password = str_random(8);
                 $user['password'] = bcrypt($password);
             }
+            else
+                $password = null;
 
             DB::beginTransaction();
                 $user = $this->userRepository->create($user);
@@ -48,7 +50,7 @@ class ClientService
 
             $this->sendMail($client, $password);
 
-            return true;
+            return $user;
         }
         catch(\Exception $e)
         {

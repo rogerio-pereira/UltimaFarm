@@ -18,6 +18,9 @@
     <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
             <li>
+                <a href='{{route('site.cadastro')}}' class='registerButton'>abra sua conta</a>
+            </li>
+            <li>
                 <a href='{{route('site.index')}}'>Home</a>
             </li>
             <li>
