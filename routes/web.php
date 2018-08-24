@@ -45,6 +45,7 @@ Route::group([
 
     //Adminstrativo
     Route::resource('clients', 'ClientController');
+    Route::post('sales/refund/{id}', 'SaleController@refund')->name('sale.refund');
     Route::resource('sales', 'SaleController');
 
     //Empresa
@@ -70,6 +71,19 @@ Route::group([
     Route::post('/activate-inactivate', 'ActivateController@activateInactivate')->name('activate-inactivate');
 
     Route::get('/charts/{name}', 'ChartsController@show');
+
+
+
+    /*
+     * PAINEL
+    */
+    Route::group([
+                'namespace' => 'Investor',
+                'as'=>'painel.investor.'
+            ], function() 
+    {
+        Route::resource('meus-titulos', 'SaleController');
+    });
 });
 
 

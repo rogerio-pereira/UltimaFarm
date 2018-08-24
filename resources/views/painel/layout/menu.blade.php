@@ -216,6 +216,21 @@
     </li>
 @endif
 
+{{--CLIENTE--}}
+{{--Meus Títulos--}}
+<li class='dropdown'>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        Títulos <span class="caret"></span>
+    </a>
+
+    <ul class="dropdown-menu inverse-dropdown" role="menu">
+        <li>
+            <a href='{{route('painel.investor.meus-titulos.index')}}' alt='Meus Títulos' title='Meus Títulos'>
+                <i class="fa fa-money" aria-hidden="true"></i> Meus Títulos
+            </a>
+        </li>
+    </ul>
+</li>
 {{--Usuário--}}
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

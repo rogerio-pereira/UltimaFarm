@@ -32,6 +32,7 @@ class Sale extends Model implements Transformable
         'profitability',
         'deadline',
         'refundValue',
+        'refunded',
         'created_at'
     ];
     
@@ -48,6 +49,7 @@ class Sale extends Model implements Transformable
         'profitability',
         'deadline',
         'refundValue',
+        'refunded',
     ];
 
     /**

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Painel;
+namespace App\Http\Controllers\Painel\Investor;
 
+use App\Criteria\Painel\Investor\InvestorCriteria;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\SaleRequest;
 use App\Repositories\ClientRepository;
@@ -16,18 +17,10 @@ use Spatie\Activitylog\Models\Activity;
 class SaleController extends Controller
 {
     private $repository;
-    private $clientRepository;
-    private $productRepository;
 
-    public function __construct(
-                                    SaleRepository $repository,
-                                    ClientRepository $clientRepository,
-                                    ProductRepository $productRepository
-                                )
+    public function __construct(SaleRepository $repository)
     {
         $this->repository = $repository;
-        $this->clientRepository = $clientRepository;
-        $this->productRepository = $productRepository;
     }
 
     /**
@@ -37,10 +30,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('view-sales'))
-            return redirect('/');
-
-        $sales = $this->repository->paginate();
+        $sales = $this->repository->pushCriteria(InvestorCriteria::class)->paginate();
 
         return view('painel.sales.index', compact('sales'));
     }
@@ -136,20 +126,5 @@ class SaleController extends Controller
     public function destroy($id)
     {
         return redirect('/');
-    }
-
-    public function refund(Request $request, $id)
-    {
-        if(Gate::denies('create-refunds'))
-            return redirect('/');
-
-        $data = ['refunded' => 1];
-
-        $this->repository->update($data, $id);
-
-        //Grava Log
-        Activity::all()->last();
-
-        return redirect()->back();
     }
 }

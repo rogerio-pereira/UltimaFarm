@@ -23,6 +23,7 @@ class CreateSalesTable extends Migration
             $table->decimal('profitability');
             $table->datetime('deadline');
             $table->double('refundValue');
+            $table->boolean('refunded')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
