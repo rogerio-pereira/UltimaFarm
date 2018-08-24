@@ -21,7 +21,7 @@
 
 <p>
     Para acompanhar os seus contratos acesse nosso 
-    <a href='{{env('APP_CLIENTE_URL')}}'>
+    <a href='{{env('APP_PAINEL_URL')}}'>
         painel administrativo
     </a> com os dados:<br/>
     <strong>E-mail:</strong> {{$client->user->email}}<br/>
