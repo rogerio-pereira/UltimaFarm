@@ -28,7 +28,9 @@ class PainelController extends Controller
 
         $controlador->getClients();
         $controlador->getSales();
+        $controlador->getComissions();
         $controlador->getRefunds();
+        $controlador->getComissionRefunds();
 
         return view('painel.index');
     }

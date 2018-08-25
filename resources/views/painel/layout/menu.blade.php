@@ -72,6 +72,14 @@
                     </a>
                 </li>
             @endcan
+            {{--COMISSIONS--}}
+            @can('view-comissions')
+                <li>
+                    <a href='{{route('comissions.index')}}' alt='Comissões' title='Comissões'>
+                        <i class="fa fa-money" aria-hidden="true"></i> Comissões
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
 
@@ -216,6 +224,30 @@
     </li>
 @endif
 
+{{--CLIENTE--}}
+@if(Auth::user()->role == 'Cliente')
+    {{--Meus Títulos--}}
+    <li class='dropdown'>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Títulos <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu inverse-dropdown" role="menu">
+            <li>
+                <a href='{{route('painel.investor.meus-titulos.index')}}' alt='Meus Títulos' title='Meus Títulos'>
+                    <i class="fa fa-money" aria-hidden="true"></i> Meus Títulos
+                </a>
+            </li>
+
+            <li>
+                <a href='{{route('painel.investor.comissoes.index')}}' alt='Comissões' title='Comissões'>
+                    <i class="fa fa-money" aria-hidden="true"></i> Comissões
+                </a>
+            </li>
+        </ul>
+    </li>
+@endif
+
 {{--Usuário--}}
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -229,6 +261,17 @@
                 <i class="fa fa-user" aria-hidden="true"></i> Meus dados
             </a>
         </li>
+
+        {{--INDICAÇÃO--}}
+        @if(Auth::user()->role == 'Cliente')
+            <li>
+                <a href='{{route('painel.investor.indication')}}' alt='Indicação' title='Indicação'>
+                    <i class="fa fa-users" aria-hidden="true"></i> Indicação
+                </a>
+            </li>
+
+            <li><hr class='white'></li>
+        @endif
 
         <li>
             <a href="{{ route('logout') }}"

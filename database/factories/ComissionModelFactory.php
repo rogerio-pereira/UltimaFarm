@@ -12,15 +12,19 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Comission::class, function (Faker\Generator $faker) {
     static $password;
 
+    //Datas
+    $date = $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null);
+    $deadline = new Carbon\Carbon($date->format('Y-m-d H:i:s'));
+    $deadline->addMonths(6);
+
     return [
-        'name' => $faker->words(rand(1,3), true),
-        'price' => rand(100, 1000),
-        'deadline' => rand(1, 12),
-        'profitability' => rand(1,100),
-        'commission' => rand(1,5),
-        'active' => 1,
+        'client_id' => rand(1,50),
+        'sale_id' => rand(1,50),
+        'value' => 50,
+        'deadline' => $deadline,
+        'created_at' => $date,
     ];
 });

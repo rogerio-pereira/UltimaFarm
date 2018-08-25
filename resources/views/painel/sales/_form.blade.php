@@ -1,7 +1,7 @@
 <div class='col-md-6 margin-top'>
     <div class="input-group">
         <span class="input-group-addon">Cliente</span>
-        {!! Form::select('client_id', $clients, null, ['class' => 'form-control', 'id' => 'client_id', 'placeholder' => 'Cliente']) !!}
+        {!! Form::select('client_id', $clients, null, ['class' => 'form-control', 'id' => 'client_id']) !!}
     </div>
 </div>
 

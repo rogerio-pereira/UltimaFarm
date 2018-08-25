@@ -27,6 +27,7 @@
                 <th>Rentabilidade</th>
                 <th>Prazo de Retirada</th>
                 <th>Valor final</th>
+                <th>Reembolsado</th>
             </tr>
         </thead>
         <tbody>
@@ -49,10 +50,29 @@
                     <td>
                         R$ {{number_format($sale->refundValue, 2, ',', '.')}}
                     </td>
+                    <td>
+                        @if(Auth::user()->role != 'Cliente')
+                            @can('create-refounds')
+                                @if(!$sale->refunded)
+                                    <div id='sale_{{$sale->id}}'>
+                                        <a href="#" class="btn btn-warning confirmation-callback" data-id='{{$sale->id}}'>
+                                            Reembolsar
+                                        </a>
+                                    </div>
+                                @endif
+                            @endcan
+                        @else
+                            @if($sale->refunded)
+                                Sim
+                            @else
+                                Não
+                            @endif
+                        @endif
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan='9' class='text-center'>
+                    <td colspan='10' class='text-center'>
                         Nenhuma Venda cadastrada
                     </td>
                 </tr>
@@ -63,4 +83,9 @@
     <div class='col-md-12 text-center'>
         {{$sales->render()}}
     </div>
+@endsection
+
+@section('scripts')
+    {!! Html::script('/js/painel/confirmation/bootstrap-confirmation.min.js') !!}
+    {!! Html::script('/js/painel/sale.min.js') !!}
 @endsection

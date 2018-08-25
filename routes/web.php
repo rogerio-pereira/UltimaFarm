@@ -45,7 +45,10 @@ Route::group([
 
     //Adminstrativo
     Route::resource('clients', 'ClientController');
+    Route::post('sales/refund/{id}', 'SaleController@refund')->name('sale.refund');
     Route::resource('sales', 'SaleController');
+    Route::post('comissions/refund/{id}', 'ComissionController@refund')->name('comission.refund');
+    Route::resource('comissions', 'ComissionController');
 
     //Empresa
     Route::resource('business_info', 'BusinessInfoController');
@@ -70,6 +73,21 @@ Route::group([
     Route::post('/activate-inactivate', 'ActivateController@activateInactivate')->name('activate-inactivate');
 
     Route::get('/charts/{name}', 'ChartsController@show');
+
+
+
+    /*
+     * PAINEL
+    */
+    Route::group([
+                'namespace' => 'Investor',
+                'as'=>'painel.investor.'
+            ], function() 
+    {
+        Route::resource('meus-titulos', 'SaleController');
+        Route::get('comissoes', 'ComissionController@index')->name('comissoes.index');
+        Route::get('indicacao', 'IndicationController@index')->name('indication');
+    });
 });
 
 
@@ -93,6 +111,7 @@ Route::group([
     Route::get('/investimentos', 'InvestmentsController@index')->name('site.investimentos');
     Route::get('/contato', 'ContactController@index')->name('site.contato');
     Route::get('/cadastro', 'RegisterController@index')->name('site.cadastro');
+    Route::get('/cadastro/{hash}', 'RegisterController@index')->name('site.cadastro.hash');
     Route::post('/cadastro', 'RegisterController@store')->name('site.cadastro.store');
 });
 

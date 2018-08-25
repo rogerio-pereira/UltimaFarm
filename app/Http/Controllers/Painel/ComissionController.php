@@ -3,35 +3,18 @@
 namespace App\Http\Controllers\Painel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Painel\SaleRequest;
-use App\Repositories\ClientRepository;
-use App\Repositories\ProductRepository;
-use App\Repositories\SaleRepository;
-use App\Services\Painel\SaleService;
-use Carbon\Carbon;
+use App\Repositories\ComissionRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
 
-class SaleController extends Controller
+class ComissionController extends Controller
 {
     private $repository;
-    private $clientRepository;
-    private $productRepository;
-    private $service;
 
-    public function __construct(
-                                    SaleRepository $repository,
-                                    ClientRepository $clientRepository,
-                                    ProductRepository $productRepository,
-                                    SaleService $service
-                                )
+    public function __construct(ComissionRepository $repository)
     {
         $this->repository = $repository;
-        $this->clientRepository = $clientRepository;
-        $this->productRepository = $productRepository;
-        $this->service = $service;
     }
 
     /**
@@ -41,12 +24,12 @@ class SaleController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('view-sales'))
+        if(Gate::denies('view-comissions'))
             return redirect('/');
 
-        $sales = $this->repository->paginate();
+        $comissions = $this->repository->paginate();
 
-        return view('painel.sales.index', compact('sales'));
+        return view('painel.comissions.index', compact('comissions'));
     }
 
     /**
@@ -56,14 +39,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('create-sales'))
-            return redirect('/');
-
-        $clients = $this->clientRepository->comboboxList();
-        $products = $this->productRepository->comboboxList();
-
-
-        return view('painel.sales.create', compact('clients', 'products'));
+        return redirect('/');
     }
 
     /**
@@ -72,19 +48,9 @@ class SaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SaleRequest $request)
+    public function store(Request $request)
     {
-        if(Gate::denies('create-sales'))
-            return redirect('/');
-
-        $data = $request->all();
-
-        $this->service->store($data);
-
-        Session::flash('message', ['Venda salva com sucesso!']); 
-        Session::flash('alert-type', 'alert-success'); 
-
-        return redirect('/sales');
+        return redirect('/');
     }
 
     /**

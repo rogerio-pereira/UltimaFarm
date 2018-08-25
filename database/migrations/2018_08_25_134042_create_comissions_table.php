@@ -4,9 +4,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateSalesTable.
+ * Class CreateComissionsTable.
  */
-class CreateSalesTable extends Migration
+class CreateComissionsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -15,25 +15,24 @@ class CreateSalesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('sales', function(Blueprint $table) {
+		Schema::create('comissions', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id')->unsigned();
-            $table->integer('product_id')->unsigned();
+            $table->integer('sale_id')->unsigned();
             $table->double('value');
-            $table->decimal('profitability');
             $table->datetime('deadline');
-            $table->double('refundValue');
             $table->boolean('refunded')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('client_id')
                     ->references('id')
-                    ->on('clients');
+                    ->on('clients')
+                    ->onDelete('cascade');
 
-            $table->foreign('product_id')
+            $table->foreign('sale_id')
                     ->references('id')
-                    ->on('products');
+                    ->on('sales');
 		});
 	}
 
@@ -44,6 +43,6 @@ class CreateSalesTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('sales');
+		Schema::drop('comissions');
 	}
 }

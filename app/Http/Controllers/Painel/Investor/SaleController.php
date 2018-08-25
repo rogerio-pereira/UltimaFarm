@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Painel;
+namespace App\Http\Controllers\Painel\Investor;
 
+use App\Criteria\Painel\Investor\InvestorCriteria;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\SaleRequest;
 use App\Repositories\ClientRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SaleRepository;
-use App\Services\Painel\SaleService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -17,21 +17,10 @@ use Spatie\Activitylog\Models\Activity;
 class SaleController extends Controller
 {
     private $repository;
-    private $clientRepository;
-    private $productRepository;
-    private $service;
 
-    public function __construct(
-                                    SaleRepository $repository,
-                                    ClientRepository $clientRepository,
-                                    ProductRepository $productRepository,
-                                    SaleService $service
-                                )
+    public function __construct(SaleRepository $repository)
     {
         $this->repository = $repository;
-        $this->clientRepository = $clientRepository;
-        $this->productRepository = $productRepository;
-        $this->service = $service;
     }
 
     /**
@@ -41,10 +30,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('view-sales'))
-            return redirect('/');
-
-        $sales = $this->repository->paginate();
+        $sales = $this->repository->pushCriteria(InvestorCriteria::class)->paginate();
 
         return view('painel.sales.index', compact('sales'));
     }
@@ -79,7 +65,17 @@ class SaleController extends Controller
 
         $data = $request->all();
 
-        $this->service->store($data);
+        $product = $this->productRepository->find($data['product_id']);
+
+        $data['value'] = $product->price;
+        $data['profitability'] = $product->profitability;
+        $data['deadline'] = Carbon::now()->addMonths($product->deadline);
+        $data['refundValue'] = $product->price + ( ($product->price * ($product->profitability / 100)) * $product->deadline);
+
+        $this->repository->create($data);
+
+        //Grava Log
+        Activity::all()->last();
 
         Session::flash('message', ['Venda salva com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
@@ -130,20 +126,5 @@ class SaleController extends Controller
     public function destroy($id)
     {
         return redirect('/');
-    }
-
-    public function refund(Request $request, $id)
-    {
-        if(Gate::denies('create-refunds'))
-            return redirect('/');
-
-        $data = ['refunded' => 1];
-
-        $this->repository->update($data, $id);
-
-        //Grava Log
-        Activity::all()->last();
-
-        return redirect()->back();
     }
 }

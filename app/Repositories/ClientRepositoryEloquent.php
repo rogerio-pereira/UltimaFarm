@@ -43,6 +43,7 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
     {
         return $this->model
                     ->join('users', 'clients.user_id', '=', 'users.id')
+                    ->orderBy('users.name')
                     ->pluck('users.name', 'clients.id');
     }
 }

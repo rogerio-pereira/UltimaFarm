@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->double('price');
             $table->integer('deadline');
             $table->decimal('profitability');
+            $table->decimal('commission');
             $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();

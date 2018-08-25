@@ -29,6 +29,9 @@ class CreateClientsTable extends Migration
             $table->string('neighborhood');
             $table->string('city');
             $table->string('state', 2);
+            $table->string('hashIndication');
+
+            $table->integer('indication_id')->unsigned()->nullable();
 
             $table->timestamps();
             $table->softDeletes();
@@ -37,6 +40,11 @@ class CreateClientsTable extends Migration
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
+
+            $table->foreign('indication_id')
+                    ->references('id')
+                    ->on('clients')
+                    ->onDelete('set null');
 		});
 	}
 
