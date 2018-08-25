@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Painel\Investor;
 
 use App\Criteria\Painel\Investor\InvestorCriteria;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Painel\SaleRequest;
+use App\Http\Requests\Painel\Investor\SaleRequest;
 use App\Repositories\ClientRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SaleRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
@@ -17,10 +18,15 @@ use Spatie\Activitylog\Models\Activity;
 class SaleController extends Controller
 {
     private $repository;
+    private $productRepository;
 
-    public function __construct(SaleRepository $repository)
+    public function __construct(
+                                    SaleRepository $repository,
+                                    ProductRepository $productRepository
+                                )
     {
         $this->repository = $repository;
+        $this->productRepository = $productRepository;
     }
 
     /**
@@ -42,14 +48,9 @@ class SaleController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('create-sales'))
-            return redirect('/');
-
-        $clients = $this->clientRepository->comboboxList();
         $products = $this->productRepository->comboboxList();
 
-
-        return view('painel.sales.create', compact('clients', 'products'));
+        return view('painel.investor.sales.create', compact('products'));
     }
 
     /**
@@ -60,13 +61,11 @@ class SaleController extends Controller
      */
     public function store(SaleRequest $request)
     {
-        if(Gate::denies('create-sales'))
-            return redirect('/');
-
         $data = $request->all();
 
         $product = $this->productRepository->find($data['product_id']);
 
+        $data['client_id'] = Auth::user()->client->id;
         $data['value'] = $product->price;
         $data['profitability'] = $product->profitability;
         $data['deadline'] = Carbon::now()->addMonths($product->deadline);
