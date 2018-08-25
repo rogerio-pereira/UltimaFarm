@@ -24,6 +24,7 @@
                 <th>Preço</th>
                 <th>Prazo de Retirada</th>
                 <th>Rentabilidade</th>
+                <th>Comissão</th>
                 <th>Total de Retorno</th>
                 <th>Capital Final</th>
                 <th>Ativo</th>
@@ -59,6 +60,7 @@
                     <td>R$ {{number_format($product->price, 2, ',', '.')}}</td>
                     <td>{{$product->deadline}} meses</td>
                     <td>{{$product->profitability}} %</td>
+                    <td>{{$product->commission}} %</td>
                     <td>R$ {{number_format($returnValue, 2, ',', '.')}}</td>
                     <td>R$ {{number_format($finalCapital, 2, ',', '.')}}</td>
                     <td>
@@ -74,7 +76,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan='9' class='text-center'>
+                    <td colspan='10' class='text-center'>
                         Nenhum Produto cadastrado
                     </td>
                 </tr>

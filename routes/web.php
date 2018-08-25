@@ -47,6 +47,8 @@ Route::group([
     Route::resource('clients', 'ClientController');
     Route::post('sales/refund/{id}', 'SaleController@refund')->name('sale.refund');
     Route::resource('sales', 'SaleController');
+    Route::post('comissions/refund/{id}', 'ComissionController@refund')->name('comission.refund');
+    Route::resource('comissions', 'ComissionController');
 
     //Empresa
     Route::resource('business_info', 'BusinessInfoController');

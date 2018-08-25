@@ -68,6 +68,11 @@ class Client extends Model implements Transformable
         return $this->hasMany(Sale::class, 'client_id', 'id');
     }
 
+    public function comissions()
+    {
+        return $this->hasMany(Comission::class, 'client_id', 'id');
+    }
+
     public function indication()
     {
         return $this->belongsTo(Client::class, 'indication_id', 'id');

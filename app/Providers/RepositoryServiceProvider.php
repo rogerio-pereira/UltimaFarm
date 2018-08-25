@@ -119,6 +119,10 @@ class RepositoryServiceProvider extends ServiceProvider
                 \App\Repositories\BusinessInfoRepository::class, 
                 \App\Repositories\BusinessInfoRepositoryEloquent::class
         );
+        $this->app->bind(
+                \App\Repositories\ComissionRepository::class, 
+                \App\Repositories\ComissionRepositoryEloquent::class
+        );
         //:end-bindings:
     }
 }

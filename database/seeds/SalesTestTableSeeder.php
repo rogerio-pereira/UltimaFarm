@@ -13,6 +13,8 @@ class SalesTestTableSeeder extends Seeder
     public function run()
     {
         for($i=1; $i<=50; $i++)
+        {
             factory(Sale::class)->create(['client_id' => $i]);
+        }
     }
 }

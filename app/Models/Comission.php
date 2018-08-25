@@ -9,16 +9,15 @@ use Prettus\Repository\Traits\TransformableTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
- * Class Sale.
+ * Class Comission.
  *
  * @package namespace App\Models;
  */
-class Sale extends Model implements Transformable
+class Comission extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
     use LogsActivity;
-
 
     /**
      * The attributes that are mass assignable.
@@ -27,11 +26,9 @@ class Sale extends Model implements Transformable
      */
     protected $fillable = [
         'client_id',
-        'product_id',
+        'sale_id',
         'value',
-        'profitability',
         'deadline',
-        'refundValue',
         'refunded',
         'created_at'
     ];
@@ -42,13 +39,11 @@ class Sale extends Model implements Transformable
      * @var array
      */
     protected static $logAttributes = [
-        'id',
+        'id', 
         'client_id',
-        'product_id',
+        'sale_id',
         'value',
-        'profitability',
         'deadline',
-        'refundValue',
         'refunded',
     ];
 
@@ -64,14 +59,9 @@ class Sale extends Model implements Transformable
         return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 
-    public function product()
+    public function sale()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
-    }
-
-    public function comission()
-    {
-        return $this->hasOne(Comission::class, 'sale_id', 'id');
+        return $this->belongsTo(Sale::class, 'sale_id', 'id');
     }
 
 }

@@ -33,7 +33,8 @@ class PermissionsTableSeeder extends Seeder
                         //Administrativo
                         'clients'               => 'clientes',
                         'sales'                 => 'vendas',
-                        'refunds'              => 'reembolso',
+                        'comissions'             => 'vendas',
+                        'refunds'               => 'reembolso',
                         //Empresa
                         'business_info'         => 'informações da empresa',
                         'address-categories'    => 'locais',

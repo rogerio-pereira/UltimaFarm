@@ -72,6 +72,14 @@
                     </a>
                 </li>
             @endcan
+            {{--COMISSIONS--}}
+            @can('view-comissions')
+                <li>
+                    <a href='{{route('comissions.index')}}' alt='Comissões' title='Comissões'>
+                        <i class="fa fa-money" aria-hidden="true"></i> Comissões
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
 

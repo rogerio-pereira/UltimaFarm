@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Client;
+use App\Models\Comission;
 use App\Models\Sale;
 use App\Models\User;
 use Illuminate\Database\Seeder;

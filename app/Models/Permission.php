@@ -55,6 +55,10 @@ class Permission extends Model implements Transformable
         'view-refunds',
         'update-refunds',
         'delete-refunds',
+        //Comissões
+        'create-comissions',
+        'update-comissions',
+        'delete-comissions',
     ];
 
     /**
