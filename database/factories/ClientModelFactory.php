@@ -29,6 +29,7 @@ $factory->define(App\Models\Client::class, function (Faker\Generator $faker) {
         'neighborhood' => $faker->sentence(2, true),
         'city' => $faker->city,
         'state' => $faker->stateAbbr,
+        'hashIndication' => md5('teste@teste.com'),
         'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null)
     ];
 });

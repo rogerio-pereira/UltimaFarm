@@ -1,3 +1,5 @@
+{!! Form::input('hidden', 'hashUser', $hash) !!}
+
 <div class='col-md-6'>
     <div class="form-group">
         <div class='text-right'>

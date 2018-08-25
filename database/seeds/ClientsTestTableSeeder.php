@@ -16,7 +16,7 @@ class ClientsTestTableSeeder extends Seeder
     {
         factory(User::class, 50)->create(['role' => 'Cliente'])->each(function ($u) {
             $u->client()->save(
-                factory(Client::class)->make(['user_id' => $u->id])
+                factory(Client::class)->make(['user_id' => $u->id, 'hashIndication' => md5($u->email)])
             );
         });
 
@@ -29,6 +29,7 @@ class ClientsTestTableSeeder extends Seeder
             $u->client()->save(
                 factory(Client::class)->make([
                     'user_id' => $u->id,
+                    'hashIndication' => md5($u->email),
                     'telephone' => '(35) 99109-0906',
                     'document' => '10104234601',
                     'street' => 'Rua Aristides Thomaz Ballerini',

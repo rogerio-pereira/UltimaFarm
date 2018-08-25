@@ -19,11 +19,11 @@ class RegisterController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index($hash = null)
     {
         $states = States::getStates();
 
-        return view('site.register.index', compact('states'));
+        return view('site.register.index', compact('states', 'hash'));
     }
 
     /**

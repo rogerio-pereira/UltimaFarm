@@ -41,7 +41,15 @@ class ClientService
             DB::beginTransaction();
                 $user = $this->userRepository->create($user);
 
-                $data['user_id'] = $user->id;
+                $data['user_id']        = $user->id;
+                $data['hashIndication'] = md5($user->email);
+
+                if(isset($data['hashUser']) && $data['hashUser'] != '') {
+                    $indicator = $this->clientRepository->findWhere(['hashIndication' => $data['hashUser']])->first();
+
+                    $data['indication_id'] = $indicator->id;
+                }
+
                 $client = $this->clientRepository->create($data);
 
                 //Grava Log

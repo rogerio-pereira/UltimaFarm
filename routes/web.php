@@ -83,6 +83,7 @@ Route::group([
             ], function() 
     {
         Route::resource('meus-titulos', 'SaleController');
+        Route::get('indicacao', 'IndicationController@index')->name('indication');
     });
 });
 
@@ -107,6 +108,7 @@ Route::group([
     Route::get('/investimentos', 'InvestmentsController@index')->name('site.investimentos');
     Route::get('/contato', 'ContactController@index')->name('site.contato');
     Route::get('/cadastro', 'RegisterController@index')->name('site.cadastro');
+    Route::get('/cadastro/{hash}', 'RegisterController@index')->name('site.cadastro.hash');
     Route::post('/cadastro', 'RegisterController@store')->name('site.cadastro.store');
 });
 
