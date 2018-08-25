@@ -26,13 +26,13 @@ class BusinessController extends Controller
 
     private function getCachedPages()
     {
-        if(Cache::get('pagesBusiness') == null) {
+        //if(Cache::get('pagesBusiness') == null) {
             $pagesBusiness = $this->getPages();
 
             $expiresAt = Carbon::now()->addDays(1);
 
             Cache::put('pagesBusiness', $pagesBusiness, $expiresAt);
-        }
+        //}
         
         return Cache::get('pagesBusiness');
     }

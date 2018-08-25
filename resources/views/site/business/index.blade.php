@@ -1,5 +1,9 @@
 @extends('site.layout.layout')
 
+@section('css')
+    {!! Html::style('/css/site/business.min.css') !!}
+@endsection
+
 @section('content')
     <div class='container siteContainer margin-top'>
         @php

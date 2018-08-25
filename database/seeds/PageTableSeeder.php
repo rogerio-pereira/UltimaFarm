@@ -109,7 +109,7 @@ class PageTableSeeder extends Seeder
             'text' => "<div class='businessMVV'>
                             <div class='col-md-4'>
                                 <div class='padding-left-g padding-right-g text-center'>
-                                    <img src='".env('APP_URL')."/img/template/painel/sem-imagem.jpg' alt='Missão' class='img-responsive'>
+                                    <img src='".env('APP_URL')."/img/missao.png' alt='Missão' class='img-responsive msvIcon'>
                                     <h1 class='no-margin'>Missão</h1>
                                     <p>
                                         Proporcionar prosperidade financeira através de investimentos privados
@@ -119,7 +119,7 @@ class PageTableSeeder extends Seeder
 
                             <div class='col-md-4'>
                                 <div class='padding-left-g padding-right-g text-center'>
-                                    <img src='".env('APP_URL')."/img/template/painel/sem-imagem.jpg' alt='Visão' class='img-responsive'>
+                                    <img src='".env('APP_URL')."/img/visao.png' alt='Visão' class='img-responsive msvIcon'>
                                     <h1 class='no-margin'>Visão</h1>
                                     <p>
                                         A segurança de investimento do mercado americano a apenas um clique de alcance.
@@ -129,7 +129,7 @@ class PageTableSeeder extends Seeder
 
                             <div class='col-md-4'>
                                 <div class='padding-left-g padding-right-g text-center'>
-                                    <img src='".env('APP_URL')."/img/template/painel/sem-imagem.jpg' alt='Valores' class='img-responsive'>
+                                    <img src='".env('APP_URL')."/img/valores.png' alt='Valores' class='img-responsive msvIcon'>
                                     <h1 class='no-margin'>Valores</h1>
                                     <p>
                                         Taxa de rentabilidade pré-fixadas podendo chegar até a 40% sobre o investimento
