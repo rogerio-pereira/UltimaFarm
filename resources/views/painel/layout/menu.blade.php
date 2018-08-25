@@ -238,6 +238,12 @@
                     <i class="fa fa-money" aria-hidden="true"></i> Meus Títulos
                 </a>
             </li>
+
+            <li>
+                <a href='{{route('painel.investor.comissoes.index')}}' alt='Comissões' title='Comissões'>
+                    <i class="fa fa-money" aria-hidden="true"></i> Comissões
+                </a>
+            </li>
         </ul>
     </li>
 @endif

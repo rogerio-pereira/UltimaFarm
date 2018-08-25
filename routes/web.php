@@ -85,6 +85,7 @@ Route::group([
             ], function() 
     {
         Route::resource('meus-titulos', 'SaleController');
+        Route::get('comissoes', 'ComissionController@index')->name('comissoes.index');
         Route::get('indicacao', 'IndicationController@index')->name('indication');
     });
 });
