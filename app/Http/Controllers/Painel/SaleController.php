@@ -7,6 +7,7 @@ use App\Http\Requests\Painel\SaleRequest;
 use App\Repositories\ClientRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SaleRepository;
+use App\Services\Painel\SaleService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -18,16 +19,19 @@ class SaleController extends Controller
     private $repository;
     private $clientRepository;
     private $productRepository;
+    private $service;
 
     public function __construct(
                                     SaleRepository $repository,
                                     ClientRepository $clientRepository,
-                                    ProductRepository $productRepository
+                                    ProductRepository $productRepository,
+                                    SaleService $service
                                 )
     {
         $this->repository = $repository;
         $this->clientRepository = $clientRepository;
         $this->productRepository = $productRepository;
+        $this->service = $service;
     }
 
     /**
@@ -75,17 +79,7 @@ class SaleController extends Controller
 
         $data = $request->all();
 
-        $product = $this->productRepository->find($data['product_id']);
-
-        $data['value'] = $product->price;
-        $data['profitability'] = $product->profitability;
-        $data['deadline'] = Carbon::now()->addMonths($product->deadline);
-        $data['refundValue'] = $product->price + ( ($product->price * ($product->profitability / 100)) * $product->deadline);
-
-        $this->repository->create($data);
-
-        //Grava Log
-        Activity::all()->last();
+        $this->service->store($data);
 
         Session::flash('message', ['Venda salva com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 

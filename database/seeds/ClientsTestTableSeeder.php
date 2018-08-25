@@ -44,5 +44,21 @@ class ClientsTestTableSeeder extends Seeder
             );
         });
         factory(Sale::class)->create(['client_id' => 51]);
+
+
+        factory(User::class, 1)->create([
+            'name' => 'Indicacao',
+            'email' => 'indicacao@colmeiatecnologia.com.br',
+            'password' => bcrypt('123'),
+            'role' => 'Cliente'
+        ])->each(function ($u) {
+            $u->client()->save(
+                factory(Client::class)->make([
+                    'user_id' => $u->id,
+                    'hashIndication' => md5($u->email),
+                    'indication_id' => 51
+                ])
+            );
+        });
     }
 }
