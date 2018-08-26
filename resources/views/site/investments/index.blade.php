@@ -93,14 +93,15 @@
         </div>
 
         {{--DEPOIMENTOS--}}
-        <a id='depoimentos'></a>
-        <div class='row margin-top padding-top-p padding-bottom-g  text-center'>
-            <div class='col-md-12 text-center'>
-                <h2>O que diz quem já investe</h2>
-            </div>
+        @if(count($depoiments) > 0)
+            <a id='depoimentos'></a>
+            <div class='row margin-top padding-top-p padding-bottom-g  text-center'>
+                <div class='col-md-12 text-center'>
+                    <h2>O que diz quem já investe</h2>
+                </div>
 
-            <div class='row margin-top-g'>
-                @forelse ($depoiments as $depoiment)
+                <div class='row margin-top-g'>
+                    @foreach ($depoiments as $depoiment)
                     <div class='col-md-6 margin-top-g'>
                         <div class='row'>
                             <div class='col-xs-4'>
@@ -113,12 +114,9 @@
                             </div>
                         </div>
                     </div>
-                @empty
-                    <div class='col-md-12 text-center'>
-                        Não há nenhum depoimento cadastrado
-                    </div>
-                @endforelse
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 @endsection
