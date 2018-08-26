@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
 use Srmklive\PayPal\Services\ExpressCheckout;
 
+
+/**
+ *  https://github.com/srmklive/laravel-paypal#usage-express-checkout
+ */
 class PaypalController extends Controller
 {
     private $provider;
