@@ -190,6 +190,9 @@ return [
         //Charts
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
+        //Paypal
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
+
     ],
 
     /*
@@ -244,7 +247,10 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         //Charts
-        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
+
+        //Paypal
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
     ],
 
 ];

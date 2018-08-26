@@ -25,5 +25,5 @@
 <script>
     setTimeout(function() {
         $('.alert-dismissable').fadeOut('slow');
-    }, 1000);
+    }, 5000);
 </script>

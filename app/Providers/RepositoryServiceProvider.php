@@ -123,6 +123,10 @@ class RepositoryServiceProvider extends ServiceProvider
                 \App\Repositories\ComissionRepository::class, 
                 \App\Repositories\ComissionRepositoryEloquent::class
         );
+        $this->app->bind(
+                \App\Repositories\InvoiceRepository::class, 
+                \App\Repositories\InvoiceRepositoryEloquent::class
+        );
         //:end-bindings:
     }
 }

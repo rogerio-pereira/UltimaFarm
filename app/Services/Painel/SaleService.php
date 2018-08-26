@@ -2,6 +2,7 @@
 
 namespace App\Services\Painel;
 
+use App\Http\Controllers\Painel\Investor\PaypalController;
 use App\Repositories\ClientRepository;
 use App\Repositories\ComissionRepository;
 use App\Repositories\ProductRepository;
@@ -31,7 +32,7 @@ class SaleService
         $this->comissionRepository = $comissionRepository;
     }
 
-    public function store(array $data)
+    public function store(array $data, $makePayment = null)
     {
         try
         {
@@ -67,7 +68,6 @@ class SaleService
         catch(\Exception $e)
         {
             DB::rollBack();
-            dd($e);
             throw new \Exception($e->getMessage());
         }
     }

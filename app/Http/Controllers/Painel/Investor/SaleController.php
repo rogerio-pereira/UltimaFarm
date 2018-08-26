@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Painel\Investor;
 
 use App\Criteria\Painel\Investor\InvestorCriteria;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Painel\SaleRequest;
+use App\Http\Controllers\Painel\Investor\PaypalController;
+use App\Http\Requests\Painel\Investor\SaleRequest;
 use App\Repositories\ClientRepository;
+use App\Repositories\InvoiceRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SaleRepository;
+use App\Services\Painel\SaleService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
@@ -17,10 +21,21 @@ use Spatie\Activitylog\Models\Activity;
 class SaleController extends Controller
 {
     private $repository;
+    private $productRepository;
+    private $service;
+    private $invoiceRepository;
 
-    public function __construct(SaleRepository $repository)
+    public function __construct(
+                                    SaleRepository $repository,
+                                    ProductRepository $productRepository,
+                                    SaleService $service,
+                                    InvoiceRepository $invoiceRepository
+                                )
     {
         $this->repository = $repository;
+        $this->productRepository = $productRepository;
+        $this->service = $service;
+        $this->invoiceRepository = $invoiceRepository;
     }
 
     /**
@@ -42,14 +57,11 @@ class SaleController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('create-sales'))
-            return redirect('/');
-
-        $clients = $this->clientRepository->comboboxList();
         $products = $this->productRepository->comboboxList();
 
+        $messageInvoice = 'Todas as compras de títulos, somente estarão disponiveis na sua conta assim que o pagamento for efetivado.';
 
-        return view('painel.sales.create', compact('clients', 'products'));
+        return view('painel.investor.sales.create', compact('products', 'messageInvoice'));
     }
 
     /**
@@ -60,27 +72,29 @@ class SaleController extends Controller
      */
     public function store(SaleRequest $request)
     {
-        if(Gate::denies('create-sales'))
-            return redirect('/');
-
         $data = $request->all();
 
         $product = $this->productRepository->find($data['product_id']);
 
+        $data['client_id'] = Auth::user()->client->id;
         $data['value'] = $product->price;
         $data['profitability'] = $product->profitability;
         $data['deadline'] = Carbon::now()->addMonths($product->deadline);
         $data['refundValue'] = $product->price + ( ($product->price * ($product->profitability / 100)) * $product->deadline);
 
-        $this->repository->create($data);
+        $invoice = $this->invoiceRepository->create($data);
 
         //Grava Log
         Activity::all()->last();
 
-        Session::flash('message', ['Venda salva com sucesso!']); 
+        $paypal = new PaypalController();
+        $paypal->setData($invoice);
+        return $paypal->sale();
+
+        /*Session::flash('message', ['Venda salva com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
-        return redirect('/sales');
+        return redirect('/sales');*/
     }
 
     /**
