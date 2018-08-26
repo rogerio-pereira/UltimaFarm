@@ -35,16 +35,16 @@
                         {!! Form::close() !!}
                     @endcan
 
-                    @can('update-users')
-                        <a href='users/{{$user->id}}/edit' class='btn btn-info'>
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                    @endcan
-
                     @if(Auth::user()->id == $user->id)
                         <a href='users/{{$user->id}}/edit' class='btn btn-info'>
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </a>
+                    @else
+                        @can('update-users')
+                            <a href='users/{{$user->id}}/edit' class='btn btn-info'>
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                        @endcan
                     @endif
                 </td>
                 <td>{{$user->id}}</td>

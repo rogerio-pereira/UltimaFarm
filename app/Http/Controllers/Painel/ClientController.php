@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Painel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\ClientRequest;
+use App\Models\Address\States;
 use App\Repositories\ClientRepository;
+use App\Services\Painel\ClientService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
@@ -13,10 +15,15 @@ use Spatie\Activitylog\Models\Activity;
 class ClientController extends Controller
 {
     private $repository;
+    private $service;
 
-    public function __construct(ClientRepository $repository)
+    public function __construct(
+                                    ClientRepository $repository,
+                                    ClientService $service
+                                )
     {
         $this->repository = $repository;
+        $this->service = $service;
     }
 
     /**
@@ -44,7 +51,14 @@ class ClientController extends Controller
         if(Gate::denies('create-clients'))
             return redirect('/');
 
-        return view('painel.clients.create');
+        $states = States::getStates();
+        $clients = $this->repository->comboboxList();
+        $clients = $clients->toArray();
+        $clients = array_reverse($clients, true);
+        $clients['0'] = '';
+        $clients = array_reverse($clients, true);
+
+        return view('painel.clients.create', compact('states', 'clients'));
     }
 
     /**
@@ -60,10 +74,7 @@ class ClientController extends Controller
 
         $data = $request->all();
 
-        $this->repository->create($data);
-
-        //Grava Log
-        Activity::all()->last();
+        $this->service->store($data);
 
         Session::flash('message', ['Cliente salvo com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
@@ -79,7 +90,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repository->find($id)->toString();
     }
 
     /**
@@ -94,8 +105,14 @@ class ClientController extends Controller
             return redirect('/');
 
         $client = $this->repository->find($id);
+        $states = States::getStates();
+        $clients = $this->repository->comboboxList();
+        $clients = $clients->toArray();
+        $clients = array_reverse($clients, true);
+        $clients['0'] = '';
+        $clients = array_reverse($clients, true);
 
-        return view('painel.clients.edit', compact('client'));
+        return view('painel.clients.edit', compact('client', 'states', 'clients'));
     }
 
     /**

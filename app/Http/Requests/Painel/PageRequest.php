@@ -27,7 +27,8 @@ class PageRequest extends FormRequest
             'title' => 'required|max:100',
             'description' => 'required|max:160',
             'text' => 'required',
-            'image' => 'required',
+            'image' => 'nullable',
+            'page_category_id' => 'required|exists:page_categories,id'
         ];
     }
 
@@ -47,7 +48,10 @@ class PageRequest extends FormRequest
 
             'text.required' => 'O campo "Texto" é obrigatório',
 
-            'image.required' => 'O campo "Imagem" é obrigatório',
+            //'image.required' => 'O campo "Imagem" é obrigatório',
+
+            'page_category_id.required' => 'O campo "Categoria" é obrigatório',
+            'page_category_id.exists' => 'Categoria inválida',
         ];
     }
 }

@@ -15,7 +15,7 @@ class Video extends Model implements Transformable
     use LogsActivity;
 
     protected $fillable = [
-        'title', 'description', 'url', 'image'
+        'title', 'description', 'url', 'image', 'active'
     ];
     
     /*
@@ -24,7 +24,7 @@ class Video extends Model implements Transformable
      * @var array
      */
     protected static $logAttributes = [
-        'id', 'title', 'description', 'url', 'image'
+        'id', 'title', 'description', 'url', 'image', 'active'
     ];
 
     /**

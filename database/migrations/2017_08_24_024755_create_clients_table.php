@@ -15,9 +15,36 @@ class CreateClientsTable extends Migration
 	{
 		Schema::create('clients', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            /*$table->string('name');
+            $table->string('email')->unique();*/
+            $table->integer('user_id')->unsigned()->nullable();
+
+            $table->string('telephone');
+            $table->string('document')->unique();
+            
+            $table->string('zipcode');
+            $table->string('street');
+            $table->integer('number');
+            $table->string('complement')->nullable();
+            $table->string('neighborhood');
+            $table->string('city');
+            $table->string('state', 2);
+            $table->string('hashIndication');
+
+            $table->integer('indication_id')->unsigned()->nullable();
+
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+
+            $table->foreign('indication_id')
+                    ->references('id')
+                    ->on('clients')
+                    ->onDelete('set null');
 		});
 	}
 

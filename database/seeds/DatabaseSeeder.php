@@ -14,5 +14,26 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
         $this->call(SocialMediaTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
+        $this->call(FaqTableSeeder::class);
+        $this->call(PageTableSeeder::class);
+        $this->call(VideoTableSeeder::class);
+        $this->call(AddressCategoryTableSeeder::class);
+        $this->call(AddressTableSeeder::class);
+        $this->call(EmailTableSeeder::class);
+        $this->call(TelephoneTableSeeder::class);
+        $this->call(BusinessInfoTableSeeder::class);
+
+        //Testes
+        if(env('APP_ENV') == 'local') {
+            $this->call(ClientsTestTableSeeder::class);
+            $this->call(SalesTestTableSeeder::class);
+            $this->call(PostTestTableSeeder::class);
+            $this->call(DepoimentTestTableSeeder::class);
+            $this->call(AddressTestTableSeeder::class);
+            $this->call(TelephoneTestTableSeeder::class);
+            $this->call(ComissionTestTableSeeder::class);
+            $this->call(InvoiceTestTableSeeder::class);
+        }
     }
 }

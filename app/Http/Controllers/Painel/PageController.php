@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Painel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\PageRequest;
+use App\Repositories\PageCategoryRepository;
 use App\Repositories\PageRepository;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
@@ -13,10 +16,15 @@ use Spatie\Activitylog\Models\Activity;
 class PageController extends Controller
 {
     private $repository;
+    private $categoryRepository;
 
-    public function __construct(PageRepository $repository)
+    public function __construct(
+                                    PageRepository $repository,
+                                    PageCategoryRepository $categoryRepository
+                                )
     {
         $this->repository = $repository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -29,7 +37,7 @@ class PageController extends Controller
         if(Gate::denies('view-pages'))
             return redirect('/');
 
-        $pages = $this->repository->paginate();
+        $pages = $this->repository->orderBy('page_category_id')->paginate();
 
         return view('painel.pages.index', compact('pages'));
     }
@@ -44,7 +52,9 @@ class PageController extends Controller
         if(Gate::denies('create-pages'))
             return redirect('/');
 
-        return view('painel.pages.create');
+        $pageCategories = $this->categoryRepository->comboboxList();
+
+        return view('painel.pages.create', compact('pageCategories'));
     }
 
     /**
@@ -65,6 +75,8 @@ class PageController extends Controller
 
         //Grava Log
         Activity::all()->last();
+
+        $this->storeinCache();
 
         Session::flash('message', ['Página salva com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
@@ -95,8 +107,9 @@ class PageController extends Controller
             return redirect('/');
 
         $page = $this->repository->find($id);
+        $pageCategories = $this->categoryRepository->comboboxList();
 
-        return view('painel.pages.edit', compact('page'));
+        return view('painel.pages.edit', compact('page', 'pageCategories'));
     }
 
     /**
@@ -118,6 +131,8 @@ class PageController extends Controller
 
         //Grava Log
         Activity::all()->last();
+
+        $this->storeinCache();
 
         Session::flash('message', ['Página alterada com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
@@ -141,6 +156,27 @@ class PageController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         return redirect()->route('pages.index');
+    }
+
+    private function storeinCache()
+    {
+        $pages = $this->repository->findWhere(['page_category_id' => 1])->all();
+        $pagesBusiness = $this->repository->findWhere(['page_category_id' => 2])->all();
+        $pagesInvestments = $this->repository->findWhere(['page_category_id' => 3])->all();
+
+        //Footer
+        $footerBusinessPages = $this->repository->findWhere(['page_category_id' => 2])->all(['title', 'id']);
+        $footerInvestmentPages = $this->repository->findWhere(['page_category_id' => 3])->all(['title', 'id']);
+
+        $expiresAt = Carbon::now()->addDays(1);
+
+        Cache::put('pagesBusiness', $pages, $expiresAt);
+        Cache::put('pagesBusiness', $pagesBusiness, $expiresAt);
+        Cache::put('pagesBusiness', $pagesInvestments, $expiresAt);
+        Cache::put('footerBusinessPages', $footerBusinessPages, $expiresAt);
+        Cache::put('footerInvestmentPages', $footerInvestmentPages, $expiresAt);
     }
 }

@@ -1,0 +1,70 @@
+// main: style.scss
+
+sidebar
+{
+    height: 100%;
+}
+
+sidebar div.sidebarContent
+{
+    position:absolute;
+    z-index:1050;
+    height: 100%;
+    background-color: rgba(0,0,0,.9);
+    width: 25%;
+    color: white;
+    display:none;
+}
+
+sidebar div.sidebarClose
+{
+    position:relative;
+    color: black;
+    height: 100%;
+}
+
+sidebar div.sidebarClose
+{
+    position: absolute;
+    display: table-cell;
+    vertical-align: middle;
+    padding:20px 15px;
+    height: 70px;
+    margin-top:22%;
+    left:0%;
+
+    -webkit-border-radius: 0 10px 10px 0;
+    border-radius: 0 10px 10px 0;
+    background-color: white;
+
+    border: 2px solid #B7952D;
+    border-left:none;
+    z-index:1050;
+
+    -webkit-transition: all .5ms ease-in-out;
+    -moz-transition: all .5ms ease-in-out;
+    -ms-transition: all .5ms ease-in-out;
+    -o-transition: all .5ms ease-in-out;
+    transition: all .5ms ease-in-out;
+}
+
+sidebar div.sidebarClose.active
+{
+    -moz-transform: translateX(743%);
+    -webkit-transform: translateX(743%);
+    -o-transform: translateX(743%);
+    -ms-transform: translateX(743%);
+    transform: translateX(743%);
+    transition-duration: .3s;
+}
+
+
+sidebar div.sidebarClose.inactive
+{
+    -moz-transform: translateX(-743%);
+    -webkit-transform: translateX(-743%);
+    -o-transform: translateX(-743%);
+    -ms-transform: translateX(-743%);
+    transform: translateX(-743%);
+    transition-duration: .3s;
+}

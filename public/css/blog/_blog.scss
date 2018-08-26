@@ -1,0 +1,85 @@
+// main: style.scss
+div.blogContainer
+{
+    position:relative;
+    margin-top: 120px;
+}
+
+div.blogContent
+{
+    border-right: 3px solid #B7952D;
+    padding-right: 40px;
+}
+
+div.blogItem
+{
+    position:relative;
+    height: 350px;
+}
+
+div.blogItem a
+{
+    border: none;
+    color: black;
+}
+
+div.blogItem h1
+{
+    font-size: 1em;
+    margin-top:10px;
+    color: black;
+}
+
+
+div.blogItem h1:before
+{
+    content: none;
+}
+
+div.blogItem img
+{
+    position:relative;
+    margin: 0 auto;
+    max-height: 250px;
+}
+
+div.postImage
+{
+    position: relative;
+    width: 100%;
+}
+
+div.postImage img
+{
+    position: relative;
+    margin: 0 auto;
+}
+
+div.sidebar
+{
+    padding-left: 40px;
+}
+
+div.sidebar h1
+{
+    font-size: 1.2em;
+    margin:15px 0px;
+    padding:0px;
+}
+div.sidebar h1:before
+{
+    border-width: 5px 0px 5px 10px;
+    left: -15px;
+}
+
+div.sidebar ul.sidebarList
+{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.sidebar ul.sidebarList li a
+{
+    color: black;
+}

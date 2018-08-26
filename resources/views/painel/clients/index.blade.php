@@ -21,6 +21,11 @@
                 <th width="100px">Ações</th>
                 <th width="100px">ID</th>
                 <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Documento</th>
+                <th>Endereço</th>
+                <th>Indicado por:</th>
             </tr>
         </thead>
         <tbody>
@@ -40,11 +45,34 @@
                     @endcan
                 </td>
                 <td>{{$client->id}}</td>
-                <td>{{$client->name}}</td>
+                <td>{{$client->user->name}}</td>
+                <td><a href='mailto:{{$client->user->email}}'>{{$client->user->email}}</td>
+                <td>{{$client->telephone}}</td>
+                <td>{{$client->document}}</td>
+                <td>
+                    @php
+                        $address = $client->street.', '.$client->number;
+
+                        if(isset($client->complement))
+                            $address .= ' - '.$client->complement;
+
+                        $address .= '. '.$client->neighborhood.
+                        '. '.$client->city.
+                        ' - '.$client->state.
+                        '. '.$client->zipcode;
+                    @endphp
+
+                    {{$address}}
+                </td>
+                <td>
+                    @if(isset($client->indication_id))
+                        {{$client->indication->user->name}}
+                    @endif
+                </td>
             </tr>
             @empty
             <tr>
-                <td colspan='3' class='text-center'>
+                <td colspan='8' class='text-center'>
                     Nenhum Cliente cadastrado
                 </td>
             </tr>

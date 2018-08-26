@@ -89,4 +89,9 @@ class User extends Authenticatable implements Transformable
     {        
         return $this->permissions->contains($permissions);
     }
+
+    public function client()
+    {
+        return $this->hasOne(Client::class);
+    }
 }

@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\PostRequest;
 use App\Repositories\PostCategoryRepository;
 use App\Repositories\PostRepository;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
@@ -75,6 +77,8 @@ class PostController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Post salvo com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -129,6 +133,8 @@ class PostController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Post alterado com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -151,6 +157,15 @@ class PostController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         return redirect()->route('posts.index');
+    }
+
+    private function storeinCache()
+    {
+        $posts = $this->repository->orderBy('id', 'desc')->paginate(3);
+        $expiresAt = Carbon::now()->addDays(1);
+        Cache::put('posts', $posts, $expiresAt);
     }
 }

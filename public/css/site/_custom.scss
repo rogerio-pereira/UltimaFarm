@@ -1,1 +1,48 @@
 // main: style.scss
+
+.navbar-default {
+    background-color: #fff;
+    border-color: #B7952D;
+}
+
+span.fa-stack i
+{
+    color: #B7952D;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active
+{
+    background-color: #B7952D !important;
+    border-color: #B7952D !important;
+    color: white !important;
+    text-transform: uppercase;
+    font-weight:bold;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #a08021;
+    border-color: #a08021;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    color: #a08021;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #a08021;
+}
+
+.form-control:focus {
+    border-color: #a08021;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(160,128,33, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(160,128,33, 0.6);
+}
+
+.whatsappIcon
+{
+    color: #25d366;
+}

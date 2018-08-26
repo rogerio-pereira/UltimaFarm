@@ -38,7 +38,7 @@
 <div class='col-md-6 margin-top'>
     <div class="input-group">
         <span class="input-group-addon" id="active">Ativo</span>
-        {!! Form::select('active', ['1' => 'Ativo', '0' => 'Inativo'], null, ['class' => 'form-control', 'aria-describedby' => 'active', 'placeholder' => 'Ativo']) !!}
+        {!! Form::select('active', ['1' => 'Ativo', '0' => 'Inativo'], null, ['class' => 'form-control', 'aria-describedby' => 'active']) !!}
     </div>
 </div>
 
@@ -70,6 +70,14 @@
                             <tr>
                                 <td colspan='4' class='tableLabel'>
                                     Blog
+                                </td>
+                            </tr>
+                        @endif
+
+                        @if($permission->description == 'Visualizar clientes')
+                            <tr>
+                                <td colspan='4' class='tableLabel'>
+                                    Administrativo
                                 </td>
                             </tr>
                         @endif

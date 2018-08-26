@@ -2,11 +2,12 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\ClientRepository;
 use App\Models\Client;
+use App\Repositories\ClientRepository;
 use App\Validators\ClientValidator;
+use Illuminate\Support\Facades\DB;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class ClientRepositoryEloquent
@@ -32,5 +33,17 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    /**
+     * Generate Array to be used in comboboxes
+     * @return array Title,ID
+     */
+    public function comboboxList()
+    {
+        return $this->model
+                    ->join('users', 'clients.user_id', '=', 'users.id')
+                    ->orderBy('users.name')
+                    ->pluck('users.name', 'clients.id');
     }
 }

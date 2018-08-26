@@ -40,7 +40,7 @@ class BannerRequest extends FormRequest
             'title.required' => 'O campo "Título" é obrigatório',
             'title.max' => 'O campo "Título" não deve ser maior do que :max caracteres',
 
-            'image.required' => 'O campo "Descrição" é obrigatório',
+            'image.required' => 'O campo "Imagem" é obrigatório',
         ];
     }
 }
