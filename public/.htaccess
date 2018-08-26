@@ -17,6 +17,10 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    #Always use SSL (https)
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST} [L,R=301]
 </IfModule>
 
 #Força a utilizar Cache-Control e Expires header
