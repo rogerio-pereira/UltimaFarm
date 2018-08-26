@@ -93,27 +93,29 @@
         </div>
 
         {{--DEPOIMENTOS--}}
-        <a id='depoimentos'></a>
-        <div class='row margin-top padding-top-p padding-bottom-g  text-center'>
-            <div class='col-md-12 text-center'>
-                <h2>O que diz quem já investe</h2>
-            </div>
+        @if(count($depoiments) > 0)
+            <a id='depoimentos'></a>
+            <div class='row margin-top padding-top-p padding-bottom-g  text-center'>
+                <div class='col-md-12 text-center'>
+                    <h2>O que diz quem já investe</h2>
+                </div>
 
-            <div class='row margin-top-g'>
-                @foreach ($depoiments as $depoiment)
-                        <div class='col-md-6 margin-top-g'>
-                            <div class='row'>
-                                <div class='col-xs-4'>
-                                    <img src='{{$depoiment->image}}' alt='{{$depoiment->name}}' class='img-responsive img-circle'>
-                                </div>
+                <div class='row margin-top-g'>
+                    @foreach ($depoiments as $depoiment)
+                            <div class='col-md-6 margin-top-g'>
+                                <div class='row'>
+                                    <div class='col-xs-4'>
+                                        <img src='{{$depoiment->image}}' alt='{{$depoiment->name}}' class='img-responsive img-circle'>
+                                    </div>
 
-                                <div class='col-xs-8 text-center margin-top-g'>
-                                    "{{$depoiment->depoiment}}"<br/>
-                                    <strong>{{$depoiment->name}}</strong>
+                                    <div class='col-xs-8 text-center margin-top-g'>
+                                        "{{$depoiment->depoiment}}"<br/>
+                                        <strong>{{$depoiment->name}}</strong>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
