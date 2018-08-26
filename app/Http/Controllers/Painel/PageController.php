@@ -173,9 +173,9 @@ class PageController extends Controller
 
         $expiresAt = Carbon::now()->addDays(1);
 
-        Cache::put('pagesBusiness', $pages, $expiresAt);
+        Cache::put('pages', $pages, $expiresAt);
         Cache::put('pagesBusiness', $pagesBusiness, $expiresAt);
-        Cache::put('pagesBusiness', $pagesInvestments, $expiresAt);
+        Cache::put('pagesInvestments', $pagesInvestments, $expiresAt);
         Cache::put('footerBusinessPages', $footerBusinessPages, $expiresAt);
         Cache::put('footerInvestmentPages', $footerInvestmentPages, $expiresAt);
     }
