@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Comission;
 use App\Models\Invoice;
+use App\Models\Product;
 use App\Models\Sale;
 use App\Repositories\InvoiceRepository;
 use Illuminate\Http\Request;
@@ -108,7 +109,7 @@ class PaypalController extends Controller
                     $sale = Sale::create($saleData);
 
                     $client = Client::find($invoice->client_id);
-                    $client = Client::find($invoice->product_id);
+                    $product = Product::find($invoice->product_id);
                     if(isset($client->indication_id)) {
                         $comissionValue = $invoice->product->price * ($invoice->product->commission / 100);
 
