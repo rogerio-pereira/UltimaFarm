@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Painel;
 
+use App\Criteria\Address\OrderByCategoryCriteria;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\AddressRequest;
 use App\Models\Address\States;
 use App\Repositories\AddressCategoryRepository;
 use App\Repositories\AddressRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
@@ -75,6 +78,8 @@ class AddressController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Endereço salvo com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -127,6 +132,8 @@ class AddressController extends Controller
 
         $this->repository->update($data, $id);
 
+        $this->storeinCache();
+
         //Grava Log
         Activity::all()->last();
 
@@ -152,6 +159,18 @@ class AddressController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         return redirect()->route('addresses.index');
+    }
+
+    private function storeinCache()
+    {
+        $contactAddresses = $this
+                                ->addressRepository
+                                ->pushCriteria(OrderByCategoryCriteria::class)
+                                ->all();
+        $expiresAt = Carbon::now()->addDays(1);
+        Cache::put('contactAddresses', $contactAddresses, $expiresAt);
     }
 }

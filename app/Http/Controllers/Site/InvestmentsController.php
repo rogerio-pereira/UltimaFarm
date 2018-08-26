@@ -75,15 +75,15 @@ class InvestmentsController extends Controller
 
     private function getCachedDepoiments()
     {
-        if(Cache::get('depoiment') == null) {
-            $depoiment = $this->getDepoiment();
+        if(Cache::get('depoiments') == null) {
+            $depoiments = $this->getDepoiment();
 
             $expiresAt = Carbon::now()->addDays(1);
 
-            Cache::put('depoiment', $depoiment, $expiresAt);
+            Cache::put('depoiments', $depoiments, $expiresAt);
         }
         
-        return Cache::get('depoiment');
+        return Cache::get('depoiments');
     }
 
     private function getDepoiment()

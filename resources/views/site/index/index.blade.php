@@ -109,7 +109,9 @@
                                     </p>
 
                                     <div class='rentNow'>
-                                        Contratar<br/>Agora
+                                        <a href='{{route('site.cadastro')}}'>
+                                            Contratar<br/>Agora
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +119,7 @@
                     @endforeach
 
                     <div class='col-md-12 text-center margin-top-g '>
-                        <a href='#' title='Outros Planos' class='btn btn-primary'>
+                        <a href='{{route('site.cadastro')}}' title='Outros Planos' class='btn btn-primary'>
                             Outros planos
                         </a>
                     </div>

@@ -4,3 +4,10 @@ img.msvIcon
     position: relative;
     margin: 0 auto;
 }
+
+img.businessWork
+{
+    position: relative;
+    margin: 0 auto;
+    height: 400px;
+}

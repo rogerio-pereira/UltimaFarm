@@ -53,11 +53,11 @@ class PageTableSeeder extends Seeder
             'description' => 'Investimento Privado de Cannabis para Investidores Credenciados', 
             'text' => "<p>A UFCC ajuda a fornecer cobertura sobre as melhores oportunidades de coloca&ccedil;&atilde;o privada e ofertas para investidores credenciados na ind&uacute;stria de Cannabis Medicinal. Trabalhamos apenas com investidores credenciados, visando a seguran&ccedil;a no processo de investimento.</p>
                 <p>Ao invetir nesse segmento voc&ecirc; fomenta o desenvolvimento do mercado da Cannabis Medicinal e adquire t&iacute;tulos de rendimento semestral, com rendimentos pr&eacute;-fixados e ajustados de acordo com o valor investido.</p>
-                <div class='text-center'>
+                <!--<div class='text-center'>
                     <a href='#' class='btn btn-primary margin-top'>
                         Tabela de Rendimentos
                     </a>
-                </div>", 
+                </div>-->", 
             'image' => env('APP_URL').'/img/investimento-privado.png', 
             'page_category_id' => 1,
             'show_title' => true
@@ -96,7 +96,7 @@ class PageTableSeeder extends Seeder
             'title' => 'História',
             'description' => '', 
             'text' => "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>", 
-            'image' => env('APP_URL').'/img/template/painel/sem-imagem.jpg', 
+            'image' => env('APP_URL').'/img/historia.jpg', 
             'page_category_id' => 2,
             'show_title' => true
         ]);
@@ -147,6 +147,26 @@ class PageTableSeeder extends Seeder
         ]);
 
         factory(Page::class)->create([
+            'title' => 'Investimento - Allstate',
+            'description' => 'Investimento - Allstate',
+            'text' => "
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <img src='".env('APP_URL')."/img/investimento-banner.png' alt='Investimentos - Segurança e Credibilidade' class='img-responsive'>
+                            </div>
+
+                            <div class='col-md-12 text-center margin-top img-center'>
+                                <h2 class='black'>Investimentos segurados pela</h2>
+                                <img src='".env('APP_URL')."/img/allstate.png' alt='Allstate' class='img-responsive'>
+                            </div>
+                        </div>
+                    ", 
+            'image' => null, 
+            'page_category_id' => 3,
+            'show_title' => false
+        ]);
+
+        factory(Page::class)->create([
             'title' => 'Informações',
             'description' => 'Informações', 
             'text' => "
@@ -154,11 +174,11 @@ class PageTableSeeder extends Seeder
                         <div class='col-md-4'>
                             <div class='investmentIcon'>
                                 <div class='row margin-top margin-bottom padding-left padding-right'>
-                                    <div class='col-xs-4'>
+                                    <div class='col-xs-5'>
                                         <img src='".env('APP_URL')."/img/investimento-cifrao.png' alt='Investimentos' class='img-responsive'>
                                     </div>
                                     
-                                    <div class='col-xs-8 text-right'>
+                                    <div class='col-xs-7 text-right'>
                                         <h2>Investimentos a partir de</h2>
                                     </div>
                                 </div>
@@ -172,11 +192,11 @@ class PageTableSeeder extends Seeder
                         <div class='col-md-4'>
                             <div class='investmentIcon'>
                                 <div class='row margin-top margin-bottom padding-left padding-right'>
-                                    <div class='col-xs-4'>
+                                    <div class='col-xs-5'>
                                         <img src='".env('APP_URL')."/img/investimento-rendimento-mensal.png' alt='Rendimento Mensal' class='img-responsive'>
                                     </div>
                                     
-                                    <div class='col-xs-8 text-right'>
+                                    <div class='col-xs-7 text-right'>
                                         <h2>Titulos de resgate semestral com</h2>
                                     </div>
                                 </div>
@@ -190,11 +210,11 @@ class PageTableSeeder extends Seeder
                         <div class='col-md-4'>
                             <div class='investmentIcon'>
                                 <div class='row margin-top margin-bottom padding-left padding-right'>
-                                    <div class='col-xs-4'>
+                                    <div class='col-xs-5'>
                                         <img src='".env('APP_URL')."/img/investimento-taxas.png' alt='Taxas' class='img-responsive'>
                                     </div>
                                     
-                                    <div class='col-xs-8 text-right'>
+                                    <div class='col-xs-7 text-right'>
                                         <h2>Taxas de rendimento de até</h2>
                                     </div>
                                 </div>
@@ -208,11 +228,11 @@ class PageTableSeeder extends Seeder
                         <div class='col-md-4'>
                             <div class='investmentIcon'>
                                 <div class='row margin-top margin-bottom padding-left padding-right'>
-                                    <div class='col-xs-4'>
+                                    <div class='col-xs-5'>
                                         <img src='".env('APP_URL')."/img/investimento-bandeira.png' alt='Mercado Americano' class='img-responsive'>
                                     </div>
                                     
-                                    <div class='col-xs-8 text-right'>
+                                    <div class='col-xs-7 text-right'>
                                         <h2>Segurança e maturidade do</h2>
                                     </div>
                                 </div>
@@ -226,11 +246,11 @@ class PageTableSeeder extends Seeder
                         <div class='col-md-4'>
                             <div class='investmentIcon'>
                                 <div class='row margin-top margin-bottom padding-left padding-right'>
-                                    <div class='col-xs-4'>
+                                    <div class='col-xs-5'>
                                         <img src='".env('APP_URL')."/img/investimento-bayer.png' alt='Bayer - Indústria Farmaceutica' class='img-responsive'>
                                     </div>
                                     
-                                    <div class='col-xs-8 text-right'>
+                                    <div class='col-xs-7 text-right'>
                                         <h2>Desenvolva a indústria</h2>
                                     </div>
                                 </div>
@@ -244,11 +264,11 @@ class PageTableSeeder extends Seeder
                         <div class='col-md-4'>
                             <div class='investmentIcon'>
                                 <div class='row margin-top margin-bottom padding-left padding-right'>
-                                    <div class='col-xs-4'>
+                                    <div class='col-xs-5'>
                                         <img src='".env('APP_URL')."/img/investimento-mercado-financeiro.png' alt='Mercado Financeiro' class='img-responsive'>
                                     </div>
                                     
-                                    <div class='col-xs-8 text-right'>
+                                    <div class='col-xs-7 text-right'>
                                         <h2>Antecipe tendências do</h2>
                                     </div>
                                 </div>

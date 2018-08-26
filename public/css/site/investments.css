@@ -3,7 +3,7 @@ div.investmentIcon
     background-color: #bba03c;
     color: white;
     margin:15px 0px;
-    height: 173px;
+    height: 214px;
     overflow: hidden;
 }
 
@@ -16,14 +16,15 @@ div.investmentIcon h1
 div.investmentIcon h2
 {
     color: white;
-    font-size: 1em;
+    font-size: 1.2em;
     text-transform: none;
+    margin-top: 25px;
 }
 
 div.investmentIcon div.investmentIconFooter
 {
     position:relative;
-    bottom: -10px;
+    bottom: 0px;
     padding: 0px;
     background-color: #c3af66;
 }
