@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             $this->call(AddressTestTableSeeder::class);
             $this->call(TelephoneTestTableSeeder::class);
             $this->call(ComissionTestTableSeeder::class);
+            //$this->call(InvoiceTestTableSeeder::class);
         }
     }
 }

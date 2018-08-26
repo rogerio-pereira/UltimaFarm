@@ -11,6 +11,8 @@
         </div>
     @endif
 
+    @include('painel.layout.errors')
+
     @can('create-sales')
         <div class='col-md-12 text-center'>
             <a href='{{route('sales.create')}}' alt='Cadastrar' title='Cadastrar' class='btn btn-default'>

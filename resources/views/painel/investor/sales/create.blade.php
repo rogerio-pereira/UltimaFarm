@@ -5,6 +5,16 @@
         <h1>Novo Título</h1>
     </div>
 
+    @if(isset($messageInvoice))
+        <div class='col-md-12'>
+            <div class="alert alert-info text-center">
+                <ul>
+                    <li>{!! $messageInvoice !!}</li>
+                </ul>
+            </div>
+        </div>
+    @endif
+
     @include('painel.layout.errors')
 
     {!! Form::open(['route' => 'painel.investor.meus-titulos.store']) !!}
