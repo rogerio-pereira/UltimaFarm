@@ -93,30 +93,32 @@
         </div>
 
         {{--DEPOIMENTOS--}}
-        @if(count($depoiments) > 0)
-            <a id='depoimentos'></a>
-            <div class='row margin-top padding-top-p padding-bottom-g  text-center'>
-                <div class='col-md-12 text-center'>
-                    <h2>O que diz quem já investe</h2>
-                </div>
-
-                <div class='row margin-top-g'>
-                    @foreach ($depoiments as $depoiment)
-                            <div class='col-md-6 margin-top-g'>
-                                <div class='row'>
-                                    <div class='col-xs-4'>
-                                        <img src='{{$depoiment->image}}' alt='{{$depoiment->name}}' class='img-responsive img-circle'>
-                                    </div>
-
-                                    <div class='col-xs-8 text-center margin-top-g'>
-                                        "{{$depoiment->depoiment}}"<br/>
-                                        <strong>{{$depoiment->name}}</strong>
-                                    </div>
-                                </div>
-                            </div>
-                    @endforeach
-                </div>
+        <a id='depoimentos'></a>
+        <div class='row margin-top padding-top-p padding-bottom-g  text-center'>
+            <div class='col-md-12 text-center'>
+                <h2>O que diz quem já investe</h2>
             </div>
-        @endif
+
+            <div class='row margin-top-g'>
+                @forelse ($depoiments as $depoiment)
+                    <div class='col-md-6 margin-top-g'>
+                        <div class='row'>
+                            <div class='col-xs-4'>
+                                <img src='{{$depoiment->image}}' alt='{{$depoiment->name}}' class='img-responsive img-circle'>
+                            </div>
+
+                            <div class='col-xs-8 text-center margin-top-g'>
+                                "{{$depoiment->depoiment}}"<br/>
+                                <strong>{{$depoiment->name}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class='col-md-12 text-center'>
+                        Não há nenhum depoimento cadastrado
+                    </div>
+                @endforelse
+            </div>
+        </div>
     </div>
 @endsection
