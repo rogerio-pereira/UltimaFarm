@@ -23,7 +23,7 @@
         </div>
     @endcan
 
-    @if(Auth::user()->role == 'Cliente')
+    {{--@if(Auth::user()->role == 'Cliente')
         <div class='col-md-12 text-center'>
             <a href='{{route('painel.investor.meus-titulos.create')}}' alt='Comprar' title='Comprar' class='btn btn-default'>
                 Comprar
@@ -31,7 +31,7 @@
             <br/>
             <br/>
         </div>
-    @endif
+    @endif--}}
 
     <table class="table table-responsive table-striped table-bordered table-hovered">
         <thead>
