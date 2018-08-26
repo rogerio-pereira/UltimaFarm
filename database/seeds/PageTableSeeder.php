@@ -53,11 +53,11 @@ class PageTableSeeder extends Seeder
             'description' => 'Investimento Privado de Cannabis para Investidores Credenciados', 
             'text' => "<p>A UFCC ajuda a fornecer cobertura sobre as melhores oportunidades de coloca&ccedil;&atilde;o privada e ofertas para investidores credenciados na ind&uacute;stria de Cannabis Medicinal. Trabalhamos apenas com investidores credenciados, visando a seguran&ccedil;a no processo de investimento.</p>
                 <p>Ao invetir nesse segmento voc&ecirc; fomenta o desenvolvimento do mercado da Cannabis Medicinal e adquire t&iacute;tulos de rendimento semestral, com rendimentos pr&eacute;-fixados e ajustados de acordo com o valor investido.</p>
-                <div class='text-center'>
+                <!--<div class='text-center'>
                     <a href='#' class='btn btn-primary margin-top'>
                         Tabela de Rendimentos
                     </a>
-                </div>", 
+                </div>-->", 
             'image' => env('APP_URL').'/img/investimento-privado.png', 
             'page_category_id' => 1,
             'show_title' => true

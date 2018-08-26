@@ -49,3 +49,10 @@ div.homeProduct div.rentNow
     color: white;
     font-weight: bold;
 }
+
+
+div.homeProduct div.rentNow a,
+div.homeProduct div.rentNow a:hover
+{
+    color: white;
+}
