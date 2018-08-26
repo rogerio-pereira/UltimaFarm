@@ -7,7 +7,9 @@ use App\Http\Controllers\Util\UrlController;
 use App\Http\Controllers\Util\VideoController as VideoUtilController;
 use App\Http\Requests\Painel\VideoRequest;
 use App\Repositories\VideoRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
@@ -68,6 +70,8 @@ class VideoController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Video salvo com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -121,6 +125,8 @@ class VideoController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Video alterado com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -142,6 +148,8 @@ class VideoController extends Controller
 
         //Grava Log
         Activity::all()->last();
+
+        $this->storeinCache();
 
         return redirect()->route('videos.index');
     }
@@ -170,5 +178,12 @@ class VideoController extends Controller
         $id = VideoUtilController::getYoutubeId($url);
 
         return "http://img.youtube.com/vi/{$id}/0.jpg";
+    }
+
+    private function storeinCache()
+    {
+        $video = $this->repository->orderBy('id', 'DESC')->first();
+        $expiresAt = Carbon::now()->addDays(1);
+        Cache::put('video', $video, $expiresAt);
     }
 }

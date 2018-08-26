@@ -101,6 +101,8 @@ class BusinessInfoController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Informações da Empresa alterada com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -116,5 +118,12 @@ class BusinessInfoController extends Controller
     public function destroy($id)
     {
         return redirect('/business_info');
+    }
+
+    private function storeInCache()
+    {
+        $businessInfo = $this->repository->find(1);
+        $expiresAt = Carbon::now()->addDays(1);
+        Cache::put('businessInfo', $businessInfo, $expiresAt);
     }
 }

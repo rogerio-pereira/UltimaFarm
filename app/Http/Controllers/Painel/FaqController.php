@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Painel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\FaqRequest;
 use App\Repositories\FaqRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
@@ -67,6 +69,8 @@ class FaqController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Faq salva com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -121,6 +125,8 @@ class FaqController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();        
+
         Session::flash('message', ['Faq alterada com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -143,6 +149,15 @@ class FaqController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         return redirect()->route('faqs.index');
+    }
+
+    private function storeinCache()
+    {
+        $faqs = $this->repository->all();
+        $expiresAt = Carbon::now()->addDays(1);
+        Cache::put('faqs', $faqs, $expiresAt);
     }
 }

@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\DepoimentRequest;
 use App\Repositories\DepoimentCategoryRepository;
 use App\Repositories\DepoimentRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Models\Activity;
@@ -66,6 +68,8 @@ class DepoimentController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Depoimento salvo com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -118,6 +122,8 @@ class DepoimentController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         Session::flash('message', ['Depoimento alterado com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
 
@@ -140,6 +146,15 @@ class DepoimentController extends Controller
         //Grava Log
         Activity::all()->last();
 
+        $this->storeinCache();
+
         return redirect()->route('depoiments.index');
+    }
+
+    private function storeinCache()
+    {
+        $depoiments = $this->repository->all();
+        $expiresAt = Carbon::now()->addDays(1);
+        Cache::put('depoiments', $depoiments, $expiresAt);
     }
 }

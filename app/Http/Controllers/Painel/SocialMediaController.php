@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Painel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Painel\SocialMediaRequest;
 use App\Repositories\SocialMediaRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
@@ -63,10 +64,10 @@ class SocialMediaController extends Controller
 
         $this->repository->create($data);
 
-        $this->storeInCache();
-
         //Grava Log
         Activity::all()->last();
+
+        $this->storeinCache();
 
         Session::flash('message', ['Mídia Social salva com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
@@ -117,10 +118,10 @@ class SocialMediaController extends Controller
 
         $this->repository->update($data, $id);
 
-        $this->storeInCache();
-
         //Grava Log
         Activity::all()->last();
+
+        $this->storeinCache();
 
         Session::flash('message', ['Mídia Social alterada com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 
@@ -141,10 +142,10 @@ class SocialMediaController extends Controller
 
         $this->repository->delete($id);
 
-        $this->storeInCache();
-
         //Grava Log
         Activity::all()->last();
+
+        $this->storeinCache();
 
         return redirect()->route('socialmedias.index');
     }
@@ -155,7 +156,7 @@ class SocialMediaController extends Controller
             ['active', '=', 1],
             ['url', '<>', null],
         ]);
-
-        Cache::forever('socialmedias', $socialMedias);
+        $expiresAt = Carbon::now()->addDays(7);
+        Cache::put('socialmedias', $socialMedias, $expiresAt);
     }
 }
