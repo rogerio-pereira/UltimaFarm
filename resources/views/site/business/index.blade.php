@@ -63,6 +63,7 @@
                 <script type="text/javascript" src="https://marketing.ultimatefarmcannabiscenter.com.br/form/generate.js?id=1"></script>
             </div>
             <div class='col-md-6'>
+                <img src='/img/template/trabalhe-conosco.png' alt='Trabalhe Conosco' class='img-responsive businessWork'>
             </div>
         </div>
     </div>
