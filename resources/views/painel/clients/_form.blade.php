@@ -1,4 +1,5 @@
 {!! Form::input('hidden', 'user[role]', "Cliente") !!}
+{!! Form::input('hidden', 'hashUser', null) !!}
 
 <div class='col-md-6'>
     <div class="input-group">
@@ -28,6 +29,13 @@
     </div>
 </div>
 
+<div class='col-md-6 margin-top'>
+    <div class="input-group">
+        <span class="input-group-addon">Indicação</span>
+        {!! Form::select('indication_id', $clients, null, ['class' => 'form-control', 'id' => 'indication_id']) !!}
+    </div>
+</div>
+
 <div class='col-md-12 text-center margin-top-g margin-bottom'>
     <h2>Endereço</h2>
 </div>
@@ -35,7 +43,7 @@
 <div class='col-md-6'>
     <div class="input-group">
         <span class="input-group-addon">CEP</span>
-        {!! Form::input('text', 'zipcode', null, ['class' => 'form-control cep', 'aria-describedby' => 'zipcode', 'id' => 'zipcode']) !!}
+        {!! Form::input('text', 'zipcode', null, ['class' => 'form-control zipcode', 'aria-describedby' => 'zipcode', 'id' => 'zipcode']) !!}
     </div>
 </div>
 

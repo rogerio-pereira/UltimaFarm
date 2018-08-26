@@ -5,13 +5,29 @@ footer
     background-color: #ded0a0;
     color:black;
     border-top: 50px solid #ccb66c !important;
-    margin-top: 40px;
+    font-size: 0.8em;
+}
+
+footer a
+{
+    color: black;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+footer h2
+{
+    font-size: 1em;
+}
+
+footer h3
+{
+    font-size: .9em;
 }
 
 footer div.copyright
 {
     background-color: #ccb66c;
-    font-size: .8em;
     color:white;
 }
 

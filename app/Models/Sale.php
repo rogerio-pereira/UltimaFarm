@@ -32,6 +32,7 @@ class Sale extends Model implements Transformable
         'profitability',
         'deadline',
         'refundValue',
+        'refunded',
         'created_at'
     ];
     
@@ -48,6 +49,7 @@ class Sale extends Model implements Transformable
         'profitability',
         'deadline',
         'refundValue',
+        'refunded',
     ];
 
     /**
@@ -65,6 +67,11 @@ class Sale extends Model implements Transformable
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+
+    public function comission()
+    {
+        return $this->hasOne(Comission::class, 'sale_id', 'id');
     }
 
 }

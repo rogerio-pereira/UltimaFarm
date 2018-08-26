@@ -26,6 +26,16 @@ ul.navbar-right
     top: -10px;
 }
 
+ul.navbar-right li a.registerButton,
+ul.navbar-right li a.registerButton:hover
+{
+    background-color: #B7952D;
+    color: white !important;
+
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+}
+
 
 //Icones
 ul.navbar-right li a span.fa-stack

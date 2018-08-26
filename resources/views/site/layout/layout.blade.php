@@ -32,36 +32,7 @@
         </section>
 
         <footer>
-            <div class='row'>
-                <div class='container'>
-                    <div class='col-md-3 col-sm-6'>
-                        Col 1
-                    </div>
-
-                    <div class='col-md-3 col-sm-6'>
-                        Col 2
-                    </div>
-
-                    <div class='col-md-3 col-sm-6'>
-                        Col 3
-                    </div>
-
-                    <div class='col-md-3 col-sm-6'>
-                        Col 4
-                    </div>
-                </div>
-            </div>
-
-            <div class='copyright text-center'>
-                &copy; 2018 {{env('APP_NAME')}} <br/>
-                Desenvolvido por: 
-                <a href='https://www.facebook.com/growthlabspocos/' alt='GrowthLabs' title='GrowthLabs' target='_blank'>
-                    GrowthLabs
-                </a> em parceria com 
-                <a href='http://colmeiatecnologia.com.br' alt='Colmeia Tecnologia' title='Colmeia Tecnologia' target='_blank'>
-                    Colmeia Tecnologia
-                </a>
-            </div>
+            @include('site.layout._footer')
         </footer>
     </body>
     

@@ -61,7 +61,7 @@
                         @php
                             $titleUrl = App\Http\Controllers\Util\UrlController::friendlyUrl($post->title);
                         @endphp
-                        <a href='{{route('blog.post', ['id' => $post->id, 'title' => $titleUrl])}}'>
+                        <a href='{{route('blog.show', ['id' => $post->id, 'title' => $titleUrl])}}'>
                             <img src='{{$post->image}}' class='img-responsive' alt='{{$post->title}}' title='{{$post->title}}'>
                             <div class='text-center'>
                                 <strong>{{$post->title}}</strong>
@@ -85,7 +85,7 @@
     </div>
 
     <section>
-        <div class='container margin-top margin-bottom-negative padding-top'>
+        <div class='container margin-top padding-top'>
             <div class='margin-bottom-g'>
                 <div class='text-center'>
                     <h1>Planos de Investimento</h1>

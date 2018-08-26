@@ -24,6 +24,7 @@ class PermissionsTableSeeder extends Seeder
                         'products'              => 'produtos',
                         'socialmedias'          => 'mídias sociais',
                         'faqs'                  => 'FAQs',
+                        'depoiments'            => 'depoimentos',
                         'users'                 => 'usuários',
                         'permissions'           => 'permissões',
                         //Blog
@@ -32,6 +33,14 @@ class PermissionsTableSeeder extends Seeder
                         //Administrativo
                         'clients'               => 'clientes',
                         'sales'                 => 'vendas',
+                        'comissions'             => 'vendas',
+                        'refunds'               => 'reembolso',
+                        //Empresa
+                        'business_info'         => 'informações da empresa',
+                        'address-categories'    => 'locais',
+                        'addresses'             => 'endereços',
+                        'telephones'            => 'telefones',
+                        'emails'                => 'e-mails',
                     ];
 
         $permissions =  [

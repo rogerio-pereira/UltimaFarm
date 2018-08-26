@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Blog\Sidebar;
 use App\Http\Middleware\GetDolar;
 use App\Http\Middleware\GetSocialMedia;
+use App\Http\Middleware\SiteFooter;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -60,5 +62,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'getSocialMedia' => GetSocialMedia::class,
         'getDolar' => GetDolar::class,
+        'blogSidebar' => Sidebar::class,
+        'siteFooter' => SiteFooter::class,
     ];
 }

@@ -19,7 +19,9 @@ class PostTestTableSeeder extends Seeder
             );
         });
 
-        factory(PostCategory::class)->create();
+        factory(PostCategory::class)->create([
+            'title' => 'Test'
+        ]);
 
         factory(Post::class)->create([
             'title' => 'Um mercado seguro: invista em Cannabis Medicinal (TESTE)',

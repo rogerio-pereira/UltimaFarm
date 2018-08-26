@@ -47,7 +47,18 @@ class Permission extends Model implements Transformable
         'delete-permissions',
         //Vendas
         'update-sales',
-        'delete-sales'
+        'delete-sales',
+        //Informações da Empresa
+        'create-business_info',
+        'delete-business_info',
+        //Reembolso
+        'view-refunds',
+        'update-refunds',
+        'delete-refunds',
+        //Comissões
+        'create-comissions',
+        'update-comissions',
+        'delete-comissions',
     ];
 
     /**

@@ -21,6 +21,7 @@ class Product extends Model implements Transformable
         'price',
         'deadline',
         'profitability',
+        'commission'
     ];
     
     /*
@@ -34,6 +35,7 @@ class Product extends Model implements Transformable
         'price',
         'deadline',
         'profitability',
+        'commission'
 
     ];
 

@@ -95,6 +95,38 @@ class RepositoryServiceProvider extends ServiceProvider
                 \App\Repositories\FaqRepository::class, 
                 \App\Repositories\FaqRepositoryEloquent::class
         );
+        $this->app->bind(
+                \App\Repositories\DepoimentRepository::class, 
+                \App\Repositories\DepoimentRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\AddressCategoryRepository::class, 
+                \App\Repositories\AddressCategoryRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\AddressRepository::class, 
+                \App\Repositories\AddressRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\EmailRepository::class, 
+                \App\Repositories\EmailRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\TelephoneRepository::class, 
+                \App\Repositories\TelephoneRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\BusinessInfoRepository::class, 
+                \App\Repositories\BusinessInfoRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\ComissionRepository::class, 
+                \App\Repositories\ComissionRepositoryEloquent::class
+        );
+        $this->app->bind(
+                \App\Repositories\InvoiceRepository::class, 
+                \App\Repositories\InvoiceRepositoryEloquent::class
+        );
         //:end-bindings:
     }
 }

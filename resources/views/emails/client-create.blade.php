@@ -36,5 +36,5 @@
 
 <p>
     Obrigado,<br/>
-    <img src='{{env('APP_URL')}}/public/img/painel/assinatura.png' alt='{{env('APP_NAME')}}'>
+    <img src='{{env('APP_URL')}}/img/template/painel/assinatura.png' alt='{{env('APP_NAME')}}'>
 </p>

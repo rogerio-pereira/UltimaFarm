@@ -1,9 +1,17 @@
 @extends('painel.layout.layout')
 
 @section('content')
-    <div class='col-md-12 text-center'>
-        <h1>Vendas</h1>
-    </div>
+    @if(Auth::user()->role != 'Client')
+        <div class='col-md-12 text-center'>
+            <h1>Vendas</h1>
+        </div>
+    @else
+        <div class='col-md-12 text-center'>
+            <h1>Meus Títulos</h1>
+        </div>
+    @endif
+
+    @include('painel.layout.errors')
 
     @can('create-sales')
         <div class='col-md-12 text-center'>
@@ -14,6 +22,16 @@
             <br/>
         </div>
     @endcan
+
+    @if(Auth::user()->role == 'Cliente')
+        <div class='col-md-12 text-center'>
+            <a href='{{route('painel.investor.meus-titulos.create')}}' alt='Comprar' title='Comprar' class='btn btn-default'>
+                Comprar
+            </a>
+            <br/>
+            <br/>
+        </div>
+    @endif
 
     <table class="table table-responsive table-striped table-bordered table-hovered">
         <thead>
@@ -27,6 +45,7 @@
                 <th>Rentabilidade</th>
                 <th>Prazo de Retirada</th>
                 <th>Valor final</th>
+                <th>Reembolsado</th>
             </tr>
         </thead>
         <tbody>
@@ -49,10 +68,29 @@
                     <td>
                         R$ {{number_format($sale->refundValue, 2, ',', '.')}}
                     </td>
+                    <td>
+                        @if(Auth::user()->role != 'Cliente')
+                            @can('create-refounds')
+                                @if(!$sale->refunded)
+                                    <div id='sale_{{$sale->id}}'>
+                                        <a href="#" class="btn btn-warning confirmation-callback" data-id='{{$sale->id}}'>
+                                            Reembolsar
+                                        </a>
+                                    </div>
+                                @endif
+                            @endcan
+                        @else
+                            @if($sale->refunded)
+                                Sim
+                            @else
+                                Não
+                            @endif
+                        @endif
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan='9' class='text-center'>
+                    <td colspan='10' class='text-center'>
                         Nenhuma Venda cadastrada
                     </td>
                 </tr>
@@ -63,4 +101,9 @@
     <div class='col-md-12 text-center'>
         {{$sales->render()}}
     </div>
+@endsection
+
+@section('scripts')
+    {!! Html::script('/js/painel/confirmation/bootstrap-confirmation.min.js') !!}
+    {!! Html::script('/js/painel/sale.min.js') !!}
 @endsection

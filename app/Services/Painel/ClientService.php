@@ -35,11 +35,21 @@ class ClientService
                 $password = str_random(8);
                 $user['password'] = bcrypt($password);
             }
+            else
+                $password = null;
 
             DB::beginTransaction();
                 $user = $this->userRepository->create($user);
 
-                $data['user_id'] = $user->id;
+                $data['user_id']        = $user->id;
+                $data['hashIndication'] = md5($user->email);
+
+                if(isset($data['hashUser']) && $data['hashUser'] != '') {
+                    $indicator = $this->clientRepository->findWhere(['hashIndication' => $data['hashUser']])->first();
+
+                    $data['indication_id'] = $indicator->id;
+                }
+
                 $client = $this->clientRepository->create($data);
 
                 //Grava Log
@@ -48,7 +58,7 @@ class ClientService
 
             $this->sendMail($client, $password);
 
-            return true;
+            return $user;
         }
         catch(\Exception $e)
         {

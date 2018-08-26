@@ -20,6 +20,7 @@ $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
         'price' => rand(100, 1000),
         'deadline' => rand(1, 12),
         'profitability' => rand(1,100),
+        'commission' => rand(1,5),
         'active' => 1,
     ];
 });

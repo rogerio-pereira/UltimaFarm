@@ -25,6 +25,7 @@
                 <th>Telefone</th>
                 <th>Documento</th>
                 <th>Endereço</th>
+                <th>Indicado por:</th>
             </tr>
         </thead>
         <tbody>
@@ -63,10 +64,15 @@
 
                     {{$address}}
                 </td>
+                <td>
+                    @if(isset($client->indication_id))
+                        {{$client->indication->user->name}}
+                    @endif
+                </td>
             </tr>
             @empty
             <tr>
-                <td colspan='7' class='text-center'>
+                <td colspan='8' class='text-center'>
                     Nenhum Cliente cadastrado
                 </td>
             </tr>

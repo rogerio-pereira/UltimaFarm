@@ -3,7 +3,7 @@
 @section('content')
     <div class='col-md-12 text-center'>
         <h1>
-            Alterar Ve: {{$client->title}}  - ID: {{$client->id}}
+            Alterar Telefone: {{$telephone->telephone}} - ID: {{$telephone->id}}
         </h1>
     </div>
 
@@ -11,7 +11,7 @@
         @include('painel.layout.errors')
     </div>
 
-    {!! Form::model($client, ['route' => ['clients.update', $client->id], 'method' => 'put']) !!}
-        @include('painel.clients._form')
+    {!! Form::model($telephone, ['route' => ['telephones.update', $telephone->id], 'method' => 'put']) !!}
+        @include('painel.telephones._form')
     {!! Form::close() !!}
 @endsection

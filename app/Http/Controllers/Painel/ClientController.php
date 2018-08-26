@@ -52,8 +52,13 @@ class ClientController extends Controller
             return redirect('/');
 
         $states = States::getStates();
+        $clients = $this->repository->comboboxList();
+        $clients = $clients->toArray();
+        $clients = array_reverse($clients, true);
+        $clients['0'] = '';
+        $clients = array_reverse($clients, true);
 
-        return view('painel.clients.create', compact('states'));
+        return view('painel.clients.create', compact('states', 'clients'));
     }
 
     /**
@@ -101,8 +106,13 @@ class ClientController extends Controller
 
         $client = $this->repository->find($id);
         $states = States::getStates();
+        $clients = $this->repository->comboboxList();
+        $clients = $clients->toArray();
+        $clients = array_reverse($clients, true);
+        $clients['0'] = '';
+        $clients = array_reverse($clients, true);
 
-        return view('painel.clients.edit', compact('client', 'states'));
+        return view('painel.clients.edit', compact('client', 'states', 'clients'));
     }
 
     /**

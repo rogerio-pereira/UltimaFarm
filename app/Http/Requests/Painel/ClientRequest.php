@@ -57,7 +57,7 @@ class ClientRequest extends FormRequest
             'telephone.required' => 'O campo "Telefone" é obrigatório',
 
             'document.required' => 'O campo "Documento" é obrigatório',
-            'document.unique' => 'E-mail já cadastrado',
+            'document.unique' => 'Documento já cadastrado',
 
 
             'zipcode.required' => 'O campo "CEP" é obrigatório',

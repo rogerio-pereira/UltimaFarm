@@ -27,6 +27,17 @@
         <div class='col-md-6'>
             <div class='panel panel-info'>
                 <div class='panel-heading text-center'>
+                    <h1 class='panel-title'>Total de Comissões</h1>
+                </div>
+                <div class='panel-body'>
+                    <div class='chart' id='comissionChart'></div>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-md-6'>
+            <div class='panel panel-info'>
+                <div class='panel-heading text-center'>
                     <h1 class='panel-title'>Total de Reembolso</h1>
                 </div>
                 <div class='panel-body'>
@@ -34,9 +45,22 @@
                 </div>
             </div>
         </div>
+
+        <div class='col-md-6'>
+            <div class='panel panel-info'>
+                <div class='panel-heading text-center'>
+                    <h1 class='panel-title'>Total de Reembolso de Comissões</h1>
+                </div>
+                <div class='panel-body'>
+                    <div class='chart' id='comissionRefundChart'></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     {!! \Lava::render('LineChart', 'clients', 'clientsChart') !!}
     {!! \Lava::render('LineChart', 'sales', 'salesChart') !!}
+    {!! \Lava::render('LineChart', 'comissions', 'comissionChart') !!}
     {!! \Lava::render('LineChart', 'refunds', 'refundChart') !!}
+    {!! \Lava::render('LineChart', 'comissionRefunds', 'comissionRefundChart') !!}
 @endsection

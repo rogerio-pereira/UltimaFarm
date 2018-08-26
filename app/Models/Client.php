@@ -25,6 +25,8 @@ class Client extends Model implements Transformable
         'neighborhood',
         'city',
         'state',
+        'hashIndication',
+        'indication_id',
         'created_at'
     ];
     
@@ -44,6 +46,8 @@ class Client extends Model implements Transformable
         'complement',
         'neighborhood',
         'city',
+        'hashIndication',
+        'indication_id',
         'state',
     ];
 
@@ -56,12 +60,22 @@ class Client extends Model implements Transformable
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function sales()
     {
         return $this->hasMany(Sale::class, 'client_id', 'id');
+    }
+
+    public function comissions()
+    {
+        return $this->hasMany(Comission::class, 'client_id', 'id');
+    }
+
+    public function indication()
+    {
+        return $this->belongsTo(Client::class, 'indication_id', 'id');
     }
 
     public function toString()

@@ -17,6 +17,7 @@ class ProductTableSeeder extends Seeder
             'price' => 500,
             'deadline' => 6,
             'profitability' => 5,
+            'commission' => 5,
             'active' => 1
         ]);
         
@@ -25,6 +26,7 @@ class ProductTableSeeder extends Seeder
             'price' => 1000,
             'deadline' => 6,
             'profitability' => 10,
+            'commission' => 5,
             'active' => 1
         ]);
         
@@ -33,6 +35,7 @@ class ProductTableSeeder extends Seeder
             'price' => 5000,
             'deadline' => 6,
             'profitability' => 15,
+            'commission' => 5,
             'active' => 1
         ]);
         
@@ -41,6 +44,7 @@ class ProductTableSeeder extends Seeder
             'price' => 10000,
             'deadline' => 6,
             'profitability' => 20,
+            'commission' => 5,
             'active' => 1
         ]);
         
@@ -49,6 +53,7 @@ class ProductTableSeeder extends Seeder
             'price' => 50000,
             'deadline' => 6,
             'profitability' => 25,
+            'commission' => 5,
             'active' => 1
         ]);
         
@@ -57,6 +62,7 @@ class ProductTableSeeder extends Seeder
             'price' => 100000,
             'deadline' => 6,
             'profitability' => 30,
+            'commission' => 5,
             'active' => 1
         ]);
         
@@ -65,6 +71,7 @@ class ProductTableSeeder extends Seeder
             'price' => 500000,
             'deadline' => 6,
             'profitability' => 35,
+            'commission' => 5,
             'active' => 1
         ]);
         
@@ -73,6 +80,7 @@ class ProductTableSeeder extends Seeder
             'price' => 1000000,
             'deadline' => 6,
             'profitability' => 40,
+            'commission' => 5,
             'active' => 1
         ]);
     }

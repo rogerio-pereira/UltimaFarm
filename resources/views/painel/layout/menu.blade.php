@@ -1,4 +1,54 @@
 @if(Auth::user()->role != 'Cliente') 
+    {{--Empresa--}}
+    <li class='dropdown'>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Empresa <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu inverse-dropdown" role="menu">
+            {{--INFORMAÇÕES DA EMPRESA--}}
+            @can('view-business_info')
+                <li>
+                    <a href='{{route('business_info.index')}}' alt='Informações da Empresa' title='Informações da Empresa'>
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Informações da Empresa
+                    </a>
+                </li>
+            @endcan
+            {{--LOCAIS--}}
+            @can('view-address-categories')
+                <li>
+                    <a href='{{route('address-categories.index')}}' alt='Locais' title='Locais'>
+                        <i class="fa fa-map-o" aria-hidden="true"></i> Locais
+                    </a>
+                </li>
+            @endcan
+            {{--ADDRESS--}}
+            @can('view-adresses')
+                <li>
+                    <a href='{{route('addresses.index')}}' alt='Endereços' title='Endereços'>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> Endereços
+                    </a>
+                </li>
+            @endcan
+            {{--TELEPHONE--}}
+            @can('view-telephones')
+                <li>
+                    <a href='{{route('telephones.index')}}' alt='Telefones' title='Telefones'>
+                        <i class="fa fa-phone" aria-hidden="true"></i> Telefones
+                    </a>
+                </li>
+            @endcan
+            {{--EMAIL--}}
+            @can('view-emails')
+                <li>
+                    <a href='{{route('emails.index')}}' alt='Emails' title='Emails'>
+                        <i class="fa fa-at" aria-hidden="true"></i> Emails
+                    </a>
+                </li>
+            @endcan
+        </ul>
+    </li>
+
     {{--Administrativo--}}
     <li class='dropdown'>
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -19,6 +69,14 @@
                 <li>
                     <a href='{{route('sales.index')}}' alt='Vendas' title='Vendas'>
                         <i class="fa fa-money" aria-hidden="true"></i> Vendas
+                    </a>
+                </li>
+            @endcan
+            {{--COMISSIONS--}}
+            @can('view-comissions')
+                <li>
+                    <a href='{{route('comissions.index')}}' alt='Comissões' title='Comissões'>
+                        <i class="fa fa-money" aria-hidden="true"></i> Comissões
                     </a>
                 </li>
             @endcan
@@ -120,6 +178,14 @@
                     </a>
                 </li>
             @endcan
+            {{--DEPOIMENT--}}
+            @can('view-depoiment')
+                <li>
+                    <a href='{{route('depoiments.index')}}' alt='Depoimentos' title='Depoimentos'>
+                        <i class="fa fa-comments" aria-hidden="true"></i> Depoimentos
+                    </a>
+                </li>
+            @endcan
             {{--Users--}}
             @can('view-users')
                 <li>
@@ -158,6 +224,30 @@
     </li>
 @endif
 
+{{--CLIENTE--}}
+@if(Auth::user()->role == 'Cliente')
+    {{--Meus Títulos--}}
+    <li class='dropdown'>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Títulos <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu inverse-dropdown" role="menu">
+            <li>
+                <a href='{{route('painel.investor.meus-titulos.index')}}' alt='Meus Títulos' title='Meus Títulos'>
+                    <i class="fa fa-money" aria-hidden="true"></i> Meus Títulos
+                </a>
+            </li>
+
+            <li>
+                <a href='{{route('painel.investor.comissoes.index')}}' alt='Comissões' title='Comissões'>
+                    <i class="fa fa-money" aria-hidden="true"></i> Comissões
+                </a>
+            </li>
+        </ul>
+    </li>
+@endif
+
 {{--Usuário--}}
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -171,6 +261,17 @@
                 <i class="fa fa-user" aria-hidden="true"></i> Meus dados
             </a>
         </li>
+
+        {{--INDICAÇÃO--}}
+        @if(Auth::user()->role == 'Cliente')
+            <li>
+                <a href='{{route('painel.investor.indication')}}' alt='Indicação' title='Indicação'>
+                    <i class="fa fa-users" aria-hidden="true"></i> Indicação
+                </a>
+            </li>
+
+            <li><hr class='white'></li>
+        @endif
 
         <li>
             <a href="{{ route('logout') }}"
