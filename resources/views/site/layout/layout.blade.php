@@ -9,7 +9,9 @@
         {!! Html::style('/css/site/style.min.css') !!}
     </head>
     <body>
-        @include('site.layout._analytics')
+        <div class='google'>
+            @include('site.layout._analytics')
+        </div>
 
         <sidebar>
             <div class='sidebarContent'>
