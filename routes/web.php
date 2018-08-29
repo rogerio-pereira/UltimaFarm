@@ -85,7 +85,7 @@ Route::group([
             ], function() 
     {
         Route::get('meus-titulos/success-payment', 'PaypalController@successPayment')->name('meus-titulos.success-payment');
-        Route::get('meus-titulos/cancel', 'SaleController@cancel')->name('meus-titulos.cancel');
+        Route::get('meus-titulos/cancel-payment', 'PaypalController@cancelPayment')->name('meus-titulos.cancel-payment');
         Route::resource('meus-titulos', 'SaleController');
         Route::get('comissoes', 'ComissionController@index')->name('comissoes.index');
         Route::get('indicacao', 'IndicationController@index')->name('indication');

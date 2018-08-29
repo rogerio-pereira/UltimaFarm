@@ -137,4 +137,8 @@ class PaypalController extends Controller
 
         return redirect()->route('painel.investor.meus-titulos.index');
     }
+
+    public function cancelPayment(Request $request)
+    {
+    }
 }
