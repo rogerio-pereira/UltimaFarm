@@ -74,6 +74,9 @@ class ClientController extends Controller
 
         $data = $request->all();
 
+        if($data['indication_id'] == 0)
+            $data['indication_id'] = null;
+
         $this->service->store($data);
 
         Session::flash('message', ['Cliente salvo com sucesso!']); 
@@ -128,6 +131,9 @@ class ClientController extends Controller
             return redirect('/');
 
         $data = $request->all();
+
+        if($data['indication_id'] == 0)
+            $data['indication_id'] = null;
 
         $this->repository->update($data, $id);
 

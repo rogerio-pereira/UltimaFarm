@@ -39,7 +39,7 @@ class BusinessInfoRequest extends FormRequest
         return [
             'companyName.required' => 'O campo "Telefone" é obrigatório',
 
-            'cnpj.required' => 'O campo "Telefone" é obrigatório',
+            'cnpj.required' => 'O campo "CNPJ" é obrigatório',
             'cnpj.cnpj' => 'CNPJ inválido',
         ];
     }
