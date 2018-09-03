@@ -101,7 +101,7 @@ class Invoice extends Model implements Transformable
     {
         $this->token = $token;
         $this->payerId = $payerId;
-        $this->status = 'approved';
+        $this->status = $status;
         $this->save();
 
             //Grava Log

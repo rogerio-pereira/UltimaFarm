@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Client;
 use App\Models\Comission;
+use App\Models\PayPal;
 use App\Models\Product;
 use App\Models\Sale;
 use App\Repositories\ComissionRepository;
@@ -56,30 +57,17 @@ class UpdateInvoices extends Command
     public function handle()
     {
         $invoices = $this->invoiceRepository
-                        ->findWhere([
-                            ['processed', '=', '0'],
-                            ['token', '<>', null],
-                            ['payerID', '<>', null],
-                        ]);
+                        ->orderBy('id desc');
 
         foreach ($invoices as $invoice) {
-            // Verify Express Checkout Token
-            $response = $this->provider->getExpressCheckoutDetails($invoice->token);
+            $paypal = new PayPal($invoice);
+            $response = $paypal->execute($invoice->paymentId, $invoice->token, $invoice->payerId);
 
-            $this->setData($invoice);
-
-            if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-                // Perform transaction on PayPal
-                $payment_status = $this->provider->doExpressCheckoutPayment($this->getCheckoutData(), $invoice->token, $invoice->payerID);
-                $status = $payment_status['PAYMENTINFO_0_PAYMENTSTATUS'];
-            }
+            $invoice->updatePaypalDataReturn($invoice->token, $invoice->payerId, $response);
 
             try {
                 DB::beginTransaction();
-                    $invoice->status = $status;
-                    $invoice->save();
-
-                    if($status == 'Completed') {
+                    if($response == 'approved') {
                         $saleData['client_id'] = $invoice->client_id;
                         $saleData['product_id'] = $invoice->product_id;
                         $saleData['value'] = $invoice->value;
@@ -118,34 +106,5 @@ class UpdateInvoices extends Command
         }
 
         $this->info("Todos os pedidos foram processados com sucesso");
-    }
-
-    private function setData($invoice)
-    {
-        $this->data = [];
-        $this->data['items'] = [
-            [
-                'name' => $invoice->product->name,
-                'price' => $invoice->value,
-                'qty' => 1
-            ]
-        ];
-
-        $this->data['invoice_id'] = $invoice->id;
-        $this->data['invoice_description'] = "Pagamento Título #{$invoice->id}";
-        $this->data['return_url'] = route('painel.investor.meus-titulos.success-payment');
-        $this->data['cancel_url'] = route('painel.investor.meus-titulos.cancel', ['id' => $invoice->id]);
-
-        $total = 0;
-        foreach($this->data['items'] as $item) {
-            $total += $item['price']*$item['qty'];
-        }
-
-        $this->data['total'] = $total;
-    }
-
-    private function getCheckoutData()
-    {
-        return $this->data;
     }
 }
