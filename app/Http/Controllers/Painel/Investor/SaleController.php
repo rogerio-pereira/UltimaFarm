@@ -87,9 +87,7 @@ class SaleController extends Controller
         //Grava Log
         Activity::all()->last();
 
-        $paypal = new PaypalController();
-        $paypal->setData($invoice);
-        return $paypal->sale();
+        return PaypalController::pay($invoice);
 
         /*Session::flash('message', ['Venda salva com sucesso!']); 
         Session::flash('alert-type', 'alert-success'); 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Activitylog\Models\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -34,6 +35,8 @@ class Invoice extends Model implements Transformable
         'refundValue',
         'refunded',
         'token',
+        'identify',
+        'paymentId',
         'payerID',
         'status',
         'processed',
@@ -55,9 +58,11 @@ class Invoice extends Model implements Transformable
         'refundValue',
         'refunded',
         'token',
+        'identify',
+        'paymentId',
         'payerID',
         'status',
-        'processed',
+        'processed'
     ];
 
     /**
@@ -82,4 +87,24 @@ class Invoice extends Model implements Transformable
         return $this->hasOne(Comission::class, 'sale_id', 'id');
     }
 
+    public function updatePaypalData($paymentId, $identify)
+    {
+        $this->paymentId = $paymentId;
+        $this->identify = $identify;
+        $this->save();
+
+        //Grava Log
+        Activity::all()->last();
+    }
+
+    public function updatePaypalDataReturn($token, $payerId, $status)
+    {
+        $this->token = $token;
+        $this->payerId = $payerId;
+        $this->status = $status;
+        $this->save();
+
+            //Grava Log
+        Activity::all()->last();
+    }
 }
