@@ -1,6 +1,8 @@
 @extends('painel.layout.layout')
 
 @section('content')
+    @include('painel.layout.errors')
+
     <div class='margin-top'>
         <div class='col-md-6'>
             <div class='panel panel-info'>
