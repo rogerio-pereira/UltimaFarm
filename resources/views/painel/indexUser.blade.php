@@ -1,5 +1,5 @@
 @extends('painel.layout.layout')
 
 @section('content')
-    Home
+    @include('painel.layout.errors')
 @endsection
